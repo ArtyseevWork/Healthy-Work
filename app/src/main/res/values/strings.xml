@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">Healthy Work</string>
+    <string name="sample_text">Sample text</string>
+
+
+    <!--start activity_main  -->
+    <string name="activity_main_until_the_next_exercise">Until the next exercise:</string>
+    <string name="activity_main_start">Start</string>
+    <string name="activity_main_stop">Stop</string>
+    <string name="activity_main_current_exercise">Current exercise:</string>
+    <string name="activity_main_performed">Performed:</string>
+    <string name="activity_main_missed">Missed:</string>
+    <string name="activity_main_settings">Settings</string>
+    <string name="activity_main_exercises">Exercises</string>
+    <string name="activity_main_exercises_list">List of exercises</string>
+    <string name="activity_main_schedules">Schedules</string>
+    <string name="activity_main_exit_message">Press again to exit.</string>
+    <!--end activity_main   -->
 </resources>

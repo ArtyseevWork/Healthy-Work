@@ -6,12 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/tv_main_missed_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="@string/sample_text"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_main_missed"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tv_main_missed"
+        app:layout_constraintTop_toTopOf="@+id/tv_main_missed" />
+
     <Button
         android:id="@+id/btn_main_exercises"
-        android:layout_width="75dp"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginBottom="15dp"
-        android:text="Button"
+        android:text="@string/activity_main_exercises"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_main_schedule"
         app:layout_constraintHorizontal_bias="0.5"
@@ -19,10 +31,10 @@
 
     <Button
         android:id="@+id/btn_main_schedule"
-        android:layout_width="75dp"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginBottom="15dp"
-        android:text="Button"
+        android:text="@string/activity_main_schedules"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -32,8 +44,7 @@
         android:id="@+id/tv_main_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="Hello World!"
+        android:text="@string/app_name"
         app:layout_constraintBottom_toTopOf="@+id/tv_main_next_alert"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -44,17 +55,7 @@
         android:id="@+id/btn_main_start"
         android:layout_width="250dp"
         android:layout_height="250dp"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btn_main_stop"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:text="Button"
+        android:text="@string/activity_main_start"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,10 +63,10 @@
 
     <Button
         android:id="@+id/btn_main_properties"
-        android:layout_width="75dp"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginBottom="15dp"
-        android:text="Button"
+        android:text="@string/activity_main_settings"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_main_exercises"
         app:layout_constraintHorizontal_bias="0.5"
@@ -75,10 +76,11 @@
         android:id="@+id/tv_main_next_alert"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@string/activity_main_until_the_next_exercise"
         app:layout_constraintBottom_toTopOf="@+id/btn_main_start"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tv_main_next_alert_timer"
         app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_main_title" />
 
@@ -86,10 +88,11 @@
         android:id="@+id/tv_main_comleted"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@string/activity_main_performed"
         app:layout_constraintBottom_toTopOf="@+id/tv_main_missed"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tv_main_performed_count"
         app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_main_exercise" />
 
@@ -97,10 +100,11 @@
         android:id="@+id/tv_main_missed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@string/activity_main_missed"
         app:layout_constraintBottom_toTopOf="@+id/btn_main_exercises"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tv_main_missed_count"
         app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_main_comleted" />
 
@@ -108,7 +112,7 @@
         android:id="@+id/tv_main_exercise"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@string/activity_main_current_exercise"
         app:layout_constraintBottom_toTopOf="@+id/tv_main_comleted"
         app:layout_constraintEnd_toStartOf="@+id/sp_main_exercise"
         app:layout_constraintHorizontal_bias="0.5"
@@ -120,9 +124,36 @@
         android:id="@+id/sp_main_exercise"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:contentDescription="@string/activity_main_exercises_list"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_main_exercise"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_main_exercise"
         app:layout_constraintTop_toTopOf="@+id/tv_main_exercise" />
+
+    <TextView
+        android:id="@+id/tv_main_next_alert_timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="@string/sample_text"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_main_next_alert"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tv_main_next_alert"
+        app:layout_constraintTop_toTopOf="@+id/tv_main_next_alert" />
+
+    <TextView
+        android:id="@+id/tv_main_performed_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="@string/sample_text"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_main_comleted"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tv_main_comleted"
+        app:layout_constraintTop_toTopOf="@+id/tv_main_comleted" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
