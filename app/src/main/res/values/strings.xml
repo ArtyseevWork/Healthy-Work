@@ -71,5 +71,16 @@
     <string name="activity_schedule_save">Save</string>
     <!--end activity_schedule   -->
 
+    <!--start activity_preferences  -->
+    <string name="activity_to_do_title">Lets go!</string>
+    <string name="activity_to_do_exercise">Some exercise</string>
+    <string name="activity_to_do_exercise_count">A few exercises</string>
+    <string name="activity_to_do_save">Save</string>
+    <string name="activity_to_do_positive">I\'m going to fulfill</string>
+    <string name="activity_to_do_negative">Skip</string>
+    <string name="activity_to_do_exit">Close the program for today</string>
+    <string name="activity_to_do_already_done">Already done:</string>
+    <!--end activity_preferences   -->
+
 
 </resources>

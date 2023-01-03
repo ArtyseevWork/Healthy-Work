@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ToDoActivity">
+
+    <TextView
+        android:id="@+id/tv_todo_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/activity_to_do_title"
+        app:layout_constraintBottom_toTopOf="@+id/tv_todo_exercise_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_todo_exercise_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sample_text"
+        app:layout_constraintBottom_toTopOf="@+id/btn_todo_positive"
+        app:layout_constraintEnd_toStartOf="@+id/tv_todo_exercise_count"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_todo_title" />
+
+    <TextView
+        android:id="@+id/tv_todo_exercise_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:text="@string/sample_text"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_todo_exercise_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tv_todo_exercise_name"
+        app:layout_constraintTop_toTopOf="@+id/tv_todo_exercise_name" />
+
+    <Button
+        android:id="@+id/btn_todo_positive"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/activity_to_do_positive"
+        app:layout_constraintBottom_toTopOf="@+id/btn_todo_negative"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_todo_exercise_name" />
+
+    <Button
+        android:id="@+id/btn_todo_negative"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/activity_to_do_negative"
+        app:layout_constraintBottom_toTopOf="@+id/btn_todo_exit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_todo_positive" />
+
+    <Button
+        android:id="@+id/btn_todo_exit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/activity_to_do_exit"
+        app:layout_constraintBottom_toTopOf="@+id/tv_schedule_already_done_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_todo_negative" />
+
+    <TextView
+        android:id="@+id/tv_schedule_already_done_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/activity_to_do_already_done"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tv_todo_already_done"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_todo_exit" />
+
+    <TextView
+        android:id="@+id/tv_todo_already_done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="@string/sample_text"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_schedule_already_done_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tv_schedule_already_done_title"
+        app:layout_constraintTop_toTopOf="@+id/tv_schedule_already_done_title" />
+</androidx.constraintlayout.widget.ConstraintLayout>
