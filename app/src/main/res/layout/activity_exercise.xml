@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ExerciseActivity">
+
+    <TextView
+        android:id="@+id/tv_exercise_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/activity_exercise_title"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_exercise_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_exercise_back" />
+
+    <EditText
+        android:id="@+id/et_exercise_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="15dp"
+        android:hint="@string/activity_exercise_name"
+        android:importantForAutofill="no"
+        android:inputType="textAutoCorrect"
+        android:minHeight="48dp"
+        android:text="@string/activity_exercise_new"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_exercise_title" />
+
+    <TextView
+        android:id="@+id/tv_exercise_units_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/activity_exercise_units"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/et_exercise_name"
+        app:layout_constraintTop_toBottomOf="@+id/chb_exercise_available" />
+
+    <EditText
+        android:id="@+id/et_exercise_units"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:hint="@string/activity_exercise_units_hint"
+        android:importantForAutofill="no"
+        android:inputType="textAutoCorrect"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_exercise_units_title"
+        app:layout_constraintStart_toStartOf="@+id/chb_exercise_available"
+        app:layout_constraintTop_toTopOf="@+id/tv_exercise_units_title" />
+
+    <TextView
+        android:id="@+id/tv_exercise_counts_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/activity_exercise_count"
+        app:layout_constraintStart_toStartOf="@+id/et_exercise_name"
+        app:layout_constraintTop_toBottomOf="@+id/et_exercise_units" />
+
+    <EditText
+        android:id="@+id/et_exercise_counts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:hint="@string/activity_exercise_count_hint"
+        android:importantForAutofill="no"
+        android:inputType="numberSigned"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_exercise_counts_title"
+        app:layout_constraintStart_toStartOf="@+id/et_exercise_units"
+        app:layout_constraintTop_toTopOf="@+id/tv_exercise_counts_title" />
+
+    <TextView
+        android:id="@+id/tv_exercise_available_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/activity_exercise_available"
+        app:layout_constraintStart_toStartOf="@+id/et_exercise_name"
+        app:layout_constraintTop_toBottomOf="@+id/et_exercise_name" />
+
+    <CheckBox
+        android:id="@+id/chb_exercise_available"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_exercise_available_title"
+        app:layout_constraintStart_toEndOf="@+id/tv_exercise_available_title"
+        app:layout_constraintTop_toTopOf="@+id/tv_exercise_available_title" />
+
+    <EditText
+        android:id="@+id/et_exercise_description"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="@string/activity_exercise_description_hint"
+        android:importantForAutofill="no"
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_exercise_description_title" />
+
+    <TextView
+        android:id="@+id/tv_exercise_description_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/activity_exercise_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_exercise_counts" />
+
+    <Button
+        android:id="@+id/btn_exercise_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/activity_exercise_save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btn_exercise_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="@string/activity_exercise_back"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="?attr/actionModeCloseDrawable" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:barrierDirection="left"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="61dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

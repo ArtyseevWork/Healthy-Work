@@ -16,4 +16,25 @@
     <string name="activity_main_schedules">Schedules</string>
     <string name="activity_main_exit_message">Press again to exit.</string>
     <!--end activity_main   -->
+
+    <!--start activity_exercise  -->
+    <string name="activity_exercise_title">Exercise:</string>
+    <string name="activity_exercise_units">Units:</string>
+    <string name="activity_exercise_units_hint">Units of the exercise</string>
+    <string name="activity_exercise_count">Counts:</string>
+    <string name="activity_exercise_count_hint">Counts of the exercise</string>
+    <string name="activity_exercise_name">Name of the exercise</string>
+    <string name="activity_exercise_save">Save</string>
+    <string name="activity_exercise_description">Description:</string>
+    <string name="activity_exercise_description_hint">Description of the exercise</string>
+    <string name="activity_exercise_available">Available:</string>
+    <string name="activity_exercise_new">New exercise</string>
+    <string name="activity_exercise_back">Go back</string>
+    <!--end activity_exercise   -->
+
+
+
+
+
+
 </resources>
