@@ -32,9 +32,11 @@
     <string name="activity_exercise_back">Go back</string>
     <!--end activity_exercise   -->
 
-
-
-
+    <!--start activity_exercises_menu  -->
+    <string name="activity_exercises_menu_title">Exercises:</string>
+    <string name="activity_exercises_menu_back">Go back</string>
+    <string name="activity_exercises_menu_add">New exercise</string>
+    <!--end activity_exercise   -->
 
 
 </resources>
