@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="5dp"
+    tools:context=".ScheduleActivity">
+
+
+    <ImageButton
+        android:id="@+id/btn_schedule_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="@string/activity_schedule_back"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="?attr/actionModeCloseDrawable" />
+
+    <TextView
+        android:id="@+id/tv_schedule_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/activity_schedule_title"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_schedule_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_schedule_back" />
+
+    <TextView
+        android:id="@+id/tv_schedule_available_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/activity_schedule_enable"
+        app:layout_constraintStart_toStartOf="@+id/btn_schedule_back"
+        app:layout_constraintTop_toBottomOf="@+id/btn_schedule_back" />
+
+    <TextView
+        android:id="@+id/tv_schedule_days_of_week"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/activity_schedule_days_of_week"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chb_schedule_available" />
+
+    <CheckBox
+        android:id="@+id/chb_schedule_sa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/chb_schedule_fr"
+        app:layout_constraintTop_toTopOf="@+id/chb_schedule_we" />
+
+    <CheckBox
+        android:id="@+id/chb_schedule_su"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/chb_schedule_mo"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/chb_schedule_we" />
+
+    <CheckBox
+        android:id="@+id/chb_schedule_mo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/chb_schedule_tu"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/chb_schedule_su"
+        app:layout_constraintTop_toTopOf="@+id/chb_schedule_we" />
+
+    <CheckBox
+        android:id="@+id/chb_schedule_th"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/chb_schedule_fr"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/chb_schedule_we"
+        app:layout_constraintTop_toTopOf="@+id/chb_schedule_we" />
+
+    <CheckBox
+        android:id="@+id/chb_schedule_tu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/chb_schedule_we"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/chb_schedule_mo"
+        app:layout_constraintTop_toTopOf="@+id/chb_schedule_we" />
+
+    <CheckBox
+        android:id="@+id/chb_schedule_fr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/chb_schedule_sa"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/chb_schedule_th"
+        app:layout_constraintTop_toTopOf="@+id/chb_schedule_we" />
+
+    <CheckBox
+        android:id="@+id/chb_schedule_available"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_schedule_available_title"
+        app:layout_constraintStart_toEndOf="@+id/tv_schedule_available_title"
+        app:layout_constraintTop_toTopOf="@+id/tv_schedule_available_title" />
+
+    <CheckBox
+        android:id="@+id/chb_schedule_we"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toStartOf="@+id/chb_schedule_th"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/chb_schedule_tu"
+        app:layout_constraintTop_toBottomOf="@+id/tv_schedule_days_of_week" />
+
+    <TextView
+        android:id="@+id/tv_schedule_su"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/activity_schedule_su"
+        app:layout_constraintEnd_toEndOf="@+id/chb_schedule_su"
+        app:layout_constraintStart_toStartOf="@+id/chb_schedule_su"
+        app:layout_constraintTop_toBottomOf="@+id/chb_schedule_su" />
+
+    <TextView
+        android:id="@+id/tv_schedule_mo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/activity_schedule_mo"
+        app:layout_constraintEnd_toEndOf="@+id/chb_schedule_mo"
+        app:layout_constraintStart_toStartOf="@+id/chb_schedule_mo"
+        app:layout_constraintTop_toBottomOf="@+id/chb_schedule_mo" />
+
+    <TextView
+        android:id="@+id/tv_schedule_tu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/activity_schedule_tu"
+        app:layout_constraintEnd_toEndOf="@+id/chb_schedule_tu"
+        app:layout_constraintStart_toStartOf="@+id/chb_schedule_tu"
+        app:layout_constraintTop_toBottomOf="@+id/chb_schedule_tu" />
+
+    <TextView
+        android:id="@+id/tv_schedule_we"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/activity_schedule_we"
+        app:layout_constraintEnd_toEndOf="@+id/chb_schedule_we"
+        app:layout_constraintStart_toStartOf="@+id/chb_schedule_we"
+        app:layout_constraintTop_toBottomOf="@+id/chb_schedule_we" />
+
+    <TextView
+        android:id="@+id/tv_schedule_th"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/activity_schedule_th"
+        app:layout_constraintEnd_toEndOf="@+id/chb_schedule_th"
+        app:layout_constraintStart_toStartOf="@+id/chb_schedule_th"
+        app:layout_constraintTop_toBottomOf="@+id/chb_schedule_th" />
+
+    <TextView
+        android:id="@+id/tv_schedule_fr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/activity_schedule_fr"
+        app:layout_constraintEnd_toEndOf="@+id/chb_schedule_fr"
+        app:layout_constraintStart_toStartOf="@+id/chb_schedule_fr"
+        app:layout_constraintTop_toBottomOf="@+id/chb_schedule_fr" />
+
+    <TextView
+        android:id="@+id/tv_schedule_sa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/activity_schedule_sa"
+        app:layout_constraintEnd_toEndOf="@+id/chb_schedule_sa"
+        app:layout_constraintStart_toStartOf="@+id/chb_schedule_sa"
+        app:layout_constraintTop_toBottomOf="@+id/chb_schedule_sa" />
+
+    <TextView
+        android:id="@+id/tv_schedule_start_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/activity_schedule_start_day"
+        app:layout_constraintStart_toStartOf="@+id/btn_schedule_back"
+        app:layout_constraintTop_toBottomOf="@+id/tv_schedule_su" />
+
+    <TextView
+        android:id="@+id/tv_schedule_end_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/activity_schedule_end_day"
+        app:layout_constraintStart_toStartOf="@+id/btn_schedule_back"
+        app:layout_constraintTop_toBottomOf="@+id/et_schedule_start_day" />
+
+    <TextView
+        android:id="@+id/tv_schedule_recess_enable_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/activity_schedule_recess"
+        app:layout_constraintStart_toStartOf="@+id/btn_schedule_back"
+        app:layout_constraintTop_toBottomOf="@+id/et_schedule_end_day" />
+
+    <TextView
+        android:id="@+id/tv_schedule_start_recess_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/activity_schedule_start_recess"
+        app:layout_constraintStart_toStartOf="@+id/btn_schedule_back"
+        app:layout_constraintTop_toBottomOf="@+id/chb_schedule_recess_enable" />
+
+    <TextView
+        android:id="@+id/tv_schedule_end_recess_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/activity_schedule_end_recess"
+        app:layout_constraintStart_toStartOf="@+id/btn_schedule_back"
+        app:layout_constraintTop_toBottomOf="@+id/et_schedule_start_recess" />
+
+    <EditText
+        android:id="@+id/et_schedule_start_day"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="time"
+        android:importantForAutofill="no"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_schedule_start_title"
+        app:layout_constraintStart_toStartOf="@+id/tv_schedule_days_of_week"
+        app:layout_constraintTop_toTopOf="@+id/tv_schedule_start_title" />
+
+    <EditText
+        android:id="@+id/et_schedule_end_day"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="time"
+        android:importantForAutofill="no"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_schedule_end_title"
+        app:layout_constraintStart_toStartOf="@+id/tv_schedule_days_of_week"
+        app:layout_constraintTop_toTopOf="@+id/tv_schedule_end_title" />
+
+    <EditText
+        android:id="@+id/et_schedule_start_recess"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:importantForAutofill="no"
+        android:inputType="time"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_schedule_start_recess_title"
+        app:layout_constraintStart_toStartOf="@+id/tv_schedule_days_of_week"
+        app:layout_constraintTop_toTopOf="@+id/tv_schedule_start_recess_title" />
+
+    <EditText
+        android:id="@+id/et_schedule_end_recess"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="time"
+        android:importantForAutofill="no"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_schedule_end_recess_title"
+        app:layout_constraintStart_toStartOf="@+id/tv_schedule_days_of_week"
+        app:layout_constraintTop_toTopOf="@+id/tv_schedule_end_recess_title" />
+
+    <CheckBox
+        android:id="@+id/chb_schedule_recess_enable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_schedule_recess_enable_title"
+        app:layout_constraintStart_toStartOf="@+id/tv_schedule_days_of_week"
+        app:layout_constraintTop_toTopOf="@+id/tv_schedule_recess_enable_title" />
+
+    <Button
+        android:id="@+id/btn_schedule_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:text="@string/activity_schedule_save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

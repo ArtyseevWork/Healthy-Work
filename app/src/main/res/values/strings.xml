@@ -25,7 +25,7 @@
     <string name="activity_exercise_count_hint">Counts of the exercise</string>
     <string name="activity_exercise_name">Name of the exercise</string>
     <string name="activity_exercise_save">Save</string>
-    <string name="activity_exercise_description">Description:</string>
+    <string name="activity_exercise_description">Description</string>
     <string name="activity_exercise_description_hint">Description of the exercise</string>
     <string name="activity_exercise_available">Available:</string>
     <string name="activity_exercise_new">New exercise</string>
@@ -39,14 +39,37 @@
     <!--end activity_exercise   -->
 
     <!--start activity_preferences  -->
-    <string name="activity_preferences_title">Preferences:</string>
+    <string name="activity_preferences_title">Preferences</string>
     <string name="activity_preferences_back">Go back</string>
     <string name="activity_preferences_period">Period, mm:</string>
-    <string name="activity_preferences_countdown_start">Countdown start:</string>
+    <string name="activity_preferences_countdown_start">Countdown start</string>
     <string name="activity_preferences_save">Save</string>
     <string name="activity_preferences_hour">60</string>
     <string name="activity_preferences_half_hour">30</string>
     <!--end activity_preferences   -->
+
+    <!--start activity_schedule  -->
+    <string name="activity_schedule_title">Schedule</string>
+    <string name="activity_schedule_back">Go back</string>
+    <string name="activity_schedule_switch">Enable Graph</string>
+    <string name="activity_schedule_enable">Enable schedule</string>
+    <string name="activity_schedule_days_of_week">Days of week</string>
+    <string name="activity_schedule_on">ON</string>
+    <string name="activity_schedule_off">OFF</string>
+    <string name="activity_schedule_su">Su</string>
+    <string name="activity_schedule_mo">Mo</string>
+    <string name="activity_schedule_tu">Tu</string>
+    <string name="activity_schedule_we">We</string>
+    <string name="activity_schedule_th">Th</string>
+    <string name="activity_schedule_fr">Fr</string>
+    <string name="activity_schedule_sa">Sa</string>
+    <string name="activity_schedule_start_day">The beginning time</string>
+    <string name="activity_schedule_end_day">The end time</string>
+    <string name="activity_schedule_recess">Enable recess</string>
+    <string name="activity_schedule_start_recess">Start of the recess</string>
+    <string name="activity_schedule_end_recess">End of the recess</string>
+    <string name="activity_schedule_save">Save</string>
+    <!--end activity_schedule   -->
 
 
 </resources>
