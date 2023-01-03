@@ -38,5 +38,15 @@
     <string name="activity_exercises_menu_add">New exercise</string>
     <!--end activity_exercise   -->
 
+    <!--start activity_preferences  -->
+    <string name="activity_preferences_title">Preferences:</string>
+    <string name="activity_preferences_back">Go back</string>
+    <string name="activity_preferences_period">Period, mm:</string>
+    <string name="activity_preferences_countdown_start">Countdown start:</string>
+    <string name="activity_preferences_save">Save</string>
+    <string name="activity_preferences_hour">60</string>
+    <string name="activity_preferences_half_hour">30</string>
+    <!--end activity_preferences   -->
+
 
 </resources>

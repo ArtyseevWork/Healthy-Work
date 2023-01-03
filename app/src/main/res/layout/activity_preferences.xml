@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PreferencesActivity">
+
+    <TextView
+        android:id="@+id/tv_preferences_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/activity_preferences_title"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_preferences_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_preferences_back" />
+
+    <TextView
+        android:id="@+id/tv_preferences_period_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/activity_preferences_period"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/btn_preferences_back"
+        app:layout_constraintTop_toBottomOf="@+id/btn_preferences_back" />
+
+    <TextView
+        android:id="@+id/tv_preferences_countdown_start_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/activity_preferences_countdown_start"
+        app:layout_constraintStart_toStartOf="@+id/btn_preferences_back"
+        app:layout_constraintTop_toBottomOf="@+id/sw_preferences_period" />
+
+    <Button
+        android:id="@+id/btn_preferences_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/activity_preferences_save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btn_preferences_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="@string/activity_exercise_back"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="?attr/actionModeCloseDrawable" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/sw_preferences_period"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+       app:showText="true"
+        android:textOff="@string/activity_preferences_half_hour"
+        android:textOn="@string/activity_preferences_hour"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_preferences_period_title"
+        app:layout_constraintStart_toStartOf="@+id/tv_preferences_title"
+        app:layout_constraintTop_toTopOf="@+id/tv_preferences_period_title"
+
+        android:layout_alignParentTop="true"
+        android:checked="false"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp"
+        android:textColor="#ffffff"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/et_preferences_countdown_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/activity_preferences_countdown_start"
+        android:inputType="time"
+        android:minHeight="48dp"
+        android:importantForAutofill="no"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_preferences_countdown_start_title"
+        app:layout_constraintStart_toStartOf="@+id/tv_preferences_title"
+        app:layout_constraintTop_toTopOf="@+id/tv_preferences_countdown_start_title" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
