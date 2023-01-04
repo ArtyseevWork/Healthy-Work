@@ -25,12 +25,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        binding = null;
-    }
-
     public void init(){
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -39,6 +33,13 @@ public class MainActivity extends AppCompatActivity {
         binding.btnMainExercises.setOnClickListener(btnExercisesListener);
         binding.btnMainSchedule.setOnClickListener(btnScheduleListener);
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        binding = null;
+    }
+
 
     public void updateUi(){
 
@@ -58,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     };
 
     View.OnClickListener btnExercisesListener = v -> {
-        Intent intent = new Intent(getApplicationContext(), ExerciseActivity.class);
+        Intent intent = new Intent(getApplicationContext(), ExercisesMenuActivity.class);
         startActivity(intent);
     };
 
