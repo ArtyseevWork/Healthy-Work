@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.mordansoft.healthywork.databinding.ActivityMainBinding;
@@ -20,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         init();
+        updateUi();
+
     }
 
     @Override
@@ -31,8 +34,40 @@ public class MainActivity extends AppCompatActivity {
     public void init(){
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        binding.btnMainStart.setOnClickListener(btnMainStartListener);
+        binding.btnMainProperties.setOnClickListener(btnSettingsListener);
+        binding.btnMainExercises.setOnClickListener(btnExercisesListener);
+        binding.btnMainSchedule.setOnClickListener(btnScheduleListener);
     }
+
+    public void updateUi(){
+
+        //binding.mainCounter.setText(String.valueOf(Exercise.getCntExercise(this)));
+    }
+
+    /********** Listeners **********/
+
+    View.OnClickListener btnMainStartListener = v -> {
+        Toast.makeText(getApplicationContext(), "someText",Toast.LENGTH_LONG).show();
+        updateUi();
+    };
+
+    View.OnClickListener btnSettingsListener = v -> {
+        Intent intent = new Intent(getApplicationContext(), PreferencesActivity.class);
+        startActivity(intent);
+    };
+
+    View.OnClickListener btnExercisesListener = v -> {
+        Intent intent = new Intent(getApplicationContext(), ExerciseActivity.class);
+        startActivity(intent);
+    };
+
+    View.OnClickListener btnScheduleListener = v -> {
+        Intent intent = new Intent(getApplicationContext(), ScheduleActivity.class);
+        startActivity(intent);
+    };
+
+    /* ****** ! Listeners **********/
 
     @Override
     public void onBackPressed() {   //exit from the app
