@@ -54,7 +54,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static void createAllTables(SQLiteDatabase db){
 
         db.execSQL("CREATE TABLE EXERCISE ("
-                + "_id TEXT PRIMARY KEY, "
+                + "_id TEXT PRIMARY KEY AUTOINCREMENT, "
                 + "name TEXT,"
                 + "description TEXT,"
                 + "unit TEXT,"
