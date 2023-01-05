@@ -1,6 +1,7 @@
 package com.mordansoft.healthywork;
 
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -36,6 +37,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             try {
                 deleteAllTables(db);
                 createAllTables(db);
+                insertTestData(db);
             } catch (Exception e) {
                 MordanSoftLogger.addLog("updateMyDatabase deleteAllTables or createAllTables(db) error");
             }
@@ -62,8 +64,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + "enable integer);");
     }
 
-    public static void insertTestData(Context context) {
+    public static void insertTestData(SQLiteDatabase db) {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("name","testExercise");
+        contentValues.put("description","testExerciseDescription");
+        contentValues.put("unit","test units");
+        contentValues.put("count",5);
+        contentValues.put("enable",1);
+        db.insert("EXERCISE",null,contentValues);
+        contentValues.clear();
+        contentValues.put("name","testExercise2");
+        contentValues.put("description","testExerciseDescription2");
+        contentValues.put("unit","test units2");
+        contentValues.put("count",10);
+        contentValues.put("enable",0);
+        db.insert("EXERCISE",null,contentValues);
 
+        db.close();
     }
 
     public static SQLiteDatabase getDatabase(Context context){
