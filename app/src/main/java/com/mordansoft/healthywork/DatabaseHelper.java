@@ -66,6 +66,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    public static SQLiteDatabase getDatabase(Context context){
+
+        SQLiteOpenHelper databaseHelper = new DatabaseHelper(context);
+        return databaseHelper.getWritableDatabase();
+    }
+
 }
 
 

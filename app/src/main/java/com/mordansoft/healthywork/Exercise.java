@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 
 public class Exercise {
 
@@ -25,7 +24,7 @@ public class Exercise {
     }
 
     public static long insertExercise(Context context, Exercise exercise){
-        SQLiteDatabase db = getDatabase(context);
+        SQLiteDatabase db =  DatabaseHelper.getDatabase(context);
 
         ContentValues contentValues = new ContentValues();
         contentValues.put("name",exercise.name);
@@ -39,7 +38,7 @@ public class Exercise {
     }
 
     public static void updateExercise(Context context, Exercise exercise){
-        SQLiteDatabase db = getDatabase(context);
+        SQLiteDatabase db =  DatabaseHelper.getDatabase(context);
 
         ContentValues contentValues = new ContentValues();
         contentValues.put("name",exercise.name);
@@ -52,7 +51,7 @@ public class Exercise {
     }
 
     public static void deleteExercise(Context context, Exercise exercise){
-        SQLiteDatabase db = getDatabase(context);
+        SQLiteDatabase db = DatabaseHelper.getDatabase(context);
         db.delete("EXERCISE",
                 "_id = ?",
                 new String[] {String.valueOf(exercise.id)});
@@ -62,14 +61,14 @@ public class Exercise {
     public static Exercise getExerciseById(Context context, String id){
         Exercise exercise = null;
         try {
-            SQLiteDatabase db = getDatabase(context);
+            SQLiteDatabase db =  DatabaseHelper.getDatabase(context);
             Cursor cursor = db.query("EXERCISE", new String[]{"name",
                             "description",
                             "unit",
                             "count",
                             "enable"},
                     "_id = ?", new String[]{id},null,null,null);
-
+            db.close();
             if (cursor.moveToFirst()){
                 exercise = new Exercise(
                         id,
@@ -86,11 +85,7 @@ public class Exercise {
         return exercise;
     }
 
-    private static SQLiteDatabase getDatabase(Context context){
 
-        SQLiteOpenHelper databaseHelper = new DatabaseHelper(context);
-        return databaseHelper.getWritableDatabase();
-    }
 
 
 }
