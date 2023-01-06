@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         init();
         updateUi();
+        MordanSoftLogger.addLog("Start MainActivity");
 
     }
 

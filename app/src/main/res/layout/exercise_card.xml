@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    app:cardBackgroundColor="@android:color/transparent"
+    android:textAlignment="center"
+    app:cardElevation="0dp">
+
+    <LinearLayout
+        android:id="@+id/exercise_card_border"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/exercise_card_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical|end"
+                android:layout_margin="5dp"
+                android:text="TextView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/exercise_card_enable"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="1dp"
+            android:layout_weight="1"
+            android:gravity="start|center_horizontal|center_vertical"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="@+id/profit_card_date"
+            app:layout_constraintStart_toEndOf="@+id/profit_card_name"
+            app:layout_constraintTop_toTopOf="@+id/profit_card_name" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

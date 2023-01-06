@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     // Context context;
-    public static final String dbName = "db_bank";
+    public static final String dbName = "db_health_work";
     public static final int ver = 1;
 
     public DatabaseHelper(Context context) {
@@ -33,22 +33,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     private void updateMyDatabase(SQLiteDatabase db, int oldVer){
+        MordanSoftLogger.addLog("updateMyDatabase START oldVer = " + oldVer);
         if (oldVer < 1) { // first run on this devise
             try {
                 deleteAllTables(db);
                 createAllTables(db);
                 insertTestData(db);
             } catch (Exception e) {
-                MordanSoftLogger.addLog("updateMyDatabase deleteAllTables or createAllTables(db) error");
+                MordanSoftLogger.addLog("updateMyDatabase deleteAllTables or createAllTables(db) error", 'e');
             }
         }
+        MordanSoftLogger.addLog("updateMyDatabase END");
     }
 
     public static void deleteAllTables(SQLiteDatabase db){
         try {
                 db.execSQL("DROP TABLE IF EXISTS '" + "EXERCISE" + "'");
         } catch (Exception e) {
-            MordanSoftLogger.addLog("No tables was found");
+            MordanSoftLogger.addLog("deleteAllTables: " + e, 'e');
         }
     }
 
@@ -56,7 +58,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static void createAllTables(SQLiteDatabase db){
 
         db.execSQL("CREATE TABLE EXERCISE ("
-                + "_id TEXT PRIMARY KEY AUTOINCREMENT, "
+                + "_id INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + "name TEXT,"
                 + "description TEXT,"
                 + "unit TEXT,"
@@ -70,7 +72,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put("description","testExerciseDescription");
         contentValues.put("unit","test units");
         contentValues.put("count",5);
-        contentValues.put("enable",1);
+        contentValues.put("enable ",1);
         db.insert("EXERCISE",null,contentValues);
         contentValues.clear();
         contentValues.put("name","testExercise2");
@@ -79,8 +81,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put("count",10);
         contentValues.put("enable",0);
         db.insert("EXERCISE",null,contentValues);
-
-        db.close();
     }
 
     public static SQLiteDatabase getDatabase(Context context){

@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
+
 public class Exercise {
 
     private String  id;
@@ -21,6 +23,30 @@ public class Exercise {
         this.unit = unit;
         this.count = count;
         this.enable = enable;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public boolean isEnable() {
+        return enable;
     }
 
     public static long insertExercise(Context context, Exercise exercise){
@@ -58,7 +84,40 @@ public class Exercise {
         db.close();
     }
 
+    public static ArrayList<Exercise> getExercisesByQuery(Context context, String filterQuery){
+        MordanSoftLogger.addLog("getExercisesByQuery Start query = " + filterQuery);
+        ArrayList<Exercise> listExercises= new ArrayList<>();
+        try {
+            SQLiteDatabase db =  DatabaseHelper.getDatabase(context);
+            Cursor cursor = db.query("EXERCISE", new String[]{
+                            "_id",
+                            "name",
+                            "description",
+                            "unit",
+                            "count",
+                            "enable"},
+                    filterQuery, null,null,null,null);
+            while (cursor.moveToNext()){
+                Exercise exercise = new Exercise(
+                        cursor.getString(0),
+                        cursor.getString(1),
+                        cursor.getString(2),
+                        cursor.getString(3),
+                        cursor.getInt(4),
+                        cursor.getInt(5) == 1);
+                listExercises.add(exercise);
+            }
+            cursor.close();
+            db.close();
+        } catch(Exception e) {
+            MordanSoftLogger.addLog("getExercisesByQuery - " + e, 'e');
+        }
+        MordanSoftLogger.addLog("getExercisesByQuery END");
+        return listExercises;
+    }
+
     public static Exercise getExerciseById(Context context, String id){
+        MordanSoftLogger.addLog("getExerciseById Start");
         Exercise exercise = null;
         try {
             SQLiteDatabase db =  DatabaseHelper.getDatabase(context);
@@ -79,9 +138,11 @@ public class Exercise {
                         cursor.getInt(4) == 1);
             }
             cursor.close();
+
         } catch(Exception e) {
             MordanSoftLogger.addLog("getExerciseById - " + e, 'e');
         }
+        MordanSoftLogger.addLog("getExerciseById End");
         return exercise;
     }
 
