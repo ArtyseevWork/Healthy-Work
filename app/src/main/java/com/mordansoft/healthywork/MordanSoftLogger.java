@@ -2,6 +2,7 @@ package com.mordansoft.healthywork;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 /*
 Log.e() - ошибки (error)
 Log.w() - предупреждения (warning)
@@ -54,6 +55,7 @@ public class MordanSoftLogger {
             }
             switch (msgType){
                 case 'e': Log.e(myTag, bodyText);
+                          Toast.makeText(context, "bodyText", Toast.LENGTH_SHORT).show();
                           break;
                 case 'w': Log.w(myTag, bodyText);
                           break;

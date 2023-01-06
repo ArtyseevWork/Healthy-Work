@@ -47,6 +47,7 @@
     <string name="activity_preferences_hour">60</string>
     <string name="activity_preferences_half_hour">30</string>
     <string name="activity_preferences_title">Preferences</string>
+    <string name="activity_preferences_save_message">Settings was saved</string>
     <!--end activity_preferences   -->
 
     <!--start activity_schedule  -->

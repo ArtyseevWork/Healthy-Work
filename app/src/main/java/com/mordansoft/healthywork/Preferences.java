@@ -49,8 +49,6 @@ public class Preferences {
        int period;
        int countdown;
 
-       initPreferences(context);
-
        String filename = context.getString(R.string.activity_preferences_filename);
        SharedPreferences sharedPref = context.getSharedPreferences(filename, Context.MODE_PRIVATE);
 
