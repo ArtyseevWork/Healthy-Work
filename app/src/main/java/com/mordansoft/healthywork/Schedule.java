@@ -287,32 +287,32 @@ public class Schedule {
                             sa);
     }
 
-    public static void saveScheduleToFile(Context context, Schedule schedule){
+    public void saveScheduleToFile(Context context){
         String filename = context.getString(R.string.activity_schedule_filename);
         SharedPreferences scheduleFile = context.getSharedPreferences(filename, Context.MODE_PRIVATE);
 
         SharedPreferences.Editor editor = scheduleFile.edit();
-        editor.putBoolean(scheduleEnableKey, schedule.scheduleEnable);
-        editor.putInt(startDayHoursKey, schedule.startDayHours);
-        editor.putInt(startDayMinutesKey, schedule.startDayMinutes);
-        editor.putInt(endDayHoursKey, schedule.endDayHours);
-        editor.putInt(endDayMinutesKey, schedule.endDayMinutes);
-        editor.putBoolean(recessEnableKey, schedule.recessEnable);
-        editor.putInt(startRecessHoursKey, schedule.startRecessHours);
-        editor.putInt(startRecessMinutesKey, schedule.startRecessMinutes);
-        editor.putInt(endRecessHoursKey, schedule.endRecessHours);
-        editor.putInt(endRecessMinutesKey, schedule.endRecessMinutes);
-        editor.putBoolean(suKey, schedule.su);
-        editor.putBoolean(moKey, schedule.mo);
-        editor.putBoolean(tuKey, schedule.tu);
-        editor.putBoolean(weKey, schedule.we);
-        editor.putBoolean(thKey, schedule.th);
-        editor.putBoolean(frKey, schedule.fr);
-        editor.putBoolean(saKey, schedule.sa);
+        editor.putBoolean(scheduleEnableKey, this.scheduleEnable);
+        editor.putInt(startDayHoursKey, this.startDayHours);
+        editor.putInt(startDayMinutesKey, this.startDayMinutes);
+        editor.putInt(endDayHoursKey, this.endDayHours);
+        editor.putInt(endDayMinutesKey, this.endDayMinutes);
+        editor.putBoolean(recessEnableKey, this.recessEnable);
+        editor.putInt(startRecessHoursKey, this.startRecessHours);
+        editor.putInt(startRecessMinutesKey, this.startRecessMinutes);
+        editor.putInt(endRecessHoursKey, this.endRecessHours);
+        editor.putInt(endRecessMinutesKey, this.endRecessMinutes);
+        editor.putBoolean(suKey, this.su);
+        editor.putBoolean(moKey, this.mo);
+        editor.putBoolean(tuKey, this.tu);
+        editor.putBoolean(weKey, this.we);
+        editor.putBoolean(thKey, this.th);
+        editor.putBoolean(frKey, this.fr);
+        editor.putBoolean(saKey, this.sa);
         editor.apply();
     }
 
     public static String getStringTime(int hours, int minutes){
-        return (String.valueOf(hours)+ ":" +String.valueOf(minutes));
+        return (hours + ":" + minutes);
     }
 }

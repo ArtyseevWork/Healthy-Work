@@ -11,7 +11,7 @@ import com.mordansoft.healthywork.databinding.ActivityScheduleBinding;
 public class ScheduleActivity extends AppCompatActivity implements SetTime {
 
     private ActivityScheduleBinding binding;
-    Schedule schedule;
+    private Schedule schedule;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -138,7 +138,7 @@ public class ScheduleActivity extends AppCompatActivity implements SetTime {
             this.schedule.setSa(binding.chbScheduleSa.isChecked());
             this.schedule.setRecessEnable(binding.chbScheduleRecessEnable.isChecked());
 
-            Schedule.saveScheduleToFile(this, this.schedule);
+            schedule.saveScheduleToFile(this);
             Toast.makeText(this, getString(R.string.activity_preferences_save_message), Toast.LENGTH_LONG).show();
         } catch(Exception e) {
             MordanSoftLogger.addLog("Schedule Activity saveState - " + e, 'e');
