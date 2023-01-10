@@ -72,6 +72,7 @@
     <string name="activity_schedule_start_recess">Start of the recess</string>
     <string name="activity_schedule_end_recess">End of the recess</string>
     <string name="activity_schedule_save">Save</string>
+    <string name="activity_schedule_save_message">Schedule was saved</string>
     <!--end activity_schedule   -->
 
     <!--start activity_preferences  -->
