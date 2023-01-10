@@ -26,7 +26,7 @@ public class ExerciseAdapter  extends RecyclerView.Adapter<ExerciseAdapter.ViewH
     }
 
     interface Listener {
-        void onClick(String position);
+        void onClick(int position);
     }
 
     public void setListener(ExerciseAdapter.Listener listener){

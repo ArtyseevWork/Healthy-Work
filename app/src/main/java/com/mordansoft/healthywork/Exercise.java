@@ -9,14 +9,14 @@ import java.util.ArrayList;
 
 public class Exercise {
 
-    private String  id;
+    private int  id;
     private String  name;
     private String  description;
     private String  unit;
     private int     count;
     private boolean enable;
 
-    public Exercise(String id, String name, String description, String unit, int count, boolean enable) {
+    public Exercise(int id, String name, String description, String unit, int count, boolean enable) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -25,7 +25,7 @@ public class Exercise {
         this.enable = enable;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
@@ -49,9 +49,29 @@ public class Exercise {
         return enable;
     }
 
-    public static long insertExercise(Context context, Exercise exercise){
-        SQLiteDatabase db =  DatabaseHelper.getDatabase(context);
+    public void setName(String name) {
+        this.name = name;
+    }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public void setEnable(boolean enable) {
+        this.enable = enable;
+    }
+
+    public static long insertExercise(Context context, Exercise exercise){
+        MordanSoftLogger.addLog("insertExercise START");
+        SQLiteDatabase db =  DatabaseHelper.getDatabase(context);
         ContentValues contentValues = new ContentValues();
         contentValues.put("name",exercise.name);
         contentValues.put("description",exercise.description);
@@ -60,20 +80,29 @@ public class Exercise {
         contentValues.put("enable",exercise.enable);
         long result = db.insert("EXERCISE",null, contentValues);
         db.close();
+        MordanSoftLogger.addLog("insertExercise END");
         return (result);
     }
 
-    public static void updateExercise(Context context, Exercise exercise){
-        SQLiteDatabase db =  DatabaseHelper.getDatabase(context);
-
+    public long saveExercise(Context context){
+        long id = this.id;
+        MordanSoftLogger.addLog("updateExercise START id = " + id);
+        SQLiteDatabase db = DatabaseHelper.getDatabase(context);
         ContentValues contentValues = new ContentValues();
-        contentValues.put("name",exercise.name);
-        contentValues.put("description",exercise.description);
-        contentValues.put("unit",exercise.unit);
-        contentValues.put("count",exercise.count);
-        contentValues.put("enable",exercise.enable);
-        db.update("EXERCISE",contentValues, "_id = ?",new String[] {String.valueOf(exercise.id)});
+        contentValues.put("name", this.name);
+        contentValues.put("description", this.description);
+        contentValues.put("unit", this.unit);
+        contentValues.put("count", this.count);
+        contentValues.put("enable", this.enable);
+        if (id == 0 ){
+            id = db.insert("EXERCISE",null, contentValues);
+        } else {
+            db.update("EXERCISE", contentValues, "_id = ?", new String[]{String.valueOf(id)});
+        }
         db.close();
+        MordanSoftLogger.addLog("UpdateExercise END");
+        return  id;
+        
     }
 
     public static void deleteExercise(Context context, Exercise exercise){
@@ -85,7 +114,7 @@ public class Exercise {
     }
 
     public static ArrayList<Exercise> getExercisesByQuery(Context context, String filterQuery){
-        MordanSoftLogger.addLog("getExercisesByQuery Start query = " + filterQuery);
+        MordanSoftLogger.addLog("getExercisesByQuery START query = " + filterQuery);
         ArrayList<Exercise> listExercises= new ArrayList<>();
         try {
             SQLiteDatabase db =  DatabaseHelper.getDatabase(context);
@@ -99,7 +128,7 @@ public class Exercise {
                     filterQuery, null,null,null,null);
             while (cursor.moveToNext()){
                 Exercise exercise = new Exercise(
-                        cursor.getString(0),
+                        cursor.getInt(0),
                         cursor.getString(1),
                         cursor.getString(2),
                         cursor.getString(3),
@@ -116,8 +145,8 @@ public class Exercise {
         return listExercises;
     }
 
-    public static Exercise getExerciseById(Context context, String id){
-        MordanSoftLogger.addLog("getExerciseById Start");
+    public static Exercise getExerciseById(Context context, int id){
+        MordanSoftLogger.addLog("getExerciseById START id = " + id);
         Exercise exercise = null;
         try {
             SQLiteDatabase db =  DatabaseHelper.getDatabase(context);
@@ -126,8 +155,7 @@ public class Exercise {
                             "unit",
                             "count",
                             "enable"},
-                    "_id = ?", new String[]{id},null,null,null);
-            db.close();
+                    "_id = ?", new String[]{String.valueOf(id)},null,null,null);
             if (cursor.moveToFirst()){
                 exercise = new Exercise(
                         id,
@@ -138,11 +166,12 @@ public class Exercise {
                         cursor.getInt(4) == 1);
             }
             cursor.close();
+            db.close();
 
         } catch(Exception e) {
             MordanSoftLogger.addLog("getExerciseById - " + e, 'e');
         }
-        MordanSoftLogger.addLog("getExerciseById End");
+        MordanSoftLogger.addLog("getExerciseById END");
         return exercise;
     }
 

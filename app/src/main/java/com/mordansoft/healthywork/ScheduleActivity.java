@@ -26,6 +26,18 @@ public class ScheduleActivity extends AppCompatActivity implements SetTime {
         super.onDestroy();
         binding = null;
     }
+
+    public void init(){
+        binding = ActivityScheduleBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        binding.btnScheduleSave.setOnClickListener(btnSaveListener);
+        schedule = Schedule.getScheduleFromFile(this);
+        binding.etScheduleStartDay.setOnClickListener(setTimeListener);
+        binding.etScheduleEndDay.setOnClickListener(setTimeListener);
+        binding.etScheduleStartRecess.setOnClickListener(setTimeListener);
+        binding.etScheduleEndRecess.setOnClickListener(setTimeListener);
+    }
+
     private void updateUi() {
         MordanSoftLogger.addLog("ScheduleActivity.updateUi START");
         binding.chbScheduleAvailable.setChecked(schedule.isScheduleEnable());
@@ -38,25 +50,14 @@ public class ScheduleActivity extends AppCompatActivity implements SetTime {
         binding.chbScheduleSa.setChecked(schedule.isSa());
         binding.chbScheduleRecessEnable.setChecked(schedule.isRecessEnable());
         binding.etScheduleStartDay.setText(Schedule.getStringTime(schedule.getStartDayHours(),
-                                                                  schedule.getStartDayMinutes()));
+                schedule.getStartDayMinutes()));
         binding.etScheduleEndDay.setText(Schedule.getStringTime(schedule.getEndDayHours(),
-                                                                  schedule.getEndDayMinutes()));
+                schedule.getEndDayMinutes()));
         binding.etScheduleStartRecess.setText(Schedule.getStringTime(schedule.getStartRecessHours(),
-                                                                  schedule.getStartRecessMinutes()));
+                schedule.getStartRecessMinutes()));
         binding.etScheduleEndRecess.setText(Schedule.getStringTime(schedule.getEndRecessHours(),
-                                                                  schedule.getEndRecessMinutes()));
+                schedule.getEndRecessMinutes()));
         MordanSoftLogger.addLog("ScheduleActivity.updateUi END");
-    }
-
-    public void init(){
-        binding = ActivityScheduleBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-        binding.btnScheduleSave.setOnClickListener(btnSaveListener);
-        schedule = Schedule.getScheduleFromFile(this);
-        binding.etScheduleStartDay.setOnClickListener(setTimeListener);
-        binding.etScheduleEndDay.setOnClickListener(setTimeListener);
-        binding.etScheduleStartRecess.setOnClickListener(setTimeListener);
-        binding.etScheduleEndRecess.setOnClickListener(setTimeListener);
     }
 
     View.OnClickListener btnSaveListener = this::saveState;
