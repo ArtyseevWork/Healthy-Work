@@ -2,6 +2,8 @@ package com.mordansoft.healthywork;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,10 +11,13 @@ import android.widget.Toast;
 
 import com.mordansoft.healthywork.databinding.ActivityMainBinding;
 
+import java.util.Calendar;
+
 public class MainActivity extends AppCompatActivity {
 
     private static long back_pressed;
     private ActivityMainBinding binding;
+    private static MainActivity instanse;
 
 
 
@@ -27,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void init(){
+        instanse = this;
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         binding.btnMainStart.setOnClickListener(btnMainStartListener);
@@ -39,6 +45,11 @@ public class MainActivity extends AppCompatActivity {
     public void onDestroy() {
         super.onDestroy();
         binding = null;
+        MordanSoftLogger.addLog("Destroy MainActivity");
+    }
+
+    public static MainActivity  getInstace(){
+        return instanse;
     }
 
 
@@ -50,7 +61,21 @@ public class MainActivity extends AppCompatActivity {
     /********** Listeners **********/
 
     View.OnClickListener btnMainStartListener = v -> {
+
+        Calendar nextAlarmTime = Alarm.getNextAlarmTime(this);
+        MordanSoftLogger.addLog("Alarm.getNextAlarmTime = " + nextAlarmTime.getTime());
+        MordanSoftLogger.addLog("Alarm.getNextAlarmTime Millis = " + nextAlarmTime.getTimeInMillis());
+        long intervalMs = (long) Preferences.getPreferencesFromFile(this).getPeriod()*60*1000;
+        intervalMs = 60*1000;
+        Intent intent = new Intent(this, AlarmReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, nextAlarmTime.getTimeInMillis(), intervalMs, pendingIntent);
+
+        AlarmManager.AlarmClockInfo x = alarmManager.getNextAlarmClock();
+
         Toast.makeText(getApplicationContext(), "someText",Toast.LENGTH_LONG).show();
+
         updateUi();
     };
 
