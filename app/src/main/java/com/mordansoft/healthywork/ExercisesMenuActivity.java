@@ -31,4 +31,14 @@ public class ExercisesMenuActivity extends AppCompatActivity {
             startActivity(intent);
         });
     }
+
+    public void goBack() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        goBack();
+    }
 }

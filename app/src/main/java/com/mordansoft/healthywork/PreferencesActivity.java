@@ -2,6 +2,7 @@ package com.mordansoft.healthywork;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -71,6 +72,16 @@ public class PreferencesActivity extends AppCompatActivity {
         } catch(Exception e) {
             MordanSoftLogger.addLog("btnSaveListener - " + e, 'e');
         }
+    }
+
+    public void goBack() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        goBack();
     }
 
 

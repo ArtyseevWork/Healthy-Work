@@ -2,6 +2,7 @@ package com.mordansoft.healthywork;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import com.mordansoft.healthywork.databinding.ActivityExerciseBinding;
@@ -59,6 +60,16 @@ public class ExerciseActivity extends AppCompatActivity {
         exercise.setEnable(binding.chbExerciseAvailable.isChecked());
         exercise.setDescription(String.valueOf(binding.etExerciseDescription.getText()));
         exercise.saveExercise(this);
+    }
+
+    public void goBack() {
+        Intent intent = new Intent(this, ExercisesMenuActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        goBack();
     }
 
 

@@ -3,6 +3,7 @@ package com.mordansoft.healthywork;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -144,5 +145,15 @@ public class ScheduleActivity extends AppCompatActivity implements SetTime {
         } catch(Exception e) {
             MordanSoftLogger.addLog("Schedule Activity saveState - " + e, 'e');
         }
+    }
+
+    public void goBack() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        goBack();
     }
 }
