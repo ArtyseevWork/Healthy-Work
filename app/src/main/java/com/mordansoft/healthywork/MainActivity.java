@@ -2,39 +2,36 @@ package com.mordansoft.healthywork;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
-
 import com.mordansoft.healthywork.databinding.ActivityMainBinding;
 
-import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
     private static long back_pressed;
     private ActivityMainBinding binding;
-    private static MainActivity instanse;
+    private static MainActivity instance;
+    CurrentStatus currentStatus;
+    Exercise exercise;
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        MordanSoftLogger.addLog("Start MainActivity");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
         init();
         updateUi();
-        MordanSoftLogger.addLog("Start MainActivity");
-
     }
 
     public void init(){
-        instanse = this;
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        currentStatus = CurrentStatus.getCurrentStatusFromFile(this);
+        instance = this;
         binding.btnMainStart.setOnClickListener(btnMainStartListener);
         binding.btnMainProperties.setOnClickListener(btnSettingsListener);
         binding.btnMainExercises.setOnClickListener(btnExercisesListener);
@@ -48,34 +45,46 @@ public class MainActivity extends AppCompatActivity {
         MordanSoftLogger.addLog("Destroy MainActivity");
     }
 
-    public static MainActivity  getInstace(){
-        return instanse;
+    public void updateUi(){
+        int visible = View.INVISIBLE;
+        String mainButtonText = "Start";
+
+         if (currentStatus.getApplicationStatus() == CurrentStatus.applicationStatusActive){
+            visible = View.VISIBLE;
+            exercise = Exercise.getExerciseById(this, currentStatus.getExerciseId());
+            mainButtonText = "Stop";
+            binding.tvMainNextAlertTimer.setText(currentStatus.getNextAlarmTime());
+            binding.btnMainStart.setText(exercise.getName());
+            binding.tvMainNextAlertTimer.setVisibility(visible);
+            binding.spMainExercise.setText(exercise.getName());
+            binding.tvMainPerformedCount.setText(String.valueOf(currentStatus.getCountOfExerciseDone()));
+            binding.tvMainMissedCount.setText(String.valueOf(currentStatus.getCountOfExerciseSkipped()));
+        }
+
+        binding.btnMainStart.setText(mainButtonText);
+        binding.tvMainNextAlert.setVisibility(visible);
+        binding.tvMainNextAlertTimer.setVisibility(visible);
+        binding.tvMainExercise.setVisibility(visible);
+        binding.spMainExercise.setVisibility(visible);
+        binding.tvMainComleted.setVisibility(visible);
+        binding.tvMainPerformedCount.setVisibility(visible);
+        binding.tvMainMissed.setVisibility(visible);
+        binding.tvMainMissedCount.setVisibility(visible);
+        //binding.mainCounter.setText(String.valueOf(Exercise.getCntExercise(this)));
     }
 
-
-    public void updateUi(){
-
-        //binding.mainCounter.setText(String.valueOf(Exercise.getCntExercise(this)));
+    public static MainActivity  getInstance(){
+        return instance;
     }
 
     /********** Listeners **********/
 
     View.OnClickListener btnMainStartListener = v -> {
-
-        Calendar nextAlarmTime = Alarm.getNextAlarmTime(this);
-        MordanSoftLogger.addLog("Alarm.getNextAlarmTime = " + nextAlarmTime.getTime());
-        MordanSoftLogger.addLog("Alarm.getNextAlarmTime Millis = " + nextAlarmTime.getTimeInMillis());
-        long intervalMs = (long) Preferences.getPreferencesFromFile(this).getPeriod()*60*1000;
-        intervalMs = 60*1000;
-        Intent intent = new Intent(this, AlarmReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, nextAlarmTime.getTimeInMillis(), intervalMs, pendingIntent);
-
-        AlarmManager.AlarmClockInfo x = alarmManager.getNextAlarmClock();
-
-        Toast.makeText(getApplicationContext(), "someText",Toast.LENGTH_LONG).show();
-
+        if (currentStatus.getApplicationStatus() == CurrentStatus.applicationStatusDefault){
+            currentStatus = currentStatus.run(this);
+        } else if(currentStatus.getApplicationStatus() == CurrentStatus.applicationStatusActive){
+            currentStatus = currentStatus.stop(this);
+        }
         updateUi();
     };
 
