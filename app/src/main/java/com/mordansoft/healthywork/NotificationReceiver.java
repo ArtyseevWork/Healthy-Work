@@ -31,9 +31,9 @@ public class NotificationReceiver extends BroadcastReceiver {
         itsTimeNotification.deleteNotification();
 
         try {
-            MainActivity.getInstace().updateUi();
+            MainActivity.getInstance().updateUi();
         } catch (Exception e) {
-
+            MordanSoftLogger.addLog("NotificationReceiver updateUI error: " + e, 'e');
         }
         //throw new UnsupportedOperationException("Not yet implemented");
         MordanSoftLogger.addLog("MyReceiver onReceive End");

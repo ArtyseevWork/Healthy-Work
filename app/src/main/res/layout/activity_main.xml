@@ -120,7 +120,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_main_start" />
 
-    <Spinner
+    <TextView
         android:id="@+id/sp_main_exercise"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

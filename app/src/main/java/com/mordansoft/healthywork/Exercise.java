@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class Exercise {
 
-    private int  id;
+    private int id;
     private String  name;
     private String  description;
     private String  unit;
@@ -67,21 +67,6 @@ public class Exercise {
 
     public void setEnable(boolean enable) {
         this.enable = enable;
-    }
-
-    public static long insertExercise(Context context, Exercise exercise){
-        MordanSoftLogger.addLog("insertExercise START");
-        SQLiteDatabase db =  DatabaseHelper.getDatabase(context);
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("name",exercise.name);
-        contentValues.put("description",exercise.description);
-        contentValues.put("unit",exercise.unit);
-        contentValues.put("count",exercise.count);
-        contentValues.put("enable",exercise.enable);
-        long result = db.insert("EXERCISE",null, contentValues);
-        db.close();
-        MordanSoftLogger.addLog("insertExercise END");
-        return (result);
     }
 
     public long saveExercise(Context context){
@@ -173,6 +158,10 @@ public class Exercise {
         }
         MordanSoftLogger.addLog("getExerciseById END");
         return exercise;
+    }
+
+    public static Exercise getRandomExercise(Context context){
+        return Exercise.getExerciseById(context, 1);
     }
 
 

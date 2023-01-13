@@ -1,8 +1,11 @@
 package com.mordansoft.healthywork;
 
-import android.content.Context;
+import static android.content.Context.ALARM_SERVICE;
 
-import java.time.LocalTime;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import java.util.Calendar;
 
 public class Alarm {
@@ -44,5 +47,21 @@ public class Alarm {
 
         calendarAlarm.setTimeInMillis(Calendar.getInstance().getTimeInMillis()+(30*1000));  //for debugging
         return calendarAlarm;
+    }
+
+    public static Calendar run(Context context){
+        MordanSoftLogger.addLog("Alarm run START " );
+        Calendar nextAlarmTime = Alarm.getNextAlarmTime(context);
+        long intervalMs = (long) Preferences.getPreferencesFromFile(context).getPeriod()*60*1000;
+        intervalMs = 60*1000; // for debugging
+        Intent intent = new Intent(context, AlarmReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, nextAlarmTime.getTimeInMillis(), intervalMs, pendingIntent);
+        //alarmManager.cancel(pendingIntent);
+        //Toast.makeText(context, "someText",Toast.LENGTH_LONG).show();
+
+        MordanSoftLogger.addLog("Alarm run END " );
+        return nextAlarmTime;
     }
 }

@@ -12,9 +12,9 @@ import androidx.core.app.NotificationManagerCompat;
 
 public class ItsTimeNotification {
 
-    private static final String ACTION_SNOOZE = "com.mordansoft.healthyremote" ;
+    private static final String ACTION_SNOOZE = "com.mordansoft.healthywork" ;
     int NOTIFY_ID = 102;
-    String CHANNEL_ID = "Cat channel2";
+    String CHANNEL_ID = "HealthWork channel";
     Context context;
     NotificationManagerCompat notificationManager;
 
@@ -30,11 +30,9 @@ public class ItsTimeNotification {
     }
 
     public void createNotification(){
-        MordanSoftLogger.addLog("MyNotification createNotification START");
+        MordanSoftLogger.addLog("ItsTimeNotification createNotification START");
 
-
-
-        Intent intent = new Intent(context, MainActivity.class);
+        Intent intent = new Intent(context, ToDoActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent,  0);
 
         Intent plusIntent = new Intent(context, NotificationReceiver.class);
@@ -44,7 +42,7 @@ public class ItsTimeNotification {
         PendingIntent plusPendingIntent =
                 PendingIntent.getBroadcast(context, 1, plusIntent, 0);
 
-        MordanSoftLogger.addLog("Sent id: "+ NOTIFY_ID, context);
+        MordanSoftLogger.addLog("ItsTimeNotification Sent id: "+ NOTIFY_ID, context);
 
         Intent minusIntent = new Intent(context, NotificationReceiver.class);
         minusIntent.setAction(ACTION_SNOOZE);
@@ -54,39 +52,32 @@ public class ItsTimeNotification {
         PendingIntent minusPendingIntent =
                 PendingIntent.getBroadcast(context, 2, minusIntent,  0);
 
-
         NotificationCompat.Builder builder =
                 new NotificationCompat.Builder(context, CHANNEL_ID)
                         .setSmallIcon(R.drawable.ic_baseline_alarm_add_24)
-                        .setContentTitle("Напоминание2")
-                        .setContentText("Пора покормить кота2")
+                        .setContentTitle(context.getText(R.string.app_name))
+                        .setContentText(context.getText(R.string.notification_title))
                         .setContentIntent(pendingIntent)
                         .setAutoCancel(true)
                         .setDefaults(android.app.Notification.DEFAULT_ALL)
-                        .addAction(R.drawable.ic_baseline_alarm_add_24, "button1",
+                        .addAction(R.drawable.ic_baseline_done_24, context.getText(R.string.notification_coming_soon),
                                  plusPendingIntent)
-                        .addAction(R.drawable.ic_baseline_alarm_add_24, "button2",
+                        .addAction(R.drawable.ic_baseline_not_interested_24, context.getText(R.string.notification_skip_one),
                                  minusPendingIntent);
-         
-         
 
         // createNotificationChannel();
         notificationManager.notify(NOTIFY_ID, builder.build());
 
-
-        //AlarmManager alarmManager = (AlarmManager) getSystemService(this.ALARM_SERVICE);
-        //alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, nextAlarmTime.getTimeInMillis(), intervalMs, pendingIntent);
-
-        MordanSoftLogger.addLog("MyNotification createNotification END");
+        MordanSoftLogger.addLog("ItsTimeNotification createNotification END");
 
     }
     public void deleteNotification(){
-        MordanSoftLogger.addLog("MyNotification deleteNotification START");
+        MordanSoftLogger.addLog("ItsTimeNotification deleteNotification START");
 
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
         notificationManager.cancel(NOTIFY_ID);
 
-        MordanSoftLogger.addLog("MyNotification deleteNotification END");
+        MordanSoftLogger.addLog("ItsTimeNotification deleteNotification END");
     }
 
 }

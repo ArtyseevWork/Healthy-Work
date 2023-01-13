@@ -11,10 +11,11 @@ public class AlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         if (reminder ) {
-            MordanSoftLogger.addLog("NotificationReceiver START");
+            MordanSoftLogger.addLog("AlarmReceiver START");
             // Запускаем уведомление
-            ItsTimeNotification notification = new ItsTimeNotification(context, 5);
+            ItsTimeNotification notification = new ItsTimeNotification(context);
             notification.createNotification();
+            MordanSoftLogger.addLog("AlarmReceiver END");
         }
     }
 }

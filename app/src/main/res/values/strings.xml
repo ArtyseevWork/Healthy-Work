@@ -4,7 +4,7 @@
 
 
     <!--start activity_main  -->
-    <string name="activity_main_until_the_next_exercise">Until the next exercise:</string>
+    <string name="activity_main_until_the_next_exercise">Next exercise:</string>
     <string name="activity_main_start">Start</string>
     <string name="activity_main_stop">Stop</string>
     <string name="activity_main_current_exercise">Current exercise:</string>
@@ -85,6 +85,18 @@
     <string name="activity_to_do_exit">Close the program for today</string>
     <string name="activity_to_do_already_done">Already done:</string>
     <!--end activity_preferences   -->
+
+    <!--start notifications  -->
+    <string name="notification_title">Lets go!</string>
+    <string name="notification_coming_soon">Coming soon</string>
+    <string name="notification_skip_one">Skip one</string>
+    <string name="notification_save">Save</string>
+    <string name="notification_positive">I\'m going to fulfill</string>
+    <string name="notification_negative">Skip</string>
+    <string name="notification_exit">Close the program for today</string>
+    <string name="notification_already_done">Already done:</string>
+    <!--end notifications   -->
+
 
 
 </resources>
