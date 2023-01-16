@@ -30,7 +30,7 @@ public class NotificationReceiver extends BroadcastReceiver {
         CurrentStatus currentStatus = CurrentStatus.getCurrentStatusFromFile(context);
         currentStatus.setCountOfExerciseDelta(context, exCntDelta);
 
-        ItsTimeNotification itsTimeNotification = new ItsTimeNotification(context, notifyId);
+        ItsTimeNotification itsTimeNotification = new ItsTimeNotification(context);
         itsTimeNotification.deleteNotification();
 
         try {
