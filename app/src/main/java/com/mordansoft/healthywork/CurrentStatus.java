@@ -5,23 +5,25 @@ import android.content.SharedPreferences;
 
 public class CurrentStatus {
 
+
+    public static String exerciseDeltaKey ="EXERCISE_DELTA";
     private static final String fileName = "currentStatus";
     private int applicationStatus;
     public static final int applicationStatusDefault = 0;
     public static final int applicationStatusActive = 200;
-    private static final String applicationStatusKey = "APPLICATIONSTATUS";
+    private static final String applicationStatusKey = "APPLICATION_STATUS";
     private int exerciseId;
     private static final int exerciseIdDefault = 0;
-    private static final String exerciseIdKey = "EXERCICEID";
+    private static final String exerciseIdKey = "EXERCISE_ID";
     private int countOfExerciseDone;
     private static final int countOfExerciseDoneDefault = 0;
-    private static final String countOfExerciseDoneKey="COUNTOFEXERCISEDONE";
+    private static final String countOfExerciseDoneKey="COUNT_OF_EXERCISE_DONE";
     private int countOfExerciseSkipped;
     private static final int countOfExerciseSkippedDefault = 0;
-    private static final String countOfExerciseSkippedKey="COUNOFEXERCISESKIPPED";
+    private static final String countOfExerciseSkippedKey="COUNT_OF_EXERCISE_SKIPPED";
     private String nextAlarmTime;
     private static final String nextAlarmTimeDefault = "";
-    private static final String nextAlarmTimeKey="NEXTALARMTIME";
+    private static final String nextAlarmTimeKey="NEXT_ALARM_TIME";
 
 
     public CurrentStatus(int applicationStatus, int exerciseId, int countOfExerciseDone, int countOfExerciseSkipped, String nextAlarmTime) {
@@ -66,6 +68,18 @@ public class CurrentStatus {
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putInt(exerciseIdKey, exerciseId);
         editor.apply();
+    }
+
+    public void setCountOfExerciseDelta(Context context, int delta){
+        if (delta != 0){
+            Exercise exercise = Exercise.getExerciseById(context,this.getExerciseId());
+            int exerciseCount = exercise.getCount();
+            if (delta < 0){
+                setCountOfExerciseDone(context,exerciseCount);
+            } else if (delta > 0) {
+                setCountOfExerciseSkipped(context,exerciseCount);
+            }
+        }
     }
 
     public int getCountOfExerciseDone() {
@@ -140,9 +154,13 @@ public class CurrentStatus {
 
     public CurrentStatus run(Context context){
         MordanSoftLogger.addLog("CurrentStatus.run START");
-        Exercise exercise = Exercise.getRandomExercise(context);
-        this.setExerciseId(context,exercise.getId());
-        this.setApplicationStatus(context, applicationStatusActive);
+
+        if(exerciseId == exerciseIdDefault) {
+            Exercise exercise = Exercise.getRandomExercise(context);
+            this.setExerciseId(context, exercise.getId());
+            this.setApplicationStatus(context, applicationStatusActive);
+        }
+
         setNextAlarmTime(context, String.format("%tT",(Alarm.run(context).getTime())));
         MordanSoftLogger.addLog("CurrentStatus.run END");
         return this;
@@ -150,10 +168,11 @@ public class CurrentStatus {
 
     public CurrentStatus stop(Context context){
         MordanSoftLogger.addLog("CurrentStatus.stop START");
+        Alarm.stop(context);
         this.setExerciseId(context,exerciseIdDefault);
         this.setApplicationStatus(context, applicationStatusDefault);
-        this.setExerciseId(context,countOfExerciseDoneDefault);
-        this.setExerciseId(context,countOfExerciseSkippedDefault);
+        this.setCountOfExerciseDone(context,countOfExerciseDoneDefault);
+        this.setCountOfExerciseSkipped(context,countOfExerciseSkippedDefault);
         this.setNextAlarmTime(context,nextAlarmTimeDefault);
         MordanSoftLogger.addLog("CurrentStatus.stop END");
         return this;
