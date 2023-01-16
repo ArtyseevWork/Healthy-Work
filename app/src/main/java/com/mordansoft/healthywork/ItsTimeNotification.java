@@ -23,11 +23,6 @@ public class ItsTimeNotification {
         notificationManager = NotificationManagerCompat.from(context);
     }
 
-    public ItsTimeNotification(Context context, int newId) {
-        this.context = context;
-        this.NOTIFY_ID = newId;
-        notificationManager = NotificationManagerCompat.from(context);
-    }
 
     public void createNotification(){
         MordanSoftLogger.addLog("ItsTimeNotification createNotification START");
@@ -37,8 +32,11 @@ public class ItsTimeNotification {
 
         Intent plusIntent = new Intent(context, NotificationReceiver.class);
         plusIntent.setAction(ACTION_SNOOZE);
+        plusIntent.removeExtra(EXTRA_NOTIFICATION_ID);
+        plusIntent.removeExtra(CurrentStatus.exerciseDeltaKey);
         plusIntent.putExtra(EXTRA_NOTIFICATION_ID, NOTIFY_ID);
-        //plusIntent.putExtra(Exercise.EXTRA_EXERCISE_CNT_DELTA, -1);
+        plusIntent.putExtra(CurrentStatus.exerciseDeltaKey, +100);
+
         PendingIntent plusPendingIntent =
                 PendingIntent.getBroadcast(context, 1, plusIntent, 0);
 
@@ -46,9 +44,10 @@ public class ItsTimeNotification {
 
         Intent minusIntent = new Intent(context, NotificationReceiver.class);
         minusIntent.setAction(ACTION_SNOOZE);
-        //minusIntent.removeExtra(Exercise.EXTRA_EXERCISE_CNT_DELTA);
+        minusIntent.removeExtra(EXTRA_NOTIFICATION_ID);
+        minusIntent.removeExtra(CurrentStatus.exerciseDeltaKey);
         minusIntent.putExtra(EXTRA_NOTIFICATION_ID, NOTIFY_ID);
-        //minusIntent.putExtra(Exercise.EXTRA_EXERCISE_CNT_DELTA, +1);
+        minusIntent.putExtra(CurrentStatus.exerciseDeltaKey, -100);
         PendingIntent minusPendingIntent =
                 PendingIntent.getBroadcast(context, 2, minusIntent,  0);
 
