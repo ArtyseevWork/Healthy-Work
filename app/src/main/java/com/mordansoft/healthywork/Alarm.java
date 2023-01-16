@@ -55,13 +55,32 @@ public class Alarm {
         long intervalMs = (long) Preferences.getPreferencesFromFile(context).getPeriod()*60*1000;
         intervalMs = 60*1000; // for debugging
         Intent intent = new Intent(context, AlarmReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context,
+                0,
+                intent,
+                PendingIntent.FLAG_UPDATE_CURRENT|  Intent.FILL_IN_DATA);
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, nextAlarmTime.getTimeInMillis(), intervalMs, pendingIntent);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, nextAlarmTime.getTimeInMillis(),
+                intervalMs,
+                pendingIntent);
+
         //alarmManager.cancel(pendingIntent);
         //Toast.makeText(context, "someText",Toast.LENGTH_LONG).show();
 
         MordanSoftLogger.addLog("Alarm run END " );
         return nextAlarmTime;
+    }
+
+    public static void stop(Context context){
+        MordanSoftLogger.addLog("Alarm.stop START " );
+        Intent intent = new Intent(context, AlarmReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context,
+                0,
+                intent,
+                PendingIntent.FLAG_UPDATE_CURRENT|  Intent.FILL_IN_DATA);
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
+        alarmManager.cancel(pendingIntent);
+
+        MordanSoftLogger.addLog("Alarm.stop END " );
     }
 }
