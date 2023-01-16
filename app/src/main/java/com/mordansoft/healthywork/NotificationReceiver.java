@@ -5,27 +5,30 @@ import static androidx.core.app.NotificationCompat.EXTRA_NOTIFICATION_ID;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 
 public class NotificationReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        MordanSoftLogger.addLog("MyReceiver onReceive Start", context);
+        MordanSoftLogger.addLog("NotificationReceiver onReceive Start", context);
 
         int notifyId = 0;
         int exCntDelta = 0;
 
         if(intent != null){
             if(intent.getExtras() != null){
+                Bundle x  = intent.getExtras();
                 notifyId = intent.getExtras().getInt(EXTRA_NOTIFICATION_ID, 0);
-                //exCntDelta = intent.getExtras().getInt(Exercise.EXTRA_EXERCISE_CNT_DELTA, 0);
+                exCntDelta = intent.getExtras().getInt(CurrentStatus.exerciseDeltaKey, 0);
             }
         }
 
         MordanSoftLogger.addLog("Receive id: " + notifyId);
         MordanSoftLogger.addLog("exCntDelta: " + exCntDelta);
 
-        //Exercise.addCntExercise(context, exCntDelta);
+        CurrentStatus currentStatus = CurrentStatus.getCurrentStatusFromFile(context);
+        currentStatus.setCountOfExerciseDelta(context, exCntDelta);
 
         ItsTimeNotification itsTimeNotification = new ItsTimeNotification(context, notifyId);
         itsTimeNotification.deleteNotification();
@@ -36,6 +39,6 @@ public class NotificationReceiver extends BroadcastReceiver {
             MordanSoftLogger.addLog("NotificationReceiver updateUI error: " + e, 'e');
         }
         //throw new UnsupportedOperationException("Not yet implemented");
-        MordanSoftLogger.addLog("MyReceiver onReceive End");
+        MordanSoftLogger.addLog("NotificationReceiver onReceive End", context);
     }
 }
