@@ -1,11 +1,9 @@
 package com.mordansoft.healthywork;
 
 import static androidx.core.app.NotificationCompat.EXTRA_NOTIFICATION_ID;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 
 public class NotificationReceiver extends BroadcastReceiver {
 
@@ -18,7 +16,6 @@ public class NotificationReceiver extends BroadcastReceiver {
 
         if(intent != null){
             if(intent.getExtras() != null){
-                Bundle x  = intent.getExtras();
                 notifyId = intent.getExtras().getInt(EXTRA_NOTIFICATION_ID, 0);
                 exCntDelta = intent.getExtras().getInt(CurrentStatus.exerciseDeltaKey, 0);
             }

@@ -40,9 +40,7 @@ public class CurrentStatus {
     }
 
     public String getStringNextAlarmTime() {
-        String result = String.format("%tT",this.nextAlarmTime);
-
-        return result;
+        return String.format("%tT", this.getNextAlarmTime());
     }
 
     public void setNextAlarmTime(Context context, long nextAlarmTime) {
@@ -139,22 +137,24 @@ public class CurrentStatus {
             countOfExerciseSkipped = sharedPref.getInt(countOfExerciseSkippedKey, countOfExerciseSkippedDefault);
             nextAlarmTime = sharedPref.getLong(nextAlarmTimeKey, nextAlarmTimeDefault);
 
-            if (applicationStatus != applicationStatusDefault) {
-                Preferences preferences = Preferences.getPreferencesFromFile(context);
-                long timeOut = (1000L * 60 * preferences.getPeriod()) / 2;   //formula of time-out
-
-                if (nextAlarmTime == nextAlarmTimeDefault ||
-                        ((currentTime - nextAlarmTime) < timeOut)) {
-                    currentStatus.recreate(context);
-                }
-            }
-
-            return new CurrentStatus(applicationStatus,
+            currentStatus = new CurrentStatus(applicationStatus,
                     exerciseId,
                     countOfExerciseDone,
                     countOfExerciseSkipped,
                     nextAlarmTime
             );
+
+            if (applicationStatus != applicationStatusDefault) {                   //schedule is run
+                Preferences preferences = Preferences.getPreferencesFromFile(context);
+                long timeOut = (1000L * 60 * preferences.getPeriod()) / 4 ;   //formula of time-out (0.75 of period)
+
+                if (nextAlarmTime == nextAlarmTimeDefault ||
+                        ((nextAlarmTime - currentTime ) < timeOut)) {
+                    currentStatus = currentStatus.recreate(context);
+                }
+            }
+
+            return currentStatus;
         } catch (Exception e){
             currentStatus.stop(context);
             MordanSoftLogger.addLog("getCurrentStatusFromFile Error: " + e, 'e');

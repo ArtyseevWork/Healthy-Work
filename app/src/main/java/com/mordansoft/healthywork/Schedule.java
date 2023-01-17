@@ -324,8 +324,7 @@ public class Schedule {
     }
 
     public boolean[] getWorkDaysArray(){
-        boolean[] days = { this.su, this.mo, this.tu, this.we, this.th, this.fr, this.sa };
-        return days;
+        return new boolean[]{ this.su, this.mo, this.tu, this.we, this.th, this.fr, this.sa };
     }
 
     public static Calendar getNextAlarmTime(Context context, @Nullable Calendar inCalendar){
@@ -339,20 +338,16 @@ public class Schedule {
         Preferences preferences = Preferences.getPreferencesFromFile(context);
         Schedule schedule = Schedule.getScheduleFromFile(context);
 
-        int countdown = preferences.getCountdown();
+        int countdown = preferences.getCountdown();                                  //todo add time before end of the day and recess
         int period = preferences.getPeriod();
         int dayOfWeakIn = inCalendar.get(Calendar.DAY_OF_WEEK);
-        int dayOfYearIn= inCalendar.get(Calendar.DAY_OF_YEAR);
 
-        if (schedule.isScheduleEnable()){ //schedule turn on
+        if (schedule.isScheduleEnable()){                                            //schedule turn on
             boolean[] workDays = schedule.getWorkDaysArray();
-            if (!workDays[dayOfWeakIn + 1]){ //today is not working day - processing next day
-                //dayOfYear++;
+            if (!workDays[dayOfWeakIn + 1]){                                         //today is not working day - processing next day
                 outCalendar.add(Calendar.DAY_OF_YEAR,1);
-                //outCalendar.set(Calendar.DAY_OF_YEAR, dayOfYear);
                 outCalendar = getNextAlarmTime(context, outCalendar);
-            } else { //today is working day
-
+            } else {                                                                 //today is working day
                 Calendar workDayStartCalendar = (Calendar) inCalendar.clone();
                 workDayStartCalendar.set(Calendar.HOUR_OF_DAY, schedule.getStartDayHours());
                 workDayStartCalendar.set(Calendar.MINUTE, schedule.getStartDayMinutes());
@@ -376,9 +371,9 @@ public class Schedule {
                 long endRecessMillis = recessEndCalendar.getTimeInMillis();
                 MordanSoftLogger.addLog("getNextAlarmTime  recessEndCalendar = " + recessEndCalendar.getTime());
 
-                if (inCalendar.getTimeInMillis() <= startWorkDayMillis) { // before work day
+                if (inCalendar.getTimeInMillis() <= startWorkDayMillis) {                       // before work day
                     outCalendar = getNextAlarmTimeSimple(context, workDayStartCalendar);
-                } else if (inCalendar.getTimeInMillis() >= endWorkDayMillis - period) { // after work day
+                } else if (inCalendar.getTimeInMillis() >= endWorkDayMillis - period) {         // after work day
                     outCalendar.add(Calendar.DAY_OF_YEAR,1);
                     outCalendar.set(Calendar.HOUR_OF_DAY, workDayStartCalendar.get(Calendar.HOUR_OF_DAY));
                     outCalendar.set(Calendar.MINUTE, workDayStartCalendar.get(Calendar.MINUTE));
