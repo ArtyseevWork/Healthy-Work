@@ -23,7 +23,7 @@ public class CurrentStatus {
     private static final int countOfExerciseSkippedDefault = 0;
     private static final String countOfExerciseSkippedKey="COUNT_OF_EXERCISE_SKIPPED";
     private long nextAlarmTime;
-    private static final long nextAlarmTimeDefault = 0;
+    private static final long nextAlarmTimeDefault = 0L;
     private static final String nextAlarmTimeKey="NEXT_ALARM_TIME";
 
 
@@ -156,8 +156,10 @@ public class CurrentStatus {
                     nextAlarmTime
             );
         } catch (Exception e){
+            currentStatus.stop(context);
             MordanSoftLogger.addLog("getCurrentStatusFromFile Error: " + e, 'e');
         }
+        MordanSoftLogger.addLog("getCurrentStatusFromFile END");
         return currentStatus;
     }
 
@@ -184,7 +186,7 @@ public class CurrentStatus {
             this.setExerciseId(context, exercise.getId());
             this.setApplicationStatus(context, applicationStatusActive);
         }
-        this.setNextAlarmTime(context,Alarm.run(context).getTimeInMillis());
+        this.setNextAlarmTime(context,Schedule.run(context).getTimeInMillis());
         //setNextAlarmTime(context, String.format("%tT",(Alarm.run(context).getTime())));
         MordanSoftLogger.addLog("CurrentStatus.run END");
         return this;
@@ -192,7 +194,7 @@ public class CurrentStatus {
 
     public CurrentStatus stop(Context context){
         MordanSoftLogger.addLog("CurrentStatus.stop START");
-        Alarm.stop(context);
+        Schedule.stop(context);
         this.setExerciseId(context,exerciseIdDefault);
         this.setApplicationStatus(context, applicationStatusDefault);
         this.setCountOfExerciseDone(context,countOfExerciseDoneDefault);
