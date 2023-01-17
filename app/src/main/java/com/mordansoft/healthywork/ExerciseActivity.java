@@ -32,7 +32,7 @@ public class ExerciseActivity extends AppCompatActivity {
         Bundle arguments = getIntent().getExtras();
         int exerciseId = arguments.getInt("EXTRA_EXERCISE_ID");
         this.exercise = Exercise.getExerciseById(this, exerciseId);
-        binding.btnPreferencesSave.setOnClickListener(btnSaveListener);
+        binding.btnNewExercise.setOnClickListener(btnSaveListener);
     }
 
     private void updateUi() {

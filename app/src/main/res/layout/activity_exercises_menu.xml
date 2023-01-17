@@ -19,7 +19,7 @@
 
 
     <Button
-        android:id="@+id/btn_preferences_save"
+        android:id="@+id/btn_new_exercise"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/activity_exercises_menu_add"

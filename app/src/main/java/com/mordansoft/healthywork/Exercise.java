@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class Exercise {
 
-    private int id;
+    private final int id;
     private String  name;
     private String  description;
     private String  unit;
@@ -131,6 +131,9 @@ public class Exercise {
     }
 
     public static Exercise getExerciseById(Context context, int id){
+        if (id == 0){
+            return getNewExercise(context);
+        }
         MordanSoftLogger.addLog("getExerciseById START id = " + id);
         Exercise exercise = null;
         try {
@@ -157,6 +160,20 @@ public class Exercise {
             MordanSoftLogger.addLog("getExerciseById - " + e, 'e');
         }
         MordanSoftLogger.addLog("getExerciseById END");
+        return exercise;
+    }
+
+    public static Exercise getNewExercise(Context context){
+
+        MordanSoftLogger.addLog("getNewExercise START ");
+        Exercise exercise  = new Exercise(
+                        0,
+                        context.getString(R.string.activity_exercise_new),
+                        context.getString(R.string.activity_exercise_description),
+                        context.getString(R.string.activity_exercise_units), //todo default units
+                        5,                                                   //todo default counts
+                        true);
+        MordanSoftLogger.addLog("getNewExercise END");
         return exercise;
     }
 
