@@ -50,13 +50,9 @@ public class ExerciseActivity extends AppCompatActivity {
     View.OnClickListener btnSaveListener = this::saveState;
 
     private void saveState(View v){
-        String y = String.valueOf(binding.etExerciseCounts.getText());
-        int x = Integer.parseInt(y);
-
-
         exercise.setName(String.valueOf(binding.etExerciseName.getText()));
         exercise.setUnit(String.valueOf(binding.etExerciseUnits.getText()));
-        exercise.setCount(x);
+        exercise.setCount(Integer.parseInt(String.valueOf(binding.etExerciseCounts.getText())));
         exercise.setEnable(binding.chbExerciseAvailable.isChecked());
         exercise.setDescription(String.valueOf(binding.etExerciseDescription.getText()));
         exercise.saveExercise(this);
