@@ -47,13 +47,11 @@ public class PreferencesActivity extends AppCompatActivity {
     public void init(){
         binding = ActivityPreferencesBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        binding.btnPreferencesSave.setOnClickListener(btnSaveListener);
+        binding.btnSavePreferences.setOnClickListener(btnSaveListener);
         preferences = Preferences.getPreferencesFromFile(this);
     }
 
-    View.OnClickListener btnSaveListener = v -> {
-        this.saveState(v);
-    };
+    View.OnClickListener btnSaveListener = this::saveState;
 
 
     private void saveState(View view){ //todo checks

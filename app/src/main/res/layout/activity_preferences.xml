@@ -36,7 +36,7 @@
         app:layout_constraintTop_toBottomOf="@+id/sw_preferences_period" />
 
     <Button
-        android:id="@+id/btn_preferences_save"
+        android:id="@+id/btn_save_preferences"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/activity_preferences_save"
