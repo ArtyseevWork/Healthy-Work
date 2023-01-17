@@ -1,7 +1,14 @@
 package com.mordansoft.healthywork;
 
+import static android.content.Context.ALARM_SERVICE;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+
+import androidx.annotation.Nullable;
+import java.util.Calendar;
 
 public class Schedule {
 
@@ -314,5 +321,155 @@ public class Schedule {
 
     public static String getStringTime(int hours, int minutes){
         return (hours + ":" + minutes);
+    }
+
+    public boolean[] getWorkDaysArray(){
+        boolean[] days = { this.su, this.mo, this.tu, this.we, this.th, this.fr, this.sa };
+        return days;
+    }
+
+    public static Calendar getNextAlarmTime(Context context, @Nullable Calendar inCalendar){
+        MordanSoftLogger.addLog("getNextAlarmTime START");
+        if (inCalendar == null){
+            inCalendar = Calendar.getInstance();
+        }
+        MordanSoftLogger.addLog("getNextAlarmTime  inCalendar = " + inCalendar.getTime());
+
+        Calendar outCalendar = (Calendar) inCalendar.clone();
+        Preferences preferences = Preferences.getPreferencesFromFile(context);
+        Schedule schedule = Schedule.getScheduleFromFile(context);
+
+        int countdown = preferences.getCountdown();
+        int period = preferences.getPeriod();
+        int dayOfWeakIn = inCalendar.get(Calendar.DAY_OF_WEEK);
+        int dayOfYearIn= inCalendar.get(Calendar.DAY_OF_YEAR);
+
+        if (schedule.isScheduleEnable()){ //schedule turn on
+            boolean[] workDays = schedule.getWorkDaysArray();
+            if (!workDays[dayOfWeakIn + 1]){ //today is not working day - processing next day
+                //dayOfYear++;
+                outCalendar.add(Calendar.DAY_OF_YEAR,1);
+                //outCalendar.set(Calendar.DAY_OF_YEAR, dayOfYear);
+                outCalendar = getNextAlarmTime(context, outCalendar);
+            } else { //today is working day
+
+                Calendar workDayStartCalendar = (Calendar) inCalendar.clone();
+                workDayStartCalendar.set(Calendar.HOUR_OF_DAY, schedule.getStartDayHours());
+                workDayStartCalendar.set(Calendar.MINUTE, schedule.getStartDayMinutes());
+                long startWorkDayMillis = workDayStartCalendar.getTimeInMillis();
+                MordanSoftLogger.addLog("getNextAlarmTime  workDayStartCalendar = " + workDayStartCalendar.getTime());
+
+                Calendar workDayEndCalendar = (Calendar) inCalendar.clone();
+                workDayEndCalendar.set(Calendar.HOUR_OF_DAY, schedule.getEndDayHours());
+                workDayEndCalendar.set(Calendar.MINUTE, schedule.getEndDayMinutes());
+                long endWorkDayMillis = workDayEndCalendar.getTimeInMillis();
+                MordanSoftLogger.addLog("getNextAlarmTime  workDayEndCalendar = " + workDayEndCalendar.getTime());
+
+                Calendar recessStartCalendar = (Calendar) inCalendar.clone();
+                recessStartCalendar.set(Calendar.HOUR_OF_DAY, schedule.getStartRecessHours());
+                recessStartCalendar.set(Calendar.MINUTE, schedule.getStartRecessMinutes());
+                MordanSoftLogger.addLog("getNextAlarmTime  recessStartCalendar = " + recessStartCalendar.getTime());long startRecessMillis = recessStartCalendar.getTimeInMillis();
+
+                Calendar recessEndCalendar = (Calendar) inCalendar.clone();
+                recessEndCalendar.set(Calendar.HOUR_OF_DAY, schedule.getEndRecessHours());
+                recessEndCalendar.set(Calendar.MINUTE, schedule.getEndRecessMinutes());
+                long endRecessMillis = recessEndCalendar.getTimeInMillis();
+                MordanSoftLogger.addLog("getNextAlarmTime  recessEndCalendar = " + recessEndCalendar.getTime());
+
+                if (inCalendar.getTimeInMillis() <= startWorkDayMillis) { // before work day
+                    outCalendar = getNextAlarmTimeSimple(context, workDayStartCalendar);
+                } else if (inCalendar.getTimeInMillis() >= endWorkDayMillis - period) { // after work day
+                    outCalendar.add(Calendar.DAY_OF_YEAR,1);
+                    outCalendar.set(Calendar.HOUR_OF_DAY, workDayStartCalendar.get(Calendar.HOUR_OF_DAY));
+                    outCalendar.set(Calendar.MINUTE, workDayStartCalendar.get(Calendar.MINUTE));
+                    outCalendar = getNextAlarmTime(context, outCalendar);
+                } else if (inCalendar.getTimeInMillis() > startWorkDayMillis  // in work day
+                        && inCalendar.getTimeInMillis() < endWorkDayMillis - period) {
+                    if (schedule.isRecessEnable() &&            //in recess
+                            inCalendar.getTimeInMillis() > startRecessMillis - period //
+                            && inCalendar.getTimeInMillis() < endRecessMillis - period) {
+                        outCalendar = getNextAlarmTimeSimple(context, recessEndCalendar);
+                    } else {
+                        outCalendar = getNextAlarmTimeSimple(context, inCalendar);
+                    }
+                }
+            }
+        } else { //schedule turn off
+            outCalendar = getNextAlarmTimeSimple(context, inCalendar);
+        }
+        MordanSoftLogger.addLog("getNextAlarmTime END: " + outCalendar.getTime());
+        return outCalendar;
+    }
+
+    public static Calendar getNextAlarmTimeSimple(Context context, Calendar calendar){
+
+        Preferences preferences = Preferences.getPreferencesFromFile(context);
+        //Schedule schedule = Schedule.getScheduleFromFile(context);
+
+        int minutesAlarm;
+        int hoursAlarm;
+        int hoursNow;
+        int minutesNow;
+        int countdown = preferences.getCountdown();
+        int period = preferences.getPeriod();
+
+        hoursNow = calendar.get(Calendar.HOUR_OF_DAY);
+        minutesNow = calendar.get(Calendar.MINUTE);
+        minutesAlarm = countdown;
+        hoursAlarm = hoursNow;
+
+        if (period == 30){
+            if (minutesNow > (countdown+period)){
+                hoursAlarm= hoursNow +1;
+            }
+            else if (minutesNow > (countdown)){
+                minutesAlarm = countdown+period;
+            }
+        } else if (period == 60){
+            if (minutesNow > countdown){
+                hoursAlarm = hoursNow + 1;
+            }
+        }
+
+        calendar.set(Calendar.HOUR_OF_DAY, hoursAlarm);
+        calendar.set(Calendar.MINUTE, minutesAlarm);
+        calendar.set(Calendar.SECOND, 0);
+
+        return calendar;
+    }
+
+    public static Calendar run(Context context){
+        MordanSoftLogger.addLog("Alarm run START " );
+        Calendar nextAlarmTime = getNextAlarmTime(context, null);
+        long intervalMs = (long) Preferences.getPreferencesFromFile(context).getPeriod()*60*1000;
+        //intervalMs = 60*1000; // for debugging
+        Intent intent = new Intent(context, AlarmReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context,
+                0,
+                intent,
+                PendingIntent.FLAG_UPDATE_CURRENT|  Intent.FILL_IN_DATA);
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, nextAlarmTime.getTimeInMillis(),
+                intervalMs,
+                pendingIntent);
+
+        //alarmManager.cancel(pendingIntent);
+        //Toast.makeText(context, "someText",Toast.LENGTH_LONG).show();
+
+        MordanSoftLogger.addLog("Alarm run END " );
+        return nextAlarmTime;
+    }
+
+    public static void stop(Context context){
+        MordanSoftLogger.addLog("Alarm.stop START " );
+        Intent intent = new Intent(context, AlarmReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context,
+                0,
+                intent,
+                PendingIntent.FLAG_UPDATE_CURRENT|  Intent.FILL_IN_DATA);
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
+        alarmManager.cancel(pendingIntent);
+
+        MordanSoftLogger.addLog("Alarm.stop END " );
     }
 }
