@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             visible = View.VISIBLE;
             exercise = Exercise.getExerciseById(this, currentStatus.getExerciseId());
             mainButtonText = "Stop";
-            binding.tvMainNextAlertTimer.setText(currentStatus.getNextAlarmTime());
+            binding.tvMainNextAlertTimer.setText(currentStatus.getStringNextAlarmTime());
             binding.btnMainStart.setText(exercise.getName());
             binding.tvMainNextAlertTimer.setVisibility(visible);
             binding.spMainExercise.setText(exercise.getName());
