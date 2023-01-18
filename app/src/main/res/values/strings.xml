@@ -22,7 +22,7 @@
     <string name="activity_exercise_units">Units:</string>
     <string name="activity_exercise_units_hint">Units of the exercise</string>
     <string name="activity_exercise_count">Counts:</string>
-    <string name="activity_exercise_count_hint">Counts of the exercise</string>
+    <string name="activity_exercise_count_hint">Counts</string>
     <string name="activity_exercise_name">Name of the exercise</string>
     <string name="activity_exercise_save">Save</string>
     <string name="activity_exercise_description">Description</string>
@@ -30,6 +30,12 @@
     <string name="activity_exercise_available">Available:</string>
     <string name="activity_exercise_new">New exercise</string>
     <string name="activity_exercise_back">Go back</string>
+    <string name="activity_exercise_unit_times">Times</string>
+    <string name="activity_exercise_unit_seconds">Seconds</string>
+    <string-array name="activity_exercise_units_array">
+        <item>@string/activity_exercise_unit_times</item>
+        <item>@string/activity_exercise_unit_seconds</item>
+    </string-array>
     <!--end activity_exercise   -->
 
     <!--start activity_exercises_menu  -->

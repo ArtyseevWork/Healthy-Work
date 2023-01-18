@@ -42,15 +42,16 @@
         app:layout_constraintStart_toStartOf="@+id/et_exercise_name"
         app:layout_constraintTop_toBottomOf="@+id/chb_exercise_available" />
 
-    <EditText
+    <Spinner
         android:id="@+id/et_exercise_units"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:hint="@string/activity_exercise_units_hint"
-        android:importantForAutofill="no"
+        android:entries="@array/activity_exercise_units_array"
         android:inputType="textAutoCorrect"
         android:minHeight="48dp"
+        android:minWidth="180dp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_preferences_period_title"
         app:layout_constraintStart_toStartOf="@+id/chb_exercise_available"
         app:layout_constraintTop_toTopOf="@+id/tv_preferences_period_title" />
@@ -75,7 +76,8 @@
         android:minWidth="48dp"
         android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_preferences_countdown_start_title"
-        app:layout_constraintStart_toStartOf="@+id/et_exercise_units"
+        app:layout_constraintEnd_toStartOf="@+id/btn_exercise_plus_count"
+        app:layout_constraintStart_toEndOf="@+id/btn_exercise_minus_count"
         app:layout_constraintTop_toTopOf="@+id/tv_preferences_countdown_start_title" />
 
     <TextView
@@ -151,5 +153,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="61dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_exercise_plus_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/et_exercise_counts"
+        app:layout_constraintEnd_toEndOf="@+id/et_exercise_units"
+        app:layout_constraintTop_toTopOf="@+id/et_exercise_counts"
+        app:srcCompat="@drawable/ic_baseline_add_circle_outline_24" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_exercise_minus_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/et_exercise_counts"
+        app:layout_constraintStart_toStartOf="@+id/et_exercise_units"
+        app:layout_constraintTop_toTopOf="@+id/et_exercise_counts"
+        app:srcCompat="@drawable/ic_baseline_remove_circle_outline_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
