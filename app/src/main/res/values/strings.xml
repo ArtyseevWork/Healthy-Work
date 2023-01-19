@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Healthy Work</string>
     <string name="sample_text">Sample text</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 
 
     <!--start activity_main  -->
@@ -32,10 +34,15 @@
     <string name="activity_exercise_back">Go back</string>
     <string name="activity_exercise_unit_times">Times</string>
     <string name="activity_exercise_unit_seconds">Seconds</string>
+    <string name="activity_exercise_delete_message">Are you sure you want to remove this exercise?</string>
+    <string name="activity_exercise_delete">Remove</string>
+    <string name="activity_exercise_delete_complete_message">Data deleted</string>
     <string-array name="activity_exercise_units_array">
         <item>@string/activity_exercise_unit_times</item>
         <item>@string/activity_exercise_unit_seconds</item>
     </string-array>
+
+    Are you sure you want to remove this knife?
     <!--end activity_exercise   -->
 
     <!--start activity_exercises_menu  -->
@@ -102,6 +109,15 @@
     <string name="notification_exit">Close the program for today</string>
     <string name="notification_already_done">Already done:</string>
     <!--end notifications   -->
+
+    <!--start dialog  -->
+    <string name="dialog_save_changes">Save changes before exit?</string>
+    <string name="dialog_yes">Yes</string>
+    <string name="dialog_no">No</string>
+
+    <!--end dialog   -->
+
+    Save file before exit?
 
 
 
