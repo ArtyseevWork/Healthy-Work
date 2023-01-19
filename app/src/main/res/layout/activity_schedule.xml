@@ -103,7 +103,7 @@
         app:layout_constraintStart_toEndOf="@+id/chb_schedule_th"
         app:layout_constraintTop_toTopOf="@+id/chb_schedule_we" />
 
-    <CheckBox
+    <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/chb_schedule_available"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -277,7 +277,7 @@
         app:layout_constraintStart_toStartOf="@+id/tv_schedule_days_of_week"
         app:layout_constraintTop_toTopOf="@+id/tv_schedule_end_recess_title" />
 
-    <CheckBox
+    <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/chb_schedule_recess_enable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
