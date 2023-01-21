@@ -19,8 +19,6 @@ public class MainActivity extends AppCompatActivity {
     CurrentStatus currentStatus;
     Exercise exercise;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         MordanSoftLogger.addLog("Start MainActivity");

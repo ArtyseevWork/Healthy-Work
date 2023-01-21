@@ -40,7 +40,8 @@ public class CurrentStatus {
     }
 
     public String getStringNextAlarmTime() {
-        return String.format("%tT", this.getNextAlarmTime());
+        long time = this.getNextAlarmTime();
+        return String.format("%ta %tT", time,time); //todo localize
     }
 
     public void setNextAlarmTime(Context context, long nextAlarmTime) {
@@ -81,7 +82,7 @@ public class CurrentStatus {
             int exerciseCount = exercise.getCount();
             if (delta < 0){
                 setCountOfExerciseDone(context,exerciseCount);
-            } else if (delta > 0) {
+            } else {
                 setCountOfExerciseSkipped(context,exerciseCount);
             }
         }
