@@ -1,7 +1,6 @@
 package com.mordansoft.healthywork;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -34,7 +33,8 @@ public class ExerciseActivity extends AppCompatActivity {
         Bundle arguments = getIntent().getExtras();
         int exerciseId = arguments.getInt("EXTRA_EXERCISE_ID");
         this.exercise = Exercise.getExerciseById(this, exerciseId);
-        binding.btnNewExercise.setOnClickListener(btnSaveListener);
+        binding.btnExerciseSave.setOnClickListener(btnBackListener);
+        binding.btnExerciseBack.setOnClickListener(btnBackListener);
         binding.btnExerciseMinusCount.setOnClickListener(btnMinusListener);
         binding.btnExercisePlusCount.setOnClickListener(btnPlusListener);
     }
@@ -53,15 +53,14 @@ public class ExerciseActivity extends AppCompatActivity {
 
 
     /********** Listeners **********/
-    View.OnClickListener btnSaveListener = this::saveState;
+    View.OnClickListener btnBackListener = v -> goBack();
 
     View.OnClickListener btnPlusListener = v -> {
         changeCount(1);
+        Exercise.test(this, v, exercise);
     };
 
-    View.OnClickListener btnMinusListener = v -> {
-        changeCount(-1);
-    };
+    View.OnClickListener btnMinusListener = v -> changeCount(-1);
 
     @Override
     public void onBackPressed() {
@@ -74,7 +73,7 @@ public class ExerciseActivity extends AppCompatActivity {
         binding.etExerciseCounts.setText(String.valueOf(count) );
     }
 
-    private void saveState(View v){
+    private void saveState(){
         exercise.setName(String.valueOf(binding.etExerciseName.getText()));
         exercise.setUnit(binding.etExerciseUnits.getSelectedItem().toString());
         exercise.setCount(Integer.parseInt(String.valueOf(binding.etExerciseCounts.getText())));
@@ -93,6 +92,7 @@ public class ExerciseActivity extends AppCompatActivity {
     }
 
     public void goBack() {
+        saveState();
         Intent intent = new Intent(this, ExercisesMenuActivity.class);
         startActivity(intent);
     }

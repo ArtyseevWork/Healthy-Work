@@ -8,9 +8,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class ExercisesMenuActivity extends AppCompatActivity {
     Button newExerciseBtn;
+    ImageButton backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +23,10 @@ public class ExercisesMenuActivity extends AppCompatActivity {
 
     protected void init(){
         setContentView(R.layout.activity_exercises_menu);
-        newExerciseBtn = findViewById(R.id.btn_new_exercise);
+        newExerciseBtn = findViewById(R.id.btn_exercise_save);
         newExerciseBtn.setOnClickListener(newExerciseListener);
+        backButton = findViewById(R.id.btn_exercises_back);
+        backButton.setOnClickListener(btnBackListener);
     }
 
     protected void updateUi(){
@@ -34,6 +38,7 @@ public class ExercisesMenuActivity extends AppCompatActivity {
         intent.putExtra("EXTRA_EXERCISE_ID", 0);
         startActivity(intent);
     };
+
 
 
     public void createRecyclerView(int view){
@@ -51,6 +56,8 @@ public class ExercisesMenuActivity extends AppCompatActivity {
             startActivity(intent);
         });
     }
+
+    View.OnClickListener btnBackListener = v -> goBack();
 
     public void goBack() {
         Intent intent = new Intent(this, MainActivity.class);

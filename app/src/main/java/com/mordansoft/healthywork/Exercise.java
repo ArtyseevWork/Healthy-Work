@@ -2,8 +2,12 @@ package com.mordansoft.healthywork;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.view.View;
+import android.widget.Toast;
+import androidx.appcompat.app.AlertDialog;
 
 import java.util.ArrayList;
 
@@ -135,7 +139,7 @@ public class Exercise {
             return getNewExercise(context);
         }
         MordanSoftLogger.addLog("getExerciseById START id = " + id);
-        Exercise exercise = null;
+        Exercise exercise = Exercise.getNewExercise(context);
         try {
             SQLiteDatabase db =  DatabaseHelper.getDatabase(context);
             Cursor cursor = db.query("EXERCISE", new String[]{"name",
@@ -179,6 +183,31 @@ public class Exercise {
 
     public static Exercise getRandomExercise(Context context){
         return Exercise.getExerciseById(context, 1);
+    }
+
+    public static void test(Context context, View view, Exercise exercise) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(context.getString(R.string.activity_exercise_delete));
+        builder.setMessage(context.getString(R.string.activity_exercise_delete_message));
+        builder.setPositiveButton(context.getString(R.string.yes), (dialog, id) -> {
+            try {
+                Exercise.deleteExercise(view.getContext(), exercise);
+                Toast toast = Toast.makeText(view.getContext(),
+                        context.getString(R.string.activity_exercise_delete_complete_message),
+                        Toast.LENGTH_LONG);
+                Intent intent;
+                intent = new Intent(view.getContext(), MainActivity.class);
+                toast.show();
+                context.startActivity(intent);
+            } catch (Exception e){
+                Toast toast = Toast.makeText(view.getContext(),
+                        "deleteKnife error: " + e,
+                        Toast.LENGTH_SHORT);
+                toast.show();
+            }
+        });
+        builder.setNegativeButton(context.getString(R.string.no), (dialog, id) -> dialog.cancel());
+        builder.show();
     }
 
 

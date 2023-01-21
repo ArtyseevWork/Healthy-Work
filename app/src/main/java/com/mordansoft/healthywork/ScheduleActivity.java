@@ -31,7 +31,8 @@ public class ScheduleActivity extends AppCompatActivity implements SetTime {
     public void init(){
         binding = ActivityScheduleBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        binding.btnScheduleSave.setOnClickListener(btnSaveListener);
+        binding.btnScheduleSave.setOnClickListener(btnBackListener);
+        binding.btnScheduleBack.setOnClickListener(btnBackListener);
         schedule = Schedule.getScheduleFromFile(this);
         binding.etScheduleStartDay.setOnClickListener(setTimeListener);
         binding.etScheduleEndDay.setOnClickListener(setTimeListener);
@@ -61,7 +62,7 @@ public class ScheduleActivity extends AppCompatActivity implements SetTime {
         MordanSoftLogger.addLog("ScheduleActivity.updateUi END");
     }
 
-    View.OnClickListener btnSaveListener = this::saveState;
+    View.OnClickListener btnBackListener = v -> goBack();
 
     View.OnClickListener setTimeListener = v -> {
         switch (v.getId()){
@@ -95,7 +96,7 @@ public class ScheduleActivity extends AppCompatActivity implements SetTime {
             Bundle args = new Bundle();
             args.putInt("MINUTE", minutes);
             args.putInt("HOUR", hours);
-            args.putInt("VIEWID", viewId);
+            args.putInt("VIEWID", viewId); //todo "_" in words
             newFragment.setArguments(args);
 
             newFragment.show(getSupportFragmentManager(), "ScheduleActivity");
@@ -128,7 +129,7 @@ public class ScheduleActivity extends AppCompatActivity implements SetTime {
         updateUi();
     }
 
-    private void saveState(View view){ //todo checks
+    private void saveState(){
         try {
             this.schedule.setScheduleEnable(binding.chbScheduleAvailable.isChecked());
             this.schedule.setSu(binding.chbScheduleSu.isChecked());
@@ -148,6 +149,7 @@ public class ScheduleActivity extends AppCompatActivity implements SetTime {
     }
 
     public void goBack() {
+        saveState();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }

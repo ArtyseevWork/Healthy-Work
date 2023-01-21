@@ -23,10 +23,12 @@ public class PreferencesActivity extends AppCompatActivity {
         updateUi();
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        binding = null;
+    public void init(){
+        binding = ActivityPreferencesBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        binding.btnSavePreferences.setOnClickListener(btnBackListener);
+        binding.btnPreferencesBack.setOnClickListener(btnBackListener);
+        preferences = Preferences.getPreferencesFromFile(this);
     }
     private void updateUi(){
         MordanSoftLogger.addLog("PreferencesActivity.updateUi START");
@@ -44,17 +46,17 @@ public class PreferencesActivity extends AppCompatActivity {
         MordanSoftLogger.addLog("PreferencesActivity.updateUi END");
     }
 
-    public void init(){
-        binding = ActivityPreferencesBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-        binding.btnSavePreferences.setOnClickListener(btnSaveListener);
-        preferences = Preferences.getPreferencesFromFile(this);
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        binding = null;
     }
 
-    View.OnClickListener btnSaveListener = this::saveState;
+    View.OnClickListener btnBackListener = v -> {
+        goBack();
+    };
 
-
-    private void saveState(View view){ //todo checks
+    private void saveState(){ //todo checks
         try {
             String countdownStr = String.valueOf(binding.etPreferencesCountdownStart.getText());
             int countdownInt = Integer.parseInt(countdownStr);
@@ -72,7 +74,9 @@ public class PreferencesActivity extends AppCompatActivity {
         }
     }
 
-    public void goBack() {
+
+    private void goBack() {
+        saveState();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
