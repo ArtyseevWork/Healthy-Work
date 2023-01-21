@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_top"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:background="@drawable/bkg_top"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,15 +29,16 @@
 
         <ImageButton
             android:id="@+id/btn_exercise_back"
+            style="@style/button_style2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/base_indent"
+            app:srcCompat="@drawable/arrow_left"
             android:contentDescription="@string/activity_exercise_back"
             app:layout_constraintBottom_toBottomOf="@+id/tv_exercises_title"
             app:layout_constraintEnd_toStartOf="@+id/tv_exercises_title"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_exercises_title"
-            app:srcCompat="?attr/actionModeCloseDrawable" />
+            app:layout_constraintTop_toTopOf="@+id/tv_exercises_title" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

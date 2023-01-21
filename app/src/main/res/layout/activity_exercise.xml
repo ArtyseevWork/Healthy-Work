@@ -29,14 +29,16 @@
 
         <ImageButton
             android:id="@+id/btn_exercise_back"
+            style="@style/button_style2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/activity_exercise_back"
             android:layout_margin="@dimen/base_indent"
+            app:srcCompat="@drawable/arrow_left"
+            android:contentDescription="@string/activity_exercise_back"
             app:layout_constraintBottom_toBottomOf="@+id/tv_preferences_title"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tv_preferences_title"
-            app:srcCompat="?attr/actionModeCloseDrawable" />
+ />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

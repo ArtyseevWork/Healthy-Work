@@ -18,16 +18,16 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
-            android:id="@+id/btn_schedule_back"
+            style="@style/button_style2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/base_indent"
-            android:contentDescription="@string/activity_schedule_back"
-            android:minHeight="48dp"
+            android:layout_margin="@dimen/base_indent"
+            app:srcCompat="@drawable/arrow_left"
+            android:id="@+id/btn_schedule_back"
+            android:contentDescription="@string/activity_exercise_back"
             app:layout_constraintBottom_toBottomOf="@+id/tv_schedule_title"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_schedule_title"
-            app:srcCompat="?attr/actionModeCloseDrawable" />
+            app:layout_constraintTop_toTopOf="@+id/tv_schedule_title" />
 
         <TextView
             android:id="@+id/tv_schedule_title"
@@ -64,7 +64,7 @@
 
     <TextView
         android:id="@+id/tv_schedule_available_title"
-        style="@style/button_style2"
+        style="@style/general_title_2_text_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/activity_schedule_enable"
@@ -74,7 +74,7 @@
 
     <TextView
         android:id="@+id/tv_schedule_days_of_week"
-        style="@style/button_style2"
+        style="@style/general_title_2_text_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/activity_schedule_days_of_week"
