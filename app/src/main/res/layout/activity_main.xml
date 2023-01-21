@@ -6,88 +6,115 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/tv_main_missed_count"
-        android:layout_width="wrap_content"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_top"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:text="@string/sample_text"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_main_missed"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/tv_main_missed"
-        app:layout_constraintTop_toTopOf="@+id/tv_main_missed" />
-
-    <Button
-        android:id="@+id/btn_main_exercises"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginBottom="15dp"
-        android:text="@string/activity_main_exercises"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btn_main_schedule"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btn_main_properties" />
-
-    <Button
-        android:id="@+id/btn_main_schedule"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginBottom="15dp"
-        android:text="@string/activity_main_schedules"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btn_main_exercises" />
-
-    <TextView
-        android:id="@+id/tv_main_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        app:layout_constraintBottom_toTopOf="@+id/tv_main_next_alert"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btn_main_start"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:text="@string/activity_main_start"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/bkg_top"
+        android:paddingBottom="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/btn_main_properties"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginBottom="15dp"
-        android:text="@string/activity_main_settings"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btn_main_exercises"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        <TextView
+            android:id="@+id/tv_main_title"
+            style="@style/general_title_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base_indent"
+            android:text="@string/app_name"
+            android:textColor="@color/color_primary"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/tv_main_next_alert"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/general_title_2_text_style"
         android:text="@string/activity_main_until_the_next_exercise"
-        app:layout_constraintBottom_toTopOf="@+id/btn_main_start"
+        app:layout_constraintBottom_toTopOf="@+id/cl_button_main"
         app:layout_constraintEnd_toStartOf="@+id/tv_main_next_alert_timer"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cl_top" />
+
+    <TextView
+        android:id="@+id/tv_main_next_alert_timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sample_text"
+        style="@style/general_text_style"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_main_next_alert"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tv_main_next_alert"
+        app:layout_constraintTop_toTopOf="@+id/tv_main_next_alert" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_button_main"
+        android:layout_width="0dp"
+        android:layout_height="265dp"
+        android:background="@drawable/whistle"
+        android:backgroundTintMode="add"
+        app:layout_constraintBottom_toTopOf="@+id/cl_bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cl_top">
+
+
+        <Button
+            android:id="@+id/btn_main_start"
+            style="@style/button_style2"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:text="@string/activity_main_start"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.822"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.46" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tv_main_exercise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        style="@style/general_title_2_text_style"
+        android:text="@string/activity_main_current_exercise"
+        app:layout_constraintBottom_toTopOf="@+id/tv_main_comleted"
+        app:layout_constraintEnd_toStartOf="@+id/sp_main_exercise"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_main_title" />
+        app:layout_constraintTop_toBottomOf="@+id/cl_button_main" />
+
+    <TextView
+        android:id="@+id/sp_main_exercise"
+        style="@style/general_text_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/activity_main_exercises_list"
+        android:text="@string/sample_text"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_main_exercise"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_main_exercise"
+        app:layout_constraintTop_toTopOf="@+id/tv_main_exercise" />
 
     <TextView
         android:id="@+id/tv_main_comleted"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        style="@style/general_title_2_text_style"
         android:text="@string/activity_main_performed"
         app:layout_constraintBottom_toTopOf="@+id/tv_main_missed"
         app:layout_constraintEnd_toStartOf="@+id/tv_main_performed_count"
@@ -97,11 +124,25 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_main_exercise" />
 
     <TextView
+        android:id="@+id/tv_main_performed_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sample_text"
+        style="@style/general_text_style"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_main_comleted"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tv_main_comleted"
+        app:layout_constraintTop_toTopOf="@+id/tv_main_comleted" />
+
+    <TextView
         android:id="@+id/tv_main_missed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        style="@style/general_title_2_text_style"
         android:text="@string/activity_main_missed"
-        app:layout_constraintBottom_toTopOf="@+id/btn_main_exercises"
+        app:layout_constraintBottom_toTopOf="@+id/cl_bottom"
         app:layout_constraintEnd_toStartOf="@+id/tv_main_missed_count"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
@@ -109,51 +150,58 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_main_comleted" />
 
     <TextView
-        android:id="@+id/tv_main_exercise"
+        android:id="@+id/tv_main_missed_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/activity_main_current_exercise"
-        app:layout_constraintBottom_toTopOf="@+id/tv_main_comleted"
-        app:layout_constraintEnd_toStartOf="@+id/sp_main_exercise"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_main_start" />
-
-    <TextView
-        android:id="@+id/sp_main_exercise"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:contentDescription="@string/activity_main_exercises_list"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_main_exercise"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/tv_main_exercise"
-        app:layout_constraintTop_toTopOf="@+id/tv_main_exercise" />
-
-    <TextView
-        android:id="@+id/tv_main_next_alert_timer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
         android:text="@string/sample_text"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_main_next_alert"
+        style="@style/general_text_style"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_main_missed"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/tv_main_next_alert"
-        app:layout_constraintTop_toTopOf="@+id/tv_main_next_alert" />
+        app:layout_constraintStart_toEndOf="@+id/tv_main_missed"
+        app:layout_constraintTop_toTopOf="@+id/tv_main_missed" />
 
-    <TextView
-        android:id="@+id/tv_main_performed_count"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:text="@string/sample_text"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_main_comleted"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/bkg_bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/tv_main_comleted"
-        app:layout_constraintTop_toTopOf="@+id/tv_main_comleted" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/btn_main_schedule"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            style="@style/button_style"
+            android:text="@string/activity_main_schedules"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_main_exercises"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/btn_main_exercises"
+            android:layout_width="wrap_content"
+            style="@style/button_style"
+            android:layout_height="50dp"
+            android:text="@string/activity_main_exercises"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_main_properties"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btn_main_schedule" />
+
+        <Button
+            android:id="@+id/btn_main_properties"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="@string/activity_main_settings"
+            style="@style/button_style"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btn_main_exercises" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

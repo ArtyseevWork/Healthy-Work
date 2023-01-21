@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--start text  -->
+    <style name="general_text_style">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/color_primary</item>
+    </style>
+
+    <style name="general_title_text_style" parent="general_text_style">
+        <item name="android:textSize">34sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="general_title_2_text_style" parent="general_text_style">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="general_additional_text_style" parent="general_text_style">
+        <item name="android:textSize">12sp</item>
+    </style>
+    <!--end text   -->
+
+
+    <style name="button_style" parent="Widget.MaterialComponents.Button">
+        <item name= "android:backgroundTint">@color/grey_300</item>
+        <item name="android:colorButtonNormal">@color/color_primary</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/color_primary</item>
+        <item name="android:paddingStart">8sp</item>
+        <item name="android:paddingEnd">8sp</item>
+        <item name="android:layout_marginBottom">@dimen/base_indent</item>
+    </style>
+
+    <style name="button_style2" parent="Widget.MaterialComponents.Button">
+        <item name= "android:backgroundTint">@color/grey_700</item>
+        <item name="android:colorButtonNormal">@color/color_primary</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/color_primary</item>
+        <item name="android:paddingStart">1sp</item>
+        <item name="android:paddingEnd">1sp</item>
+
+    </style>
+</resources>

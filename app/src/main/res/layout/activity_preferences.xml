@@ -6,76 +6,104 @@
     android:layout_height="match_parent"
     tools:context=".PreferencesActivity">
 
-    <TextView
-        android:id="@+id/tv_preferences_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/activity_preferences_title"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_preferences_back"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_top"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/bkg_top"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btn_preferences_back" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_preferences_title"
+            style="@style/general_title_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_preferences_title"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.35000002" />
+
+        <ImageButton
+            android:id="@+id/btn_preferences_back"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/activity_exercise_back"
+            android:layout_margin="@dimen/base_indent"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_preferences_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_preferences_title"
+            app:srcCompat="?attr/actionModeCloseDrawable" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/bkg_bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/btn_save_preferences"
+            style="@style/button_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_preferences_save"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/tv_preferences_period_title"
+        style="@style/general_title_2_text_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_margin="@dimen/base_indent"
         android:text="@string/activity_preferences_period"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="@+id/btn_preferences_back"
-        app:layout_constraintTop_toBottomOf="@+id/btn_preferences_back" />
+        app:layout_constraintBottom_toBottomOf="@+id/sw_preferences_period"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/sw_preferences_period" />
 
     <TextView
         android:id="@+id/tv_preferences_countdown_start_title"
+        style="@style/general_title_2_text_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
         android:text="@string/activity_preferences_countdown_start"
-        app:layout_constraintStart_toStartOf="@+id/btn_preferences_back"
-        app:layout_constraintTop_toBottomOf="@+id/sw_preferences_period" />
-
-    <Button
-        android:id="@+id/btn_save_preferences"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/activity_preferences_save"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageButton
-        android:id="@+id/btn_preferences_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:contentDescription="@string/activity_exercise_back"
-        android:minHeight="48dp"
+        android:layout_margin="@dimen/base_indent"
+        app:layout_constraintBottom_toBottomOf="@+id/et_preferences_countdown_start"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="?attr/actionModeCloseDrawable" />
+        app:layout_constraintTop_toTopOf="@+id/et_preferences_countdown_start" />
 
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/sw_preferences_period"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:minHeight="48dp"
-       app:showText="true"
-        android:textOff="@string/activity_preferences_half_hour"
-        android:textOn="@string/activity_preferences_hour"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_preferences_period_title"
-        app:layout_constraintStart_toStartOf="@+id/tv_preferences_title"
-        app:layout_constraintTop_toTopOf="@+id/tv_preferences_period_title"
-
         android:layout_alignParentTop="true"
         android:checked="false"
-        android:paddingBottom="10dp"
+        android:minHeight="48dp"
         android:paddingLeft="20dp"
-        android:paddingRight="20dp"
         android:paddingTop="10dp"
+        android:paddingRight="20dp"
+        android:layout_margin="@dimen/base_indent"
+
+        android:paddingBottom="10dp"
         android:textColor="#ffffff"
-        android:textSize="20sp" />
+        android:textOff="@string/activity_preferences_half_hour"
+        android:textOn="@string/activity_preferences_hour"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/tv_preferences_period_title"
+        app:layout_constraintTop_toBottomOf="@+id/cl_top"
+        app:showText="true" />
 
     <EditText
         android:id="@+id/et_preferences_countdown_start"
@@ -83,12 +111,12 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/activity_preferences_countdown_start"
+        android:importantForAutofill="no"
+        android:layout_margin="@dimen/base_indent"
         android:inputType="time"
         android:minHeight="48dp"
-        android:importantForAutofill="no"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_preferences_countdown_start_title"
-        app:layout_constraintStart_toStartOf="@+id/tv_preferences_title"
-        app:layout_constraintTop_toTopOf="@+id/tv_preferences_countdown_start_title" />
+        app:layout_constraintStart_toEndOf="@+id/tv_preferences_countdown_start_title"
+        app:layout_constraintTop_toBottomOf="@+id/sw_preferences_period" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
