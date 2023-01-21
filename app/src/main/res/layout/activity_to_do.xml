@@ -6,22 +6,77 @@
     android:layout_height="match_parent"
     tools:context=".ToDoActivity">
 
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bkg_top"
+        android:paddingBottom="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_main_title"
+            style="@style/general_title_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base_indent"
+            android:text="@string/app_name"
+            android:textColor="@color/color_primary"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_button_main"
+        android:layout_width="0dp"
+        android:layout_height="265dp"
+        android:background="@drawable/whistle"
+        android:backgroundTintMode="add"
+        app:layout_constraintBottom_toTopOf="@+id/cl_bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cl_top">
+
+
+        <Button
+            android:id="@+id/btn_todo_positive"
+            style="@style/button_style2"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:text="@string/activity_main_start"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.822"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.46" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <TextView
         android:id="@+id/tv_todo_title"
+        style="@style/general_title_2_text_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/activity_to_do_title"
         app:layout_constraintBottom_toTopOf="@+id/tv_todo_exercise_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/cl_top" />
 
     <TextView
         android:id="@+id/tv_todo_exercise_name"
+        style="@style/general_title_2_text_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/sample_text"
-        app:layout_constraintBottom_toTopOf="@+id/btn_todo_positive"
+        app:layout_constraintBottom_toTopOf="@+id/cl_button_main"
         app:layout_constraintEnd_toStartOf="@+id/tv_todo_exercise_count"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
@@ -30,6 +85,7 @@
 
     <TextView
         android:id="@+id/tv_todo_exercise_count"
+        style="@style/general_title_2_text_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
@@ -40,51 +96,56 @@
         app:layout_constraintStart_toEndOf="@+id/tv_todo_exercise_name"
         app:layout_constraintTop_toTopOf="@+id/tv_todo_exercise_name" />
 
-    <Button
-        android:id="@+id/btn_todo_positive"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/activity_to_do_positive"
-        app:layout_constraintBottom_toTopOf="@+id/btn_todo_negative"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/bkg_bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_todo_exercise_name" />
+        app:layout_constraintStart_toStartOf="parent">
 
-    <Button
-        android:id="@+id/btn_todo_negative"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/activity_to_do_negative"
-        app:layout_constraintBottom_toTopOf="@+id/btn_todo_exit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_todo_positive" />
+        <Button
+            android:id="@+id/btn_todo_negative"
+            style="@style/button_style"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="@string/activity_to_do_negative"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_todo_exit"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/btn_todo_exit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/activity_to_do_exit"
-        app:layout_constraintBottom_toTopOf="@+id/tv_schedule_already_done_title"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_todo_negative" />
+        <Button
+            android:id="@+id/btn_todo_exit"
+            style="@style/button_style"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="@string/activity_to_do_exit"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btn_todo_negative" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/tv_schedule_already_done_title"
+        style="@style/general_title_2_text_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/activity_to_do_already_done"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/cl_bottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/tv_todo_already_done"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_todo_exit" />
+        app:layout_constraintTop_toBottomOf="@+id/cl_button_main" />
 
     <TextView
         android:id="@+id/tv_todo_already_done"
+        style="@style/general_title_2_text_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"

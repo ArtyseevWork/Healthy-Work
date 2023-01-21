@@ -95,7 +95,7 @@
     <string name="activity_to_do_save">Save</string>
     <string name="activity_to_do_positive">I\'m going to fulfill</string>
     <string name="activity_to_do_negative">Skip</string>
-    <string name="activity_to_do_exit">Close the program for today</string>
+    <string name="activity_to_do_exit">Close</string>
     <string name="activity_to_do_already_done">Already done:</string>
     <!--end activity_preferences   -->
 
@@ -106,7 +106,7 @@
     <string name="notification_save">Save</string>
     <string name="notification_positive">I\'m going to fulfill</string>
     <string name="notification_negative">Skip</string>
-    <string name="notification_exit">Close the program for today</string>
+    <string name="notification_exit">Close</string>
     <string name="notification_already_done">Already done:</string>
     <!--end notifications   -->
 
