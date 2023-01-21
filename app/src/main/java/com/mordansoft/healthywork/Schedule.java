@@ -329,9 +329,16 @@ public class Schedule {
 
     public static Calendar getNextAlarmTime(Context context, @Nullable Calendar inCalendar){
         MordanSoftLogger.addLog("getNextAlarmTime START");
+
         if (inCalendar == null){
             inCalendar = Calendar.getInstance();
         }
+
+        if (true) {//debug
+            inCalendar.setTimeInMillis(inCalendar.getTimeInMillis() + (20*1000));
+            return inCalendar;
+        }
+
         MordanSoftLogger.addLog("getNextAlarmTime  inCalendar = " + inCalendar.getTime());
 
         Calendar outCalendar = (Calendar) inCalendar.clone();

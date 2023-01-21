@@ -106,7 +106,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     };
 
-
     private  final View.OnTouchListener handleTouch = new View.OnTouchListener() {
         @Override
         public boolean onTouch(View v, MotionEvent event) {

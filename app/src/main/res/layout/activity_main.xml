@@ -72,9 +72,8 @@
             style="@style/general_main_button_text_style"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:text="@string/activity_main_start"
             android:rotation="-33"
-
+            android:text="@string/activity_main_start"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.822"
