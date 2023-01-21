@@ -1,9 +1,11 @@
 package com.mordansoft.healthywork;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
 import com.mordansoft.healthywork.databinding.ActivityMainBinding;
@@ -32,7 +34,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         currentStatus = CurrentStatus.getCurrentStatusFromFile(this);
         instance = this;
-        binding.btnMainStart.setOnClickListener(btnMainStartListener);
+        binding.clButtonMain.setOnClickListener(btnMainStartListener);
+        binding.clButtonMain.setOnTouchListener(handleTouch);
         binding.btnMainProperties.setOnClickListener(btnSettingsListener);
         binding.btnMainExercises.setOnClickListener(btnExercisesListener);
         binding.btnMainSchedule.setOnClickListener(btnScheduleListener);
@@ -101,6 +104,26 @@ public class MainActivity extends AppCompatActivity {
     View.OnClickListener btnScheduleListener = v -> {
         Intent intent = new Intent(getApplicationContext(), ScheduleActivity.class);
         startActivity(intent);
+    };
+
+
+    private  final View.OnTouchListener handleTouch = new View.OnTouchListener() {
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN: {
+                    v.setBackground(ContextCompat.getDrawable(v.getContext(), R.drawable.whistle_pressed));
+                    v.invalidate();
+                    break;
+                }
+                case MotionEvent.ACTION_UP: {
+                    v.setBackground(ContextCompat.getDrawable(v.getContext(), R.drawable.whistle));
+                    v.invalidate();
+                    break;
+                }
+            }
+            return false;
+        }
     };
 
     /* ****** ! Listeners **********/

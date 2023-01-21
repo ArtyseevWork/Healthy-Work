@@ -19,6 +19,11 @@
     <style name="general_additional_text_style" parent="general_text_style">
         <item name="android:textSize">12sp</item>
     </style>
+
+    <style name="general_main_button_text_style" parent="general_text_style">
+        <item name="android:textSize">30sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
     <!--end text   -->
 
 
