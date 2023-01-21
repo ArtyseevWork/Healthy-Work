@@ -2,7 +2,7 @@
 <resources>
     <!--start text  -->
     <style name="general_text_style">
-        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:fontFamily">roboto</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/color_primary</item>
     </style>

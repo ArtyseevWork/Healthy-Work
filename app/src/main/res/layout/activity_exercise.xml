@@ -6,22 +6,80 @@
     android:layout_height="match_parent"
     tools:context=".ExerciseActivity">
 
-    <TextView
-        android:id="@+id/tv_preferences_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/activity_exercise_title"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_preferences_back"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_top"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/bkg_top"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btn_preferences_back" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_preferences_title"
+            android:text="@string/activity_exercise_title"
+            style="@style/general_title_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.35000002" />
+
+        <ImageButton
+            android:id="@+id/btn_exercise_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/activity_exercise_back"
+            android:layout_margin="@dimen/base_indent"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_preferences_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_preferences_title"
+            app:srcCompat="?attr/actionModeCloseDrawable" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/bkg_bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/btn_new_exercise"
+            style="@style/button_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_exercise_new"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_exercise_save"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/btn_exercise_save"
+            style="@style/button_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="@string/activity_exercise_save"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btn_new_exercise" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <EditText
         android:id="@+id/et_exercise_name"
+        style="@style/general_title_2_text_style"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="50dp"
         android:layout_marginEnd="15dp"
         android:hint="@string/activity_exercise_name"
         android:importantForAutofill="no"
@@ -30,10 +88,11 @@
         android:text="@string/activity_exercise_new"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_preferences_title" />
+        app:layout_constraintTop_toBottomOf="@+id/cl_top" />
 
     <TextView
         android:id="@+id/tv_preferences_period_title"
+        style="@style/general_title_2_text_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -44,20 +103,22 @@
 
     <Spinner
         android:id="@+id/et_exercise_units"
+        style="@style/general_title_2_text_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:hint="@string/activity_exercise_units_hint"
         android:entries="@array/activity_exercise_units_array"
+        android:hint="@string/activity_exercise_units_hint"
         android:inputType="textAutoCorrect"
-        android:minHeight="48dp"
         android:minWidth="180dp"
+        android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_preferences_period_title"
         app:layout_constraintStart_toStartOf="@+id/chb_exercise_available"
         app:layout_constraintTop_toTopOf="@+id/tv_preferences_period_title" />
 
     <TextView
         android:id="@+id/tv_preferences_countdown_start_title"
+        style="@style/general_title_2_text_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -67,6 +128,7 @@
 
     <EditText
         android:id="@+id/et_exercise_counts"
+        style="@style/general_title_2_text_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -82,6 +144,7 @@
 
     <TextView
         android:id="@+id/tv_exercise_available_title"
+        style="@style/general_title_2_text_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -93,13 +156,14 @@
         android:id="@+id/chb_exercise_available"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
+        android:layout_marginStart="80dp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_exercise_available_title"
         app:layout_constraintStart_toEndOf="@+id/tv_exercise_available_title"
         app:layout_constraintTop_toTopOf="@+id/tv_exercise_available_title" />
 
     <EditText
         android:id="@+id/et_exercise_description"
+        style="@style/general_title_2_text_style"
         android:layout_width="0dp"
         android:layout_height="80dp"
         android:layout_marginStart="15dp"
@@ -116,6 +180,7 @@
 
     <TextView
         android:id="@+id/tv_exercise_description_title"
+        style="@style/general_text_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -124,26 +189,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_exercise_counts" />
 
-    <Button
-        android:id="@+id/btn_new_exercise"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/activity_exercise_save"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageButton
-        android:id="@+id/btn_preferences_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:contentDescription="@string/activity_exercise_back"
-        android:minHeight="48dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="?attr/actionModeCloseDrawable" />
 
     <androidx.constraintlayout.widget.Barrier
         android:layout_width="wrap_content"
