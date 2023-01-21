@@ -57,7 +57,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_button_main"
-        android:layout_width="0dp"
+        android:layout_width="330dp"
         android:layout_height="265dp"
         android:background="@drawable/whistle"
         android:backgroundTintMode="add"
@@ -67,18 +67,19 @@
         app:layout_constraintTop_toBottomOf="@+id/cl_top">
 
 
-        <Button
+        <TextView
             android:id="@+id/btn_main_start"
             style="@style/button_style2"
             android:layout_width="56dp"
             android:layout_height="56dp"
             android:text="@string/activity_main_start"
+            android:rotation="-33"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.822"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.46" />
+            app:layout_constraintVertical_bias="0.54" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

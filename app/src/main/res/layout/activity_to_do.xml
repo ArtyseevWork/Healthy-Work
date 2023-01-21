@@ -33,7 +33,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_button_main"
-        android:layout_width="0dp"
+        android:layout_width="330dp"
         android:layout_height="265dp"
         android:background="@drawable/whistle"
         android:backgroundTintMode="add"
