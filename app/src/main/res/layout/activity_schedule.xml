@@ -4,46 +4,79 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="5dp"
     tools:context=".ScheduleActivity">
 
 
-    <ImageButton
-        android:id="@+id/btn_schedule_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:contentDescription="@string/activity_schedule_back"
-        android:minHeight="48dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="?attr/actionModeCloseDrawable" />
-
-    <TextView
-        android:id="@+id/tv_schedule_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/activity_schedule_title"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_schedule_back"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_top"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/bkg_top"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btn_schedule_back" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/btn_schedule_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base_indent"
+            android:contentDescription="@string/activity_schedule_back"
+            android:minHeight="48dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_schedule_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_schedule_title"
+            app:srcCompat="?attr/actionModeCloseDrawable" />
+
+        <TextView
+            android:id="@+id/tv_schedule_title"
+            style="@style/general_title_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base_indent"
+            android:text="@string/activity_schedule_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/bkg_bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/btn_schedule_save"
+            style="@style/button_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_schedule_save"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <TextView
         android:id="@+id/tv_schedule_available_title"
+        style="@style/button_style2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
         android:text="@string/activity_schedule_enable"
-        app:layout_constraintStart_toStartOf="@+id/btn_schedule_back"
-        app:layout_constraintTop_toBottomOf="@+id/btn_schedule_back" />
+        android:layout_margin="@dimen/base_indent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cl_top" />
 
     <TextView
         android:id="@+id/tv_schedule_days_of_week"
+        style="@style/button_style2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
         android:text="@string/activity_schedule_days_of_week"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -116,7 +149,6 @@
         android:id="@+id/chb_schedule_we"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
         app:layout_constraintEnd_toStartOf="@+id/chb_schedule_th"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/chb_schedule_tu"
@@ -124,6 +156,7 @@
 
     <TextView
         android:id="@+id/tv_schedule_su"
+        style="@style/general_title_2_text_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -134,6 +167,7 @@
 
     <TextView
         android:id="@+id/tv_schedule_mo"
+        style="@style/general_title_2_text_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -144,6 +178,7 @@
 
     <TextView
         android:id="@+id/tv_schedule_tu"
+        style="@style/general_title_2_text_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -154,6 +189,7 @@
 
     <TextView
         android:id="@+id/tv_schedule_we"
+        style="@style/general_title_2_text_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -164,6 +200,7 @@
 
     <TextView
         android:id="@+id/tv_schedule_th"
+        style="@style/general_title_2_text_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -174,6 +211,7 @@
 
     <TextView
         android:id="@+id/tv_schedule_fr"
+        style="@style/general_title_2_text_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -184,6 +222,7 @@
 
     <TextView
         android:id="@+id/tv_schedule_sa"
+        style="@style/general_title_2_text_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -194,87 +233,102 @@
 
     <TextView
         android:id="@+id/tv_schedule_start_title"
+        style="@style/general_title_2_text_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:text="@string/activity_schedule_start_day"
-        app:layout_constraintStart_toStartOf="@+id/btn_schedule_back"
+        android:layout_margin="@dimen/base_indent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_schedule_su" />
 
     <TextView
         android:id="@+id/tv_schedule_end_title"
+        style="@style/general_title_2_text_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/activity_schedule_end_day"
-        app:layout_constraintStart_toStartOf="@+id/btn_schedule_back"
+        android:layout_margin="@dimen/base_indent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_schedule_start_day" />
 
     <TextView
         android:id="@+id/tv_schedule_recess_enable_title"
+        style="@style/general_title_2_text_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/activity_schedule_recess"
-        app:layout_constraintStart_toStartOf="@+id/btn_schedule_back"
+        android:layout_margin="@dimen/base_indent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_schedule_end_day" />
 
     <TextView
         android:id="@+id/tv_schedule_start_recess_title"
+        style="@style/general_title_2_text_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/activity_schedule_start_recess"
-        app:layout_constraintStart_toStartOf="@+id/btn_schedule_back"
+        android:layout_margin="@dimen/base_indent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/chb_schedule_recess_enable" />
 
     <TextView
         android:id="@+id/tv_schedule_end_recess_title"
+        style="@style/general_title_2_text_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:text="@string/activity_schedule_end_recess"
-        app:layout_constraintStart_toStartOf="@+id/btn_schedule_back"
+        android:layout_margin="@dimen/base_indent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_schedule_start_recess" />
 
     <TextView
         android:id="@+id/et_schedule_start_day"
+        style="@style/general_text_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/base_indent"
         android:ems="10"
         android:importantForAutofill="no"
         app:layout_constraintBottom_toBottomOf="@+id/tv_schedule_start_title"
-        app:layout_constraintStart_toStartOf="@+id/tv_schedule_days_of_week"
+        app:layout_constraintStart_toEndOf="@+id/tv_schedule_start_title"
         app:layout_constraintTop_toTopOf="@+id/tv_schedule_start_title" />
 
     <TextView
         android:id="@+id/et_schedule_end_day"
+        style="@style/general_text_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:importantForAutofill="no"
         app:layout_constraintBottom_toBottomOf="@+id/tv_schedule_end_title"
-        app:layout_constraintStart_toStartOf="@+id/tv_schedule_days_of_week"
+        app:layout_constraintStart_toStartOf="@+id/et_schedule_start_day"
         app:layout_constraintTop_toTopOf="@+id/tv_schedule_end_title" />
 
     <TextView
         android:id="@+id/et_schedule_start_recess"
+        style="@style/general_text_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:importantForAutofill="no"
         app:layout_constraintBottom_toBottomOf="@+id/tv_schedule_start_recess_title"
-        app:layout_constraintStart_toStartOf="@+id/tv_schedule_days_of_week"
+        app:layout_constraintStart_toStartOf="@+id/et_schedule_start_day"
         app:layout_constraintTop_toTopOf="@+id/tv_schedule_start_recess_title" />
 
     <TextView
         android:id="@+id/et_schedule_end_recess"
+        style="@style/general_text_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:importantForAutofill="no"
         app:layout_constraintBottom_toBottomOf="@+id/tv_schedule_end_recess_title"
-        app:layout_constraintStart_toStartOf="@+id/tv_schedule_days_of_week"
+        app:layout_constraintStart_toStartOf="@+id/et_schedule_start_day"
         app:layout_constraintTop_toTopOf="@+id/tv_schedule_end_recess_title" />
 
     <androidx.appcompat.widget.SwitchCompat
@@ -282,18 +336,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/tv_schedule_recess_enable_title"
-        app:layout_constraintStart_toStartOf="@+id/tv_schedule_days_of_week"
+        app:layout_constraintStart_toStartOf="@+id/et_schedule_start_day"
         app:layout_constraintTop_toTopOf="@+id/tv_schedule_recess_enable_title" />
-
-    <Button
-        android:id="@+id/btn_schedule_save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:text="@string/activity_schedule_save"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
