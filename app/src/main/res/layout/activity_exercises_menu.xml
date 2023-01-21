@@ -6,48 +6,70 @@
     android:layout_height="match_parent"
     tools:context=".ExercisesMenuActivity">
 
-
-    <TextView
-        android:id="@+id/tv_preferences_title"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_top"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/activity_exercises_menu_title"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_preferences_back"
+        android:background="@drawable/bkg_top"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btn_preferences_back" />
+        app:layout_constraintTop_toTopOf="parent">
 
+        <TextView
+            android:id="@+id/tv_exercises_title"
+            android:text="@string/activity_exercises_menu_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/general_title_text_style"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.35000002" />
 
-    <Button
-        android:id="@+id/btn_new_exercise"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/activity_exercises_menu_add"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        <ImageButton
+            android:id="@+id/btn_exercise_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/base_indent"
+            android:contentDescription="@string/activity_exercise_back"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_exercises_title"
+            app:layout_constraintEnd_toStartOf="@+id/tv_exercises_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_exercises_title"
+            app:srcCompat="?attr/actionModeCloseDrawable" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageButton
-        android:id="@+id/btn_preferences_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:contentDescription="@string/activity_exercises_menu_back"
-        android:minHeight="48dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="?attr/actionModeCloseDrawable" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_exercises_menu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/cl_bottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_preferences_back" />
+        app:layout_constraintTop_toBottomOf="@+id/cl_top"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/bkg_bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/btn_new_exercise"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/button_style"
+            android:text="@string/activity_exercises_menu_add"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
