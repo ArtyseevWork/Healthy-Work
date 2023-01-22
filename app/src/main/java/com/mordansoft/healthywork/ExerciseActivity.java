@@ -56,7 +56,11 @@ public class ExerciseActivity extends AppCompatActivity {
     /********** Listeners **********/
     View.OnClickListener btnBackListener = v -> goBack();
 
-    View.OnClickListener btnDeleteListener = v -> Exercise.deleteExercise(v.getContext(), exercise);
+    View.OnClickListener btnDeleteListener = v -> {
+        Exercise.deleteExercise(v.getContext(), exercise);
+        Intent intent = new Intent(this, ExercisesMenuActivity.class);
+        startActivity(intent);
+    };
 
     View.OnClickListener btnPlusListener = v -> changeCount(1);
 
