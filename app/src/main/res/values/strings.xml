@@ -3,6 +3,8 @@
     <string name="sample_text">Sample text</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="channel_name" translatable="false">Healthy work</string>
+    <string name="channel_description" translatable="false">Healthy work notification for chanel</string>
 
 
     <!--start activity_main  -->
