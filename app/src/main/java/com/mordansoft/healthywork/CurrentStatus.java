@@ -72,7 +72,7 @@ public class CurrentStatus {
                 long timeOut = (1000L * 60 * preferences.getPeriod()) / 4 ;   //formula of time-out (0.75 of period)
 
                 if (nextAlarmTime == nextAlarmTimeDefault ||
-                        ((nextAlarmTime - currentTime ) < timeOut)) {
+                        nextAlarmTime < currentTime ) {
                     TodayStatistics todayStatistics = TodayStatistics.getTodayStatisticsFromFile(context);
                     currentStatus = currentStatus.recreate(context);
                     todayStatistics.setCountOfExerciseDelta(context,-1);
@@ -117,4 +117,6 @@ public class CurrentStatus {
         MordanSoftLogger.addLog("CurrentStatus.stop END");
         return this;
     }
+
+
 }
