@@ -19,15 +19,13 @@ public class AlarmReceiver extends BroadcastReceiver {
             Notification notification = new Notification(context);
             notification.createNotification();
 
+            Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+            vibrator.vibrate(1000);
 
+            Uri alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+            Ringtone ringtone = RingtoneManager.getRingtone(context, alarmUri);
+            ringtone.play();
         }
-
-        Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
-        vibrator.vibrate(1000);
-
-        Uri alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        Ringtone ringtone = RingtoneManager.getRingtone(context, alarmUri);
-        ringtone.play();
 
         MordanSoftLogger.addLog("AlarmReceiver END");
     }
