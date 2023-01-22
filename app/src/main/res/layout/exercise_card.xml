@@ -7,26 +7,30 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    app:cardBackgroundColor="@android:color/transparent"
     android:textAlignment="center"
-    app:cardElevation="0dp">
+    card_view:cardBackgroundColor="@color/grey_700"
+    card_view:cardCornerRadius="10dp"
+    card_view:cardElevation="5dp"
+    card_view:cardUseCompatPadding="true">
 
     <LinearLayout
         android:id="@+id/exercise_card_border"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        >
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:gravity="center_horizontal|center_vertical"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/exercise_card_name"
                 android:layout_width="match_parent"
+                style="@style/general_text_style"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical|end"
                 android:layout_margin="5dp"
@@ -39,6 +43,7 @@
 
         <TextView
             android:id="@+id/exercise_card_enable"
+            style="@style/general_text_style"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_margin="1dp"
