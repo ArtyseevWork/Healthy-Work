@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private static MainActivity instance;
     CurrentStatus currentStatus;
+    TodayStatistics todayStatistics;
     Exercise exercise;
 
     @Override
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         currentStatus = CurrentStatus.getCurrentStatusFromFile(this);
+        todayStatistics = TodayStatistics.getTodayStatisticsFromFile(this);
         instance = this;
         binding.clButtonMain.setOnClickListener(btnMainStartListener);
         binding.clButtonMain.setOnTouchListener(handleTouch);
@@ -52,14 +54,14 @@ public class MainActivity extends AppCompatActivity {
 
          if (currentStatus.getApplicationStatus() == CurrentStatus.applicationStatusActive){
             visible = View.VISIBLE;
-            exercise = Exercise.getExerciseById(this, currentStatus.getExerciseId());
+            exercise = Exercise.getExerciseById(this, todayStatistics.getExerciseId());
             mainButtonText = "Stop";
             binding.tvMainNextAlertTimer.setText(currentStatus.getStringNextAlarmTime());
             binding.btnMainStart.setText(exercise.getName());
             binding.tvMainNextAlertTimer.setVisibility(visible);
             binding.spMainExercise.setText(exercise.getName());
-            binding.tvMainPerformedCount.setText(String.valueOf(currentStatus.getCountOfExerciseDone()));
-            binding.tvMainMissedCount.setText(String.valueOf(currentStatus.getCountOfExerciseSkipped()));
+            binding.tvMainPerformedCount.setText(String.valueOf(todayStatistics.getCountOfExerciseDone()));
+            binding.tvMainMissedCount.setText(String.valueOf(todayStatistics.getCountOfExerciseSkipped()));
         }
 
         binding.btnMainStart.setText(mainButtonText);
@@ -83,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
     View.OnClickListener btnMainStartListener = v -> {
         if (currentStatus.getApplicationStatus() == CurrentStatus.applicationStatusDefault){
             currentStatus = currentStatus.run(this);
+            todayStatistics = todayStatistics.recreate(this);
         } else if(currentStatus.getApplicationStatus() == CurrentStatus.applicationStatusActive){
             currentStatus = currentStatus.stop(this);
         }

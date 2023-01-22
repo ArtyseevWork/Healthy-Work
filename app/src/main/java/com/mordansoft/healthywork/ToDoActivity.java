@@ -13,6 +13,7 @@ public class ToDoActivity extends AppCompatActivity {
 
     private ActivityToDoBinding binding;
     CurrentStatus currentStatus;
+    TodayStatistics todayStatistics;
     Exercise exercise;
 
     @Override
@@ -33,31 +34,32 @@ public class ToDoActivity extends AppCompatActivity {
     private void init(){
         binding = ActivityToDoBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        todayStatistics = TodayStatistics.getTodayStatisticsFromFile(this);
         currentStatus = CurrentStatus.getCurrentStatusFromFile(this);
-        binding.btnTodoPositive.setOnClickListener(btnPositiveListener);
+        binding.clButtonMain.setOnClickListener(btnPositiveListener);
         binding.btnTodoNegative.setOnClickListener(btnNegativeListener);
         binding.btnTodoExit.setOnClickListener(btnExitListener);
         binding.clButtonMain.setOnTouchListener(handleTouch);
-        exercise = Exercise.getExerciseById(this, currentStatus.getExerciseId());
+        exercise = Exercise.getExerciseById(this, todayStatistics.getExerciseId());
     }
 
     private void updateUi(){
         binding.tvTodoExerciseName.setText(exercise.getName());
         binding.tvTodoExerciseCount.setText(String.valueOf(exercise.getCount()));
-        binding.tvTodoAlreadyDone.setText(String.valueOf(currentStatus.getCountOfExerciseDone()));
+        binding.tvTodoAlreadyDone.setText(String.valueOf(todayStatistics.getCountOfExerciseDone()));
     }
 
     /********** Listeners **********/
 
     View.OnClickListener btnPositiveListener = v -> {
-        currentStatus.exerciseDonePlus(this,exercise.getCount());
+        todayStatistics.setCountOfExerciseDelta(this,+1);
         currentStatus.run(this);
         goBack();
 
     };
 
     View.OnClickListener btnNegativeListener = v -> {
-        currentStatus.exerciseSkipPlus(this,exercise.getCount());
+        todayStatistics.setCountOfExerciseDelta(this,-1);
         currentStatus.run(this);
         goBack();
     };

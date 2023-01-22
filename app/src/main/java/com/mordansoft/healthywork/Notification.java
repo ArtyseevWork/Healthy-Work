@@ -38,9 +38,9 @@ public class Notification {
         Intent plusIntent = new Intent(context, NotificationReceiver.class);
         plusIntent.setAction(ACTION_SNOOZE);
         plusIntent.removeExtra(EXTRA_NOTIFICATION_ID);
-        plusIntent.removeExtra(CurrentStatus.exerciseDeltaKey);
+        plusIntent.removeExtra(TodayStatistics.exerciseDeltaKey);
         plusIntent.putExtra(EXTRA_NOTIFICATION_ID, NOTIFY_ID);
-        plusIntent.putExtra(CurrentStatus.exerciseDeltaKey, +100);
+        plusIntent.putExtra(TodayStatistics.exerciseDeltaKey, +1);
 
         PendingIntent plusPendingIntent =
                 PendingIntent.getBroadcast(context, 1, plusIntent, 0);
@@ -50,9 +50,9 @@ public class Notification {
         Intent minusIntent = new Intent(context, NotificationReceiver.class);
         minusIntent.setAction(ACTION_SNOOZE);
         minusIntent.removeExtra(EXTRA_NOTIFICATION_ID);
-        minusIntent.removeExtra(CurrentStatus.exerciseDeltaKey);
+        minusIntent.removeExtra(TodayStatistics.exerciseDeltaKey);
         minusIntent.putExtra(EXTRA_NOTIFICATION_ID, NOTIFY_ID);
-        minusIntent.putExtra(CurrentStatus.exerciseDeltaKey, -100);
+        minusIntent.putExtra(TodayStatistics.exerciseDeltaKey, -1);
         PendingIntent minusPendingIntent =
                 PendingIntent.getBroadcast(context, 2, minusIntent,  0);
 
@@ -64,9 +64,9 @@ public class Notification {
                         .setSound(Settings.System.DEFAULT_NOTIFICATION_URI)
                         .setContentIntent(pendingIntent)
                         .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
-                        .setDefaults(android.app.Notification.DEFAULT_ALL)
+                        .setDefaults(android.app.Notification.PRIORITY_MAX)
                         .setAutoCancel(true)
-                        .setPriority(NotificationCompat.PRIORITY_MAX)
+                        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                         .setDefaults(android.app.Notification.DEFAULT_ALL)
                         .addAction(R.drawable.ic_baseline_done_24, context.getText(R.string.notification_coming_soon),
                                  plusPendingIntent)
@@ -102,7 +102,6 @@ public class Notification {
             channel.enableLights(true);
             channel.setLightColor(Color.RED);
             channel.enableVibration(true);
-            channel.setImportance(NotificationManager.IMPORTANCE_DEFAULT);
             channel.setVibrationPattern(new long[] { 100, 200, 150 });
             notificationManager.createNotificationChannel(channel);
         }

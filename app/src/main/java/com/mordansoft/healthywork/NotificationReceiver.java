@@ -17,15 +17,15 @@ public class NotificationReceiver extends BroadcastReceiver {
         if(intent != null){
             if(intent.getExtras() != null){
                 notifyId = intent.getExtras().getInt(EXTRA_NOTIFICATION_ID, 0);
-                exCntDelta = intent.getExtras().getInt(CurrentStatus.exerciseDeltaKey, 0);
+                exCntDelta = intent.getExtras().getInt(TodayStatistics.exerciseDeltaKey, 0);
             }
         }
 
         MordanSoftLogger.addLog("Receive id: " + notifyId);
         MordanSoftLogger.addLog("exCntDelta: " + exCntDelta);
 
-        CurrentStatus currentStatus = CurrentStatus.getCurrentStatusFromFile(context);
-        currentStatus.setCountOfExerciseDelta(context, exCntDelta);
+        TodayStatistics todayStatistics = TodayStatistics.getTodayStatisticsFromFile(context);
+        todayStatistics.setCountOfExerciseDelta(context, exCntDelta);
 
         Notification itsTimeNotification = new Notification(context);
         itsTimeNotification.deleteNotification();

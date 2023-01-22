@@ -7,12 +7,12 @@
     <string name="activity_preferences_title">Настройки</string>
     <string name="yes">Так</string>
     <string name="no">Ні</string>
-    <string name="activity_main_until_the_next_exercise">Наступна вправа:</string>
+    <string name="activity_main_until_the_next_exercise">Час:</string>
     <string name="activity_main_start">Старт</string>
     <string name="activity_main_stop">Стоп</string>
     <string name="activity_main_performed">Виконано</string>
     <string name="activity_main_settings">Налаштування</string>
-    <string name="activity_main_current_exercise">Поточна вправа:</string>
+    <string name="activity_main_current_exercise">Вправа:</string>
     <string name="activity_main_exercises">Вправи</string>
     <string name="activity_main_exercises_list">Меню вправ</string>
     <string name="activity_main_schedules">Графік</string>
