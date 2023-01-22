@@ -46,7 +46,7 @@
         <TextView
             android:id="@+id/btn_todo_positive"
             style="@style/general_main_button_text_style"
-            android:layout_width="70dp"
+            android:layout_width="85dp"
             android:layout_height="70dp"
             android:rotation="-33"
             android:text="@string/activity_main_start"

@@ -52,9 +52,7 @@ public class PreferencesActivity extends AppCompatActivity {
         binding = null;
     }
 
-    View.OnClickListener btnBackListener = v -> {
-        goBack();
-    };
+    View.OnClickListener btnBackListener = v -> goBack();
 
     private void saveState(){ //todo checks
         try {
