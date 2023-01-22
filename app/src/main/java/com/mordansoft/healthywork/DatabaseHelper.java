@@ -68,18 +68,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static void insertTestData(SQLiteDatabase db) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put("name","testExercise");
-        contentValues.put("description","testExerciseDescription");
-        contentValues.put("unit","test units");
-        contentValues.put("count",5);
+        contentValues.put("name","Sit-ups");
+        contentValues.put("description","test Sit-ups Description");
+        contentValues.put("unit","times");
+        contentValues.put("count",10);
         contentValues.put("enable ",1);
         db.insert("EXERCISE",null,contentValues);
         contentValues.clear();
-        contentValues.put("name","testExercise2");
-        contentValues.put("description","testExerciseDescription2");
-        contentValues.put("unit","test units2");
-        contentValues.put("count",10);
-        contentValues.put("enable",0);
+        contentValues.put("name","Push ups");
+        contentValues.put("description","test push ups Description");
+        contentValues.put("unit","times");
+        contentValues.put("count",5);
+        contentValues.put("enable",1);
         db.insert("EXERCISE",null,contentValues);
     }
 
