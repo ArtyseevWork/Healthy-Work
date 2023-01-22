@@ -446,7 +446,7 @@ public class Schedule {
     public static Calendar run(Context context){
         MordanSoftLogger.addLog("Alarm run START " );
         Calendar nextAlarmTime = getNextAlarmTime(context, null);
-        long intervalMs = (long) Preferences.getPreferencesFromFile(context).getPeriod()*60*1000;
+        //long intervalMs = (long) Preferences.getPreferencesFromFile(context).getPeriod()*60*1000;
         //intervalMs = 60*1000; // for debugging
         Intent intent = new Intent(context, AlarmReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context,
