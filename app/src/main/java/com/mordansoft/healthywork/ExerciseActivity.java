@@ -58,10 +58,7 @@ public class ExerciseActivity extends AppCompatActivity {
 
     View.OnClickListener btnDeleteListener = v -> Exercise.deleteExercise(v.getContext(), exercise);
 
-    View.OnClickListener btnPlusListener = v -> {
-        changeCount(1);
-        Exercise.test(this, v, exercise);
-    };
+    View.OnClickListener btnPlusListener = v -> changeCount(1);
 
     View.OnClickListener btnMinusListener = v -> changeCount(-1);
 
