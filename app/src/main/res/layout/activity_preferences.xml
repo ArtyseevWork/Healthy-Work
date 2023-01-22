@@ -78,11 +78,10 @@
         style="@style/general_title_2_text_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/activity_preferences_countdown_start"
         android:layout_margin="@dimen/base_indent"
-        app:layout_constraintBottom_toBottomOf="@+id/et_preferences_countdown_start"
+        android:text="@string/activity_preferences_countdown_start"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/et_preferences_countdown_start" />
+        app:layout_constraintTop_toBottomOf="@+id/sw_preferences_period" />
 
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/sw_preferences_period"
@@ -91,32 +90,53 @@
         android:layout_alignParentTop="true"
         android:checked="false"
         android:minHeight="48dp"
-        android:paddingLeft="20dp"
         android:paddingTop="10dp"
-        android:paddingRight="20dp"
-        android:layout_margin="@dimen/base_indent"
-
         android:paddingBottom="10dp"
         android:textColor="#ffffff"
         android:textOff="@string/activity_preferences_half_hour"
         android:textOn="@string/activity_preferences_hour"
         android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/tv_preferences_period_title"
+        app:layout_constraintStart_toStartOf="@+id/btn_preferences_minus_count"
         app:layout_constraintTop_toBottomOf="@+id/cl_top"
         app:showText="true" />
 
-    <EditText
-        android:id="@+id/et_preferences_countdown_start"
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_preferences_plus_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/activity_preferences_countdown_start"
-        android:importantForAutofill="no"
         android:layout_margin="@dimen/base_indent"
-        android:inputType="time"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_preferences_countdown"
+        app:layout_constraintStart_toEndOf="@+id/tv_preferences_countdown"
+        app:layout_constraintTop_toTopOf="@+id/tv_preferences_countdown"
+        app:srcCompat="@drawable/ic_baseline_add_circle_outline_24" />
+
+    <TextView
+        android:id="@+id/tv_preferences_countdown"
+        style="@style/general_title_2_text_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/base_indent"
+        android:layout_marginTop="@dimen/base_indent"
+        android:gravity="center"
+        android:hint="@string/activity_exercise_count_hint"
+        android:importantForAutofill="no"
+        android:minWidth="48dp"
         android:minHeight="48dp"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_preferences_countdown_start_title"
+        app:layout_constraintStart_toEndOf="@+id/btn_preferences_minus_count"
+        app:layout_constraintTop_toTopOf="@+id/tv_preferences_countdown_start_title" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_preferences_minus_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/base_indent"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_preferences_countdown"
         app:layout_constraintStart_toEndOf="@+id/tv_preferences_countdown_start_title"
-        app:layout_constraintTop_toBottomOf="@+id/sw_preferences_period" />
+        app:layout_constraintTop_toTopOf="@+id/tv_preferences_countdown"
+        app:srcCompat="@drawable/ic_baseline_remove_circle_outline_24" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

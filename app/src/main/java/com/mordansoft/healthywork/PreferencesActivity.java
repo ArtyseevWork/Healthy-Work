@@ -29,10 +29,12 @@ public class PreferencesActivity extends AppCompatActivity {
         binding.btnSavePreferences.setOnClickListener(btnBackListener);
         binding.btnPreferencesBack.setOnClickListener(btnBackListener);
         preferences = Preferences.getPreferencesFromFile(this);
+        binding.btnPreferencesMinusCount.setOnClickListener(btnMinusListener);
+        binding.btnPreferencesPlusCount.setOnClickListener(btnPlusListener);
     }
     private void updateUi(){
         MordanSoftLogger.addLog("PreferencesActivity.updateUi START");
-        binding.etPreferencesCountdownStart.setText(String.valueOf(preferences.getCountdown()));
+        binding.tvPreferencesCountdown.setText(String.valueOf(preferences.getCountdown()));
 
         int period = preferences.getPeriod();
         if (String.valueOf(period).equals(getString(R.string.activity_preferences_half_hour))){
@@ -52,11 +54,32 @@ public class PreferencesActivity extends AppCompatActivity {
         binding = null;
     }
 
+
+
+    /********** Listeners **********/
+
     View.OnClickListener btnBackListener = v -> goBack();
 
+    View.OnClickListener btnPlusListener = v -> {
+        changeCount(5);
+    };
+    View.OnClickListener btnMinusListener = v -> changeCount(-5);
+
+
+    /* ****** ! Listeners **********/
+
+    private void changeCount(int delta){
+        int count = Integer.parseInt(String.valueOf(binding.tvPreferencesCountdown.getText())) + delta;
+        if (count > 59){
+            count = 0;
+        } else if (count < 0){
+            count = 55;
+        }
+        binding.tvPreferencesCountdown.setText(String.valueOf(count) );
+    }
     private void saveState(){ //todo checks
         try {
-            String countdownStr = String.valueOf(binding.etPreferencesCountdownStart.getText());
+            String countdownStr = String.valueOf(binding.tvPreferencesCountdown.getText());
             int countdownInt = Integer.parseInt(countdownStr);
             preferences.setCountdown(this,countdownInt);
             if (binding.swPreferencesPeriod.isChecked()){
