@@ -2,7 +2,6 @@ package com.mordansoft.healthywork;
 
 import static androidx.core.app.NotificationCompat.EXTRA_NOTIFICATION_ID;
 
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -16,7 +15,7 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 
-public class ItsTimeNotification {
+public class Notification {
 
     private static final String ACTION_SNOOZE = "com.mordansoft.healthywork" ;
     int NOTIFY_ID = 102;
@@ -24,7 +23,7 @@ public class ItsTimeNotification {
     Context context;
     NotificationManagerCompat notificationManager;
 
-    public ItsTimeNotification(Context context) {
+    public Notification(Context context) {
         this.context = context;
         notificationManager = NotificationManagerCompat.from(context);
     }
@@ -65,7 +64,7 @@ public class ItsTimeNotification {
                         .setSound(Settings.System.DEFAULT_NOTIFICATION_URI)
                         .setContentIntent(pendingIntent)
                         .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
-                        .setDefaults(Notification.DEFAULT_ALL)
+                        .setDefaults(android.app.Notification.DEFAULT_ALL)
                         .setAutoCancel(true)
                         .setPriority(NotificationCompat.PRIORITY_MAX)
                         .setDefaults(android.app.Notification.DEFAULT_ALL)
