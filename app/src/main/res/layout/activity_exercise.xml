@@ -128,21 +128,23 @@
         app:layout_constraintStart_toStartOf="@+id/et_exercise_name"
         app:layout_constraintTop_toBottomOf="@+id/et_exercise_units" />
 
-    <EditText
+    <TextView
         android:id="@+id/et_exercise_counts"
         style="@style/general_title_2_text_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
+        android:gravity="center"
         android:hint="@string/activity_exercise_count_hint"
         android:importantForAutofill="no"
         android:inputType="numberSigned"
         android:minWidth="48dp"
         android:minHeight="48dp"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="@+id/tv_preferences_countdown_start_title"
-        app:layout_constraintEnd_toStartOf="@+id/btn_exercise_plus_count"
         app:layout_constraintStart_toEndOf="@+id/btn_exercise_minus_count"
-        app:layout_constraintTop_toTopOf="@+id/tv_preferences_countdown_start_title" />
+        app:layout_constraintTop_toTopOf="@+id/tv_preferences_countdown_start_title"
+        app:layout_constraintVertical_bias="0.358" />
 
     <TextView
         android:id="@+id/tv_exercise_available_title"
@@ -154,7 +156,7 @@
         app:layout_constraintStart_toStartOf="@+id/et_exercise_name"
         app:layout_constraintTop_toBottomOf="@+id/et_exercise_name" />
 
-    <CheckBox
+    <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/chb_exercise_available"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -207,7 +209,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/et_exercise_counts"
-        app:layout_constraintEnd_toEndOf="@+id/et_exercise_units"
+        app:layout_constraintStart_toEndOf="@+id/et_exercise_counts"
         app:layout_constraintTop_toTopOf="@+id/et_exercise_counts"
         app:srcCompat="@drawable/ic_baseline_add_circle_outline_24" />
 
