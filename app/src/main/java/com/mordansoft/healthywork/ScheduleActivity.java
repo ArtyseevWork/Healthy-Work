@@ -149,9 +149,11 @@ public class ScheduleActivity extends AppCompatActivity implements SetTime {
     }
 
     public void goBack() {
-        saveState();
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        if (schedule.check(this)) {
+            saveState();
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
     }
 
     @Override

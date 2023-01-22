@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import java.text.DecimalFormat;
 import java.util.Calendar;
 
@@ -295,6 +296,34 @@ public class Schedule {
                             sa);
     }
 
+    public boolean check(Context context){
+        boolean result = true;
+        String error = "";
+        if( !this.su || !this.mo || !this.tu || !this.we || !this.th || !this.fr || !this.sa ){
+            result = false;
+            error = "День недели";
+        }
+
+        if (this.startDayHours > this.endDayHours ||
+                (this.startDayHours   == this.endDayHours
+              && this.startDayMinutes <= this.endDayMinutes)){
+            result = false;
+            error += "время старта дня меньше времени стопа";
+        }
+
+        if (this.startRecessHours > this.endRecessHours ||
+                (this.startRecessHours   == this.endRecessHours
+                        && this.startRecessMinutes <= this.endRecessMinutes)){
+            result = false;
+            error += "время старта перерыва меньше времени стопа";
+        }
+
+        if (!result){
+            checkDialog(context, error);
+        }
+        return  result;
+    }
+
     public void saveScheduleToFile(Context context){
         String filename = context.getString(R.string.activity_schedule_filename);
         SharedPreferences scheduleFile = context.getSharedPreferences(filename, Context.MODE_PRIVATE);
@@ -337,8 +366,8 @@ public class Schedule {
             inCalendar = Calendar.getInstance();
         }
 
-        if (false) {//debug
-            inCalendar.setTimeInMillis(inCalendar.getTimeInMillis() + (10*1000));
+        if (true) {//debug
+            inCalendar.setTimeInMillis(inCalendar.getTimeInMillis() + (300*1000));
             return inCalendar;
         }
 
@@ -446,20 +475,26 @@ public class Schedule {
     public static Calendar run(Context context){
         MordanSoftLogger.addLog("Alarm run START " );
         Calendar nextAlarmTime = getNextAlarmTime(context, null);
-        //long intervalMs = (long) Preferences.getPreferencesFromFile(context).getPeriod()*60*1000;
+        long intervalMs = (long) Preferences.getPreferencesFromFile(context).getPeriod()*60*1000;
         //intervalMs = 60*1000; // for debugging
         Intent intent = new Intent(context, AlarmReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context,
                 0,
                 intent,
                 PendingIntent.FLAG_UPDATE_CURRENT|  Intent.FILL_IN_DATA);
-
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            AlarmManager alarm = (AlarmManager) context.getSystemService(ALARM_SERVICE);
-            alarm.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, nextAlarmTime.getTimeInMillis(), pendingIntent);
+            //alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, nextAlarmTime.getTimeInMillis(), pendingIntent);
+            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, nextAlarmTime.getTimeInMillis(),
+                    intervalMs,
+                    pendingIntent);
         } else {
-            AlarmManager alarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
-            alarmManager.set(AlarmManager.RTC_WAKEUP,nextAlarmTime.getTimeInMillis(),pendingIntent);
+            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, nextAlarmTime.getTimeInMillis(),
+                    intervalMs,
+                    pendingIntent);
+            //alarmManager.setAlarmClock(new AlarmManager.AlarmClockInfo(nextAlarmTime.getTimeInMillis(),pendingIntent),pendingIntent);
+            //alarmManager.setExact(AlarmManager.RTC_WAKEUP,nextAlarmTime.getTimeInMillis(),pendingIntent);
+            //alarmManager.nextAlarmTime -(AlarmManager.RTC_WAKEUP,nextAlarmTime.getTimeInMillis(),pendingIntent);
             /*alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, nextAlarmTime.getTimeInMillis(),
                     intervalMs,
                     pendingIntent);*/
@@ -484,4 +519,20 @@ public class Schedule {
 
         MordanSoftLogger.addLog("Alarm.stop END " );
     }
+
+    public static boolean checkDialog(Context context, String text) {
+        boolean result = false;
+        text += "Вы хотите выйти без сохранения?";
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("SaveError");
+        builder.setMessage(text);
+        builder.setPositiveButton(context.getString(R.string.yes), (dialog, id) -> {
+            Intent intent = new Intent(context, MainActivity.class);
+            context.startActivity(intent);
+        });
+        builder.setNegativeButton(context.getString(R.string.no), (dialog, id) -> dialog.cancel());
+        builder.show();
+        return result;
+    }
+
 }
