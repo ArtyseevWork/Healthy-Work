@@ -6,8 +6,9 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-
+import android.os.Build;
 import androidx.annotation.Nullable;
+import java.text.DecimalFormat;
 import java.util.Calendar;
 
 public class Schedule {
@@ -320,7 +321,9 @@ public class Schedule {
     }
 
     public static String getStringTime(int hours, int minutes){
-        return (hours + ":" + minutes);
+        String hh =new DecimalFormat( "00" ).format(hours);
+        String mm =new DecimalFormat( "00" ).format(minutes);
+        return (hh + ":" + mm);
     }
 
     public boolean[] getWorkDaysArray(){
@@ -334,8 +337,8 @@ public class Schedule {
             inCalendar = Calendar.getInstance();
         }
 
-        if (true) {//debug
-            inCalendar.setTimeInMillis(inCalendar.getTimeInMillis() + (20*1000));
+        if (false) {//debug
+            inCalendar.setTimeInMillis(inCalendar.getTimeInMillis() + (10*1000));
             return inCalendar;
         }
 
@@ -450,10 +453,17 @@ public class Schedule {
                 0,
                 intent,
                 PendingIntent.FLAG_UPDATE_CURRENT|  Intent.FILL_IN_DATA);
-        AlarmManager alarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, nextAlarmTime.getTimeInMillis(),
-                intervalMs,
-                pendingIntent);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            AlarmManager alarm = (AlarmManager) context.getSystemService(ALARM_SERVICE);
+            alarm.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, nextAlarmTime.getTimeInMillis(), pendingIntent);
+        } else {
+            AlarmManager alarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
+            alarmManager.set(AlarmManager.RTC_WAKEUP,nextAlarmTime.getTimeInMillis(),pendingIntent);
+            /*alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, nextAlarmTime.getTimeInMillis(),
+                    intervalMs,
+                    pendingIntent);*/
+        }
 
         //alarmManager.cancel(pendingIntent);
         //Toast.makeText(context, "someText",Toast.LENGTH_LONG).show();
