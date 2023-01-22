@@ -182,7 +182,11 @@ public class Exercise {
     }
 
     public static Exercise getRandomExercise(Context context){
-        return Exercise.getExerciseById(context, 1);
+        ArrayList<Exercise> exercises = Exercise.getExercisesByQuery(context, "enable = 1");
+        int size = exercises.size();
+        int num = (int) (Math.random() * size);
+        MordanSoftLogger.addLog("getRandomExercise  =  " + num );
+        return exercises.get(num);
     }
 
     public static void test(Context context, View view, Exercise exercise) {
