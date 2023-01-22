@@ -35,6 +35,7 @@ public class ExerciseActivity extends AppCompatActivity {
         this.exercise = Exercise.getExerciseById(this, exerciseId);
         binding.btnExerciseSave.setOnClickListener(btnBackListener);
         binding.btnExerciseBack.setOnClickListener(btnBackListener);
+        binding.btnExerciseDelete.setOnClickListener(btnDeleteListener);
         binding.btnExerciseMinusCount.setOnClickListener(btnMinusListener);
         binding.btnExercisePlusCount.setOnClickListener(btnPlusListener);
     }
@@ -54,6 +55,8 @@ public class ExerciseActivity extends AppCompatActivity {
 
     /********** Listeners **********/
     View.OnClickListener btnBackListener = v -> goBack();
+
+    View.OnClickListener btnDeleteListener = v -> Exercise.deleteExercise(v.getContext(), exercise);
 
     View.OnClickListener btnPlusListener = v -> {
         changeCount(1);
