@@ -522,9 +522,9 @@ public class Schedule {
 
     public static boolean checkDialog(Context context, String text) {
         boolean result = false;
-        text += "Вы хотите выйти без сохранения?";
+        text += context.getString(R.string.activity_schedule_save_error_question);
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle("SaveError");
+        builder.setTitle("Save Error");
         builder.setMessage(text);
         builder.setPositiveButton(context.getString(R.string.yes), (dialog, id) -> {
             Intent intent = new Intent(context, MainActivity.class);

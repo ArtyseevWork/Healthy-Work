@@ -43,8 +43,6 @@
         <item>@string/activity_exercise_unit_times</item>
         <item>@string/activity_exercise_unit_seconds</item>
     </string-array>
-
-    Are you sure you want to remove this knife?
     <!--end activity_exercise   -->
 
     <!--start activity_exercises_menu  -->
@@ -88,6 +86,11 @@
     <string name="activity_schedule_end_recess">End of the recess</string>
     <string name="activity_schedule_save">Save</string>
     <string name="activity_schedule_save_message">Schedule was saved</string>
+    <string name="activity_schedule_save_error_question"> Do you want to exit without saving?</string>
+    <string name="activity_schedule_save_error_day_"> No day selected. </string>
+    <string name="activity_schedule_save_wrong_day"> Wrong business time. </string>
+    <string name="activity_schedule_save_wrong_break">  Wrong break time. </string>
+
     <!--end activity_schedule   -->
 
     <!--start activity_preferences  -->
@@ -95,7 +98,7 @@
     <string name="activity_to_do_exercise">Some exercise</string>
     <string name="activity_to_do_exercise_count">A few exercises</string>
     <string name="activity_to_do_save">Save</string>
-    <string name="activity_to_do_positive">I\'m going to fulfill</string>
+    <string name="activity_to_do_positive" translatable="false">ОК!</string>
     <string name="activity_to_do_negative">Skip</string>
     <string name="activity_to_do_exit">Close</string>
     <string name="activity_to_do_already_done">Already done:</string>
@@ -118,8 +121,6 @@
     <string name="dialog_no">No</string>
 
     <!--end dialog   -->
-
-    Save file before exit?
 
 
 

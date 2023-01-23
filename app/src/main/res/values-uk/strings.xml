@@ -68,7 +68,6 @@
     <string name="activity_to_do_exercise">Якась вправа</string>
     <string name="activity_to_do_exercise_count">Деяка вправа</string>
     <string name="activity_to_do_save">Зберігти</string>
-    <string name="activity_to_do_positive">Вже йду</string>
     <string name="activity_to_do_negative">Пропустити</string>
     <string name="activity_to_do_exit">Ввімкнути прогрмму</string>
     <string name="activity_to_do_already_done">Вже виконано:</string>
@@ -78,11 +77,15 @@
     <string name="notification_positive">Вже йду</string>
     <string name="notification_negative">Пропустити</string>
     <string name="notification_exit">Вимкнути программу</string>
-    <string name="notification_already_done">Вже виконано</string>
-    <string name="dialog_save_changes">Зберігти зміни перед виходом</string>
+    <string name="notification_already_done">Вже виконано:</string>
+    <string name="dialog_save_changes">Зберігти зміни перед виходом?</string>
     <string name="dialog_yes">Так</string>
     <string name="dialog_no">Ні</string>
     <string name="activity_main_missed">Пропущено</string>
+    <string name="activity_schedule_save_error_question">" Хочете вийти без збереження?"</string>
     <string name="activity_to_do_title">Час рухатись!</string>
     <string name="notification_title">Час рухатись!</string>
+    <string name="activity_schedule_save_error_day_">"Не обрані робочі дні. "</string>
+    <string name="activity_schedule_save_wrong_day">" Невірний робочий час. "</string>
+    <string name="activity_schedule_save_wrong_break">" Невірний час перерви. "</string>
 </resources>

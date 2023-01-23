@@ -66,11 +66,11 @@
     <string name="activity_schedule_end_recess">Конец перерыва</string>
     <string name="activity_schedule_save">Сохранить</string>
     <string name="activity_schedule_save_message">Данные сохранены</string>
+    <string name="activity_schedule_save_error_question">" Хотите выйти без сохранения? "</string>
     <string name="activity_to_do_title">Погнали!</string>
     <string name="activity_to_do_exercise">Какое-то упражнение</string>
     <string name="activity_to_do_exercise_count">Некоторое упражнение</string>
     <string name="activity_to_do_save">Сохранить</string>
-    <string name="activity_to_do_positive">Уже иду</string>
     <string name="activity_to_do_negative">Пропустить</string>
     <string name="activity_to_do_exit">"Выключить программу "</string>
     <string name="activity_to_do_already_done">Уже выполнено:</string>
@@ -85,4 +85,7 @@
     <string name="dialog_save_changes">Сохранить изменения перед выходом?</string>
     <string name="dialog_yes">Да</string>
     <string name="dialog_no">Нет</string>
+    <string name="activity_schedule_save_error_day_">Не выбраны рабочие дни.</string>
+    <string name="activity_schedule_save_wrong_day">" Неверное рабочее время. "</string>
+    <string name="activity_schedule_save_wrong_break">" Неверное время перерыва."</string>
 </resources>
