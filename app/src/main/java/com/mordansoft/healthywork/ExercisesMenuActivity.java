@@ -48,7 +48,7 @@ public class ExercisesMenuActivity extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(linearLayoutManager);
-        ExerciseAdapter adapter = new ExerciseAdapter(Exercise.getExercisesByQuery(this, "1=1"), this);
+        ExerciseAdapter adapter = new ExerciseAdapter(Exercise.getExercisesByQuery(this, "1=1"));
         recyclerView.setAdapter(adapter);
         adapter.setListener(profitId -> {
             Intent intent = new Intent(this, ExerciseActivity.class);

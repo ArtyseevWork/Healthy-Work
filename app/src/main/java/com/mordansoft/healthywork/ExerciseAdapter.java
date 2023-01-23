@@ -1,9 +1,10 @@
 package com.mordansoft.healthywork;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
@@ -12,12 +13,10 @@ public class ExerciseAdapter  extends RecyclerView.Adapter<ExerciseAdapter.ViewH
 
 
     private final List<Exercise> listExercise;
-    private final Context mContext;
     private Listener listener;
 
-    public ExerciseAdapter(List<Exercise> listExercise, Context mContext) { //constructor
+    public ExerciseAdapter(List<Exercise> listExercise) { //constructor
         this.listExercise = listExercise;
-        this.mContext = mContext;
     }
 
     interface Listener {
@@ -28,6 +27,7 @@ public class ExerciseAdapter  extends RecyclerView.Adapter<ExerciseAdapter.ViewH
         this.listener = listener;
     }
 
+    @NonNull
     @Override
     public ExerciseAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, final int viewType) { //view for one item
         CardView v = (CardView) LayoutInflater.from(parent.getContext()).inflate(R.layout.exercise_card, parent, false);

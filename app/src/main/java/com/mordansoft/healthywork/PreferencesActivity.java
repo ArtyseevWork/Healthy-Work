@@ -60,9 +60,7 @@ public class PreferencesActivity extends AppCompatActivity {
 
     View.OnClickListener btnBackListener = v -> goBack();
 
-    View.OnClickListener btnPlusListener = v -> {
-        changeCount(5);
-    };
+    View.OnClickListener btnPlusListener = v -> changeCount(5);
     View.OnClickListener btnMinusListener = v -> changeCount(-5);
 
 

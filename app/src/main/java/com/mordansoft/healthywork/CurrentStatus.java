@@ -68,9 +68,6 @@ public class CurrentStatus {
             );
 
             if (applicationStatus != applicationStatusDefault) {                   //schedule is run
-                Preferences preferences = Preferences.getPreferencesFromFile(context);
-                long timeOut = (1000L * 60 * preferences.getPeriod()) / 4 ;   //formula of time-out (0.75 of period)
-
                 if (nextAlarmTime == nextAlarmTimeDefault ||
                         nextAlarmTime < currentTime ) {
                     TodayStatistics todayStatistics = TodayStatistics.getTodayStatisticsFromFile(context);
