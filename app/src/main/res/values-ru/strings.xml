@@ -85,7 +85,53 @@
     <string name="dialog_save_changes">Сохранить изменения перед выходом?</string>
     <string name="dialog_yes">Да</string>
     <string name="dialog_no">Нет</string>
-    <string name="activity_schedule_save_error_day_">Не выбраны рабочие дни.</string>
-    <string name="activity_schedule_save_wrong_day">" Неверное рабочее время. "</string>
-    <string name="activity_schedule_save_wrong_break">" Неверное время перерыва."</string>
+    <string name="activity_schedule_save_error_day_of_week">Не выбраны рабочие дни.</string>
+    <string name="activity_schedule_save_wrong_day_time">" Неверное рабочее время. "</string>
+    <string name="activity_schedule_save_wrong_break_time">" Неверное время перерыва."</string>
+
+    <!--start demo data  -->
+    <string name="demo_data_unit_times"><item>@string/activity_exercise_unit_times</item></string>
+    <string name="demo_data_unit_seconds">@string/activity_exercise_unit_seconds</string>
+    <string name="demo_data_exercise_name_1">Отжимания</string>
+    <string name="demo_data_exercise_name_2">Приседания</string>
+    <string name="demo_data_exercise_name_3">Подтягивания</string>
+    <string name="demo_data_exercise_name_4">Планка</string>
+    <string name="demo_data_exercise_name_5">Зарядка для глаз</string>
+    <string name="demo_data_exercise_name_6">Ровная спина</string>
+    <string name="demo_data_exercise_description_1">
+        Руки немного шире плеч. На вдохе медленно сгибайте локти и опускай вниз, пока локти не
+        будут под углом 90 градусов. На выдохе разгибайте руки, возвращаясь в исходное положение.
+        Держите тело ровно не опуская таз и не задирая ягодицы.
+    </string>
+    <string name="demo_data_exercise_description_2">
+        Встаньте ровно, ноги на ширине плеч. Согните колени, удерживая верхнюю часть туловища как
+        можно более ровной. Опуститесь настолько, насколько можете, не слишком наклоняя верхнюю
+        часть тела. Держите пятки «приклеенными» к полу. Можете вытянуть руки перед собой для
+        дополнительного равновесия.
+    </string>
+    <string name="demo_data_exercise_description_3">
+        Сложите руки прямым хватом (ладони обращены от тела) так, чтобы руки были чуть шире плеч.
+        Расправьте плечи. При выдохе согните руки в локтях и поднимитесь к перекладине, пока
+        подбородок не        окажется над перекладиной. В верхней точке движения сделайте вдох.
+        Затем разогните локти и опустите тело обратно в исходное положение.</string>
+    <string name="demo_data_exercise_description_4">
+        Согните локти прямо под плечами и вытяните ноги. Перенесите свой вес на локти и пальцы ног.
+        Ваша спина должна образовывать прямую линию. Не позволяйте тазу опускаться вниз или ягодицам
+        подниматься вверх. Направьте взгляд вниз, это позволит удерживать вашу шею в нейтральном
+        положении.
+    </string>
+    <string name="demo_data_exercise_description_5">
+        Восьмерка. Представьте себе большую цифру 8, перевернутую на бок (знак бесконечности).
+        Медленно нарисуйте его глазами несколько раз. Затем идите в другом направлении.
+        Держите большой палец примерно в 25 сантиметрах от лица и сосредоточьтесь на нем в течение
+        5-10 секунд.Найдите объект на расстоянии нескольких метров и сосредоточьтесь на нем в
+        течение 5–10 секунд. Сконцентрируйтесь обратно на большом пальце.
+    </string>
+    <string name="demo_data_exercise_description_6">
+        Встаньте спиной к стене. Убедитесь, что ваша голова, верхняя часть спины и ягодицы
+        соприкасаются со стеной. Согните руки в локтях на 90 градусов, прижав руки к стене.
+        Это исходное положение. Медленно поднимите руки вверх по стене так высоко, как только
+        сможете, не отрывая спину, плечи, локти или запястья от стены. Медленно опустите руки,
+        скользя ими по стене, возвращая их в исходное положение.</string>
+    <!--end demo data   -->
 </resources>

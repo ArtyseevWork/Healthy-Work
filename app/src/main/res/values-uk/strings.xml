@@ -18,7 +18,7 @@
     <string name="activity_main_schedules">Графік</string>
     <string name="activity_main_exit_message">Натисніть ще раз для виходу</string>
     <string name="activity_exercise_title">Вправа:</string>
-    <string name="activity_exercise_units">Одиниці виміру</string>
+    <string name="activity_exercise_units">Одиниці:</string>
     <string name="activity_exercise_units_hint">Одиниці виміру:</string>
     <string name="activity_exercise_count">Кількість</string>
     <string name="activity_exercise_count_hint">Кількість</string>
@@ -85,7 +85,55 @@
     <string name="activity_schedule_save_error_question">" Хочете вийти без збереження?"</string>
     <string name="activity_to_do_title">Час рухатись!</string>
     <string name="notification_title">Час рухатись!</string>
-    <string name="activity_schedule_save_error_day_">"Не обрані робочі дні. "</string>
-    <string name="activity_schedule_save_wrong_day">" Невірний робочий час. "</string>
-    <string name="activity_schedule_save_wrong_break">" Невірний час перерви. "</string>
+    <string name="activity_schedule_save_error_day_of_week">"Не обрані робочі дні. "</string>
+    <string name="activity_schedule_save_wrong_day_time">" Невірний робочий час. "</string>
+    <string name="activity_schedule_save_wrong_break_time">" Невірний час перерви. "</string>
+
+    <!--start demo data  -->
+    <string name="demo_data_unit_times"><item>@string/activity_exercise_unit_times</item></string>
+    <string name="demo_data_unit_seconds">@string/activity_exercise_unit_seconds</string>
+    <string name="demo_data_exercise_name_1">Віджимання</string>
+    <string name="demo_data_exercise_name_2">Присідання</string>
+    <string name="demo_data_exercise_name_3">Підтягування</string>
+    <string name="demo_data_exercise_name_4">Планка</string>
+    <string name="demo_data_exercise_name_5">Зарядка для очей</string>
+    <string name="demo_data_exercise_name_6">Рівна спина</string>
+    <string name="demo_data_exercise_description_1">
+        Руки трохи ширші за плечі. На вдиху повільно згинайте лікті і опускай вниз, доки лікті не
+        будуть під кутом 90 градусів. На видиху розгинайте руки, повертаючись у вихідне становище.
+        Тримайте тіло не опускаючи таз і не задираючи сідниці.
+    </string>
+    <string name="demo_data_exercise_description_2">
+        Встаньте рівно, ноги на ширині плечей. Зігніть коліна, утримуючи верхню частину тулуба як
+        можна рівнішою. Опустіться настільки, наскільки можете, не надто нахиляючи верхню
+        частина тіла. Тримайте п'яти «приклеєними» до підлоги. Можете витягнути руки перед собою для
+        додаткової рівноваги.
+    </string>
+    <string name="demo_data_exercise_description_3">
+         Складіть руки прямим хватом (долоні звернені від тіла) так, щоб руки були трохи ширші
+         за плечі. Розправте плечі. Під час видиху зігніть руки в ліктях і підніміться до
+         перекладини, доки підборіддя не виявиться над нею. У верхній точці руху зробіть вдих.
+         Потім розігніть лікті та опустіть тіло назад у вихідне положення.
+    </string>
+    <string name="demo_data_exercise_description_4">
+        Зігніть лікті прямо під плечима і витягніть ноги. Перенесіть свою вагу на лікті та пальці
+        ніг.Ваша спина має утворювати пряму лінію. Не дозволяйте тазу опускатися вниз або сідницям
+        підніматися вгору. Дивіться вниз, це дозволить утримувати вашу шию в нейтральному
+        положенні.
+    </string>
+    <string name="demo_data_exercise_description_5">
+         Вісімка.\n Уявіть собі велику цифру 8, перевернуту на бік (знак нескінченності).
+         Повільно намалюйте його очима кілька разів. Потім йдіть в іншому напрямку.\n
+         Зміна фокусу. \n Тримайте великий палець приблизно за 25 сантиметрів від обличчя і
+         зосередьтеся на ньому протягом 5-10 секунд. Знайдіть об'єкт на відстані декількох метрів і
+         зосередьтеся на ньому протягом 5-10 секунд. Зосередьтеся назад на великому пальці.
+    </string>
+    <string name="demo_data_exercise_description_6">
+         Встаньте спиною до стіни. Переконайтеся, що ваша голова, верхня частина спини та сідниці
+         торкаються стіни. Зігніть руки в ліктях на 90 градусів, притиснувши кисті руки до стіни.
+         Це вихідне становище. Повільно підніміть руки вгору по стіні так високо, як тільки
+         зможете, не відриваючи спину, плечі, лікті чи зап'ястя від стіни. Повільно опустіть руки,
+         вздовж стіни, повертаючи їх у вихідне положення.
+    </string>
+    <!--end demo data   -->
 </resources>

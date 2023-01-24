@@ -87,9 +87,9 @@
     <string name="activity_schedule_save">Save</string>
     <string name="activity_schedule_save_message">Schedule was saved</string>
     <string name="activity_schedule_save_error_question"> Do you want to exit without saving?</string>
-    <string name="activity_schedule_save_error_day_"> No day selected. </string>
-    <string name="activity_schedule_save_wrong_day"> Wrong business time. </string>
-    <string name="activity_schedule_save_wrong_break">  Wrong break time. </string>
+    <string name="activity_schedule_save_error_day_of_week"> No day selected. </string>
+    <string name="activity_schedule_save_wrong_day_time"> Wrong business time. </string>
+    <string name="activity_schedule_save_wrong_break_time">  Wrong break time. </string>
 
     <!--end activity_schedule   -->
 
@@ -119,8 +119,58 @@
     <string name="dialog_save_changes">Save changes before exit?</string>
     <string name="dialog_yes">Yes</string>
     <string name="dialog_no">No</string>
-
     <!--end dialog   -->
+
+    <!--start demo data  -->
+    <string name="demo_data_unit_times"><item>@string/activity_exercise_unit_times</item></string>
+    <string name="demo_data_unit_seconds">@string/activity_exercise_unit_seconds</string>
+    <string name="demo_data_exercise_name_1">Push-Ups</string>
+    <string name="demo_data_exercise_name_2">Squats</string>
+    <string name="demo_data_exercise_name_3">Pull-Ups</string>
+    <string name="demo_data_exercise_name_4">Plank</string>
+    <string name="demo_data_exercise_name_5">Eye Exercises</string>
+    <string name="demo_data_exercise_name_6">Scapular wall slides</string>
+    <string name="demo_data_exercise_description_1">
+        "Your hands slightly wider than your shoulders.
+        Inhale as you slowly bend your elbows and lower yourself to the floor, until your elbows
+        are at a 90-degree angle. Exhale while contracting your chest muscles and pushing back up
+        through your hands, returning to the start position.Keep your body in a straight line from
+        head to toe without sagging in the middle or arching your back. "
+    </string>
+    <string name="demo_data_exercise_description_2">
+        Stand straight with feet hip-width apart. Bend
+        your knees while keeping your upper body as straight as possible. Lower yourself as far as
+        you can without leaning your upper body too much. Keep your heels "glued" to the floor.
+        You can tretch your arms out in front of you for added balance.
+    </string>
+    <string name="demo_data_exercise_description_3">
+        Place your hands in an overhand grip (palms
+        facing away from your body) with your hands slightly further than shoulder-width apart.
+        Pull your shoulders back and down. Engaging the muscles in your arms and back, bend your
+        elbows and raise your upper body up toward the bar until your chin is over the bar. At the
+        top of the movement, inhale. Then extend your elbows and lower your body back down to the
+        starting position.
+    </string>
+    <string name="demo_data_exercise_description_4">
+        Stack your elbows directly beneath your shoulders and extend your legs. Rest your weight
+        on your elbows and your toes. Your back should form a straight line. Don\'t let your pelvis
+        dip down or your butt to rise up. Face your gaze face down, which keeps your neck in a
+        neutral position.
+    </string>
+    <string name="demo_data_exercise_description_5">
+        Figure eight. Imagine a big number 8 turned on its side. Slowly sketch it with your eyes
+        several times. Then go the other direction. Hold your thumb about 10 inches from your face
+        and focus on it for 5-10 seconds.Find an object roughly 10 to 20 feet away, and focus on it
+        for 5-10 seconds. Return your focus to your thumb.
+    </string>
+    <string name="demo_data_exercise_description_6">
+        Stand with your back against a wal. Make sure your head, upper back, and glutes are in
+        contact with the wall. Bend the elbows to 90 degrees, while keeping arms against the wall.
+        This is the starting position. Slowly slide your arms up the wall as high as you can go
+        without your back, shoulders, elbows, or wrists coming off the wall.Slowly lower your
+        arms by sliding them down the wall to the starting position.
+    </string>
+    <!--end demo data   -->
 
 
 
