@@ -38,7 +38,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             try {
                 deleteAllTables(db);
                 createAllTables(db);
-                insertTestData(db);
+                //insertTestData(db);
             } catch (Exception e) {
                 MordanSoftLogger.addLog("updateMyDatabase deleteAllTables or createAllTables(db) error", 'e');
             }

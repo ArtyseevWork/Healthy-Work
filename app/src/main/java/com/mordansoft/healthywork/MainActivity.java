@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         currentStatus = CurrentStatus.getCurrentStatusFromFile(this);
         todayStatistics = TodayStatistics.getTodayStatisticsFromFile(this);
         instance = this;
+        Preferences.getPreferencesFromFile(this);
         binding.clButtonMain.setOnClickListener(btnMainStartListener);
         binding.clButtonMain.setOnTouchListener(handleTouch);
         binding.btnMainProperties.setOnClickListener(btnSettingsListener);

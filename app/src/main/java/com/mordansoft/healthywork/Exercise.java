@@ -94,6 +94,27 @@ public class Exercise {
         
     }
 
+    public static long saveExercise(Context context, Exercise exercise){
+        long id = exercise.id;
+        MordanSoftLogger.addLog("updateExercise START id = " + id);
+        SQLiteDatabase db = DatabaseHelper.getDatabase(context);
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("name", exercise.name);
+        contentValues.put("description", exercise.description);
+        contentValues.put("unit", exercise.unit);
+        contentValues.put("count", exercise.count);
+        contentValues.put("enable", exercise.enable);
+        if (id == 0 ){
+            id = db.insert("EXERCISE",null, contentValues);
+        } else {
+            db.update("EXERCISE", contentValues, "_id = ?", new String[]{String.valueOf(id)});
+        }
+        db.close();
+        MordanSoftLogger.addLog("UpdateExercise END");
+        return  id;
+
+    }
+
     public static void deleteExercise(Context context, Exercise exercise){
         SQLiteDatabase db = DatabaseHelper.getDatabase(context);
         db.delete("EXERCISE",
@@ -212,6 +233,15 @@ public class Exercise {
         });
         builder.setNegativeButton(context.getString(R.string.no), (dialog, id) -> dialog.cancel());
         builder.show();
+    }
+
+    public static void insertConstantsData(Context context) {
+        saveExercise(context, new Exercise(0, context.getString(R.string.demo_data_exercise_name_1),  context.getString(R.string.demo_data_exercise_description_1), context.getString(R.string.demo_data_unit_times),   10, true));       //Push-Ups
+        saveExercise(context, new Exercise(0, context.getString(R.string.demo_data_exercise_name_2),  context.getString(R.string.demo_data_exercise_description_2), context.getString(R.string.demo_data_unit_times),   15, true));       //Squats
+        saveExercise(context, new Exercise(0, context.getString(R.string.demo_data_exercise_name_3),  context.getString(R.string.demo_data_exercise_description_3), context.getString(R.string.demo_data_unit_times),   3,  true));       //Pull-Ups
+        saveExercise(context, new Exercise(0, context.getString(R.string.demo_data_exercise_name_4),  context.getString(R.string.demo_data_exercise_description_4), context.getString(R.string.demo_data_unit_seconds), 30, true));       //Plank
+        saveExercise(context, new Exercise(0, context.getString(R.string.demo_data_exercise_name_5),  context.getString(R.string.demo_data_exercise_description_5), context.getString(R.string.demo_data_unit_seconds), 60, true));       //Eye Exercises
+        saveExercise(context, new Exercise(0, context.getString(R.string.demo_data_exercise_name_6),  context.getString(R.string.demo_data_exercise_description_6), context.getString(R.string.demo_data_unit_times),    5, true));       //Scapular wall slides
     }
 
 
