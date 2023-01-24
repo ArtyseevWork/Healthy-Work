@@ -129,7 +129,8 @@ public class ScheduleActivity extends AppCompatActivity implements SetTime {
         updateUi();
     }
 
-    private void saveState(){
+    private boolean saveState(){
+        boolean result = false;
         try {
             this.schedule.setScheduleEnable(binding.chbScheduleAvailable.isChecked());
             this.schedule.setSu(binding.chbScheduleSu.isChecked());
@@ -140,17 +141,20 @@ public class ScheduleActivity extends AppCompatActivity implements SetTime {
             this.schedule.setFr(binding.chbScheduleFr.isChecked());
             this.schedule.setSa(binding.chbScheduleSa.isChecked());
             this.schedule.setRecessEnable(binding.chbScheduleRecessEnable.isChecked());
+            if (schedule.check(this)) {
+                schedule.saveScheduleToFile(this);
+                Toast.makeText(this, getString(R.string.activity_preferences_save_message), Toast.LENGTH_LONG).show();
+                result = true;
+            }
 
-            schedule.saveScheduleToFile(this);
-            Toast.makeText(this, getString(R.string.activity_preferences_save_message), Toast.LENGTH_LONG).show();
         } catch(Exception e) {
             MordanSoftLogger.addLog("Schedule Activity saveState - " + e, 'e');
         }
+        return result;
     }
 
     public void goBack() {
-        if (schedule.check(this)) {
-            saveState();
+        if (saveState()) {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }
