@@ -95,10 +95,12 @@
     <TextView
         android:id="@+id/tv_preferences_period_title"
         style="@style/general_title_2_text_style"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:text="@string/activity_exercise_units"
+        app:layout_constraintEnd_toStartOf="@+id/et_exercise_units"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="@+id/et_exercise_name"
         app:layout_constraintTop_toBottomOf="@+id/chb_exercise_available" />
@@ -153,18 +155,21 @@
         android:id="@+id/et_exercise_description"
         style="@style/general_title_2_text_style"
         android:layout_width="0dp"
-        android:layout_height="80dp"
+        android:layout_height="0dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="15dp"
+        android:layout_marginBottom="10dp"
         android:ems="10"
         android:gravity="start|top"
         android:hint="@string/activity_exercise_description_hint"
         android:importantForAutofill="no"
         android:inputType="textMultiLine"
+        app:layout_constraintBottom_toTopOf="@+id/cl_bottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_exercise_description_title" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_exercise_description_title"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/tv_exercise_description_title"

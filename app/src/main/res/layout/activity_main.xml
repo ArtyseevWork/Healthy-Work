@@ -22,10 +22,10 @@
             style="@style/general_title_text_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/base_indent"
             android:text="@string/app_name"
             android:textColor="@color/color_primary"
             android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -39,6 +39,8 @@
         android:text="@string/activity_main_until_the_next_exercise"
         app:layout_constraintBottom_toTopOf="@+id/cl_button_main"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cl_top" />
 
     <TextView
@@ -49,6 +51,8 @@
         android:text="@string/sample_text"
 
         app:layout_constraintBottom_toBottomOf="@+id/tv_main_next_alert"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="@+id/tv_main_next_alert" />
 
@@ -89,7 +93,9 @@
         android:text="@string/activity_main_current_exercise"
         app:layout_constraintBottom_toTopOf="@+id/tv_main_comleted"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cl_button_main" />
 
     <TextView
@@ -100,6 +106,8 @@
         android:contentDescription="@string/activity_main_exercises_list"
         android:text="@string/sample_text"
         app:layout_constraintBottom_toBottomOf="@+id/tv_main_exercise"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="@+id/tv_main_exercise" />
 
@@ -111,6 +119,8 @@
         android:text="@string/activity_main_performed"
         app:layout_constraintBottom_toTopOf="@+id/tv_main_missed"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_main_exercise" />
 
     <TextView
@@ -120,6 +130,8 @@
         android:layout_height="wrap_content"
         android:text="@string/sample_text"
         app:layout_constraintBottom_toBottomOf="@+id/tv_main_comleted"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="@+id/tv_main_comleted" />
 
@@ -131,6 +143,8 @@
         android:text="@string/activity_main_missed"
         app:layout_constraintBottom_toTopOf="@+id/cl_bottom"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_main_comleted" />
 
     <TextView
@@ -140,6 +154,8 @@
         android:layout_height="wrap_content"
         android:text="@string/sample_text"
         app:layout_constraintBottom_toBottomOf="@+id/tv_main_missed"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="@+id/tv_main_missed" />
 
