@@ -36,6 +36,7 @@ public class ToDoActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         todayStatistics = TodayStatistics.getTodayStatisticsFromFile(this);
         currentStatus = CurrentStatus.getCurrentStatusFromFile(this);
+        currentStatus.setApplicationStatus(this, CurrentStatus.applicationStatusActive);
         binding.clButtonMain.setOnClickListener(btnPositiveListener);
         binding.btnTodoNegative.setOnClickListener(btnNegativeListener);
         binding.btnTodoExit.setOnClickListener(btnExitListener);

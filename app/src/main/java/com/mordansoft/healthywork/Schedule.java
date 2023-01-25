@@ -371,8 +371,6 @@ public class Schedule {
             return inCalendar;
         }
 
-        MordanSoftLogger.addLog("getNextAlarmTime  inCalendar = " + inCalendar.getTime());
-
         Calendar outCalendar = (Calendar) inCalendar.clone();
         Preferences preferences = Preferences.getPreferencesFromFile(context);
         Schedule schedule = Schedule.getScheduleFromFile(context);
@@ -454,13 +452,13 @@ public class Schedule {
 
         if (period == 30){
             if (minutesNow > (countdown+period)){
-                hoursAlarm= hoursNow +1;
+                hoursAlarm = hoursNow +1;
             }
-            else if (minutesNow > (countdown)){
+            else if (minutesNow >= (countdown)){
                 minutesAlarm = countdown+period;
             }
         } else if (period == 60){
-            if (minutesNow > countdown){
+            if (minutesNow >= countdown){
                 hoursAlarm = hoursNow + 1;
             }
         }
@@ -482,6 +480,9 @@ public class Schedule {
                 intent,
                 PendingIntent.FLAG_UPDATE_CURRENT|  Intent.FILL_IN_DATA);
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
+
+        alarmManager.cancel(pendingIntent);
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, nextAlarmTime.getTimeInMillis(), pendingIntent);
             /*alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, nextAlarmTime.getTimeInMillis(),
@@ -513,8 +514,6 @@ public class Schedule {
                 intent,
                 PendingIntent.FLAG_UPDATE_CURRENT|  Intent.FILL_IN_DATA);
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
-        //alarmManager.cancel(pendingIntent);
-
         MordanSoftLogger.addLog("Schedule.stop END " );
     }
 

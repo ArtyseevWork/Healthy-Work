@@ -32,6 +32,10 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         currentStatus = CurrentStatus.getCurrentStatusFromFile(this);
+        if (currentStatus.getApplicationStatus() == CurrentStatus.applicationStatusPending){
+            Intent intent = new Intent(getApplicationContext(), ToDoActivity.class);
+            startActivity(intent);
+        }
         todayStatistics = TodayStatistics.getTodayStatisticsFromFile(this);
         instance = this;
         Preferences.getPreferencesFromFile(this);

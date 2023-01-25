@@ -10,6 +10,7 @@ public class CurrentStatus {
     private static final String fileName = "currentStatus";
     private int applicationStatus;
     public static final int applicationStatusDefault = 0;
+    public static final int applicationStatusPending = 100;
     public static final int applicationStatusActive = 200;
     private static final String applicationStatusKey = "APPLICATION_STATUS";
     private long nextAlarmTime;
@@ -62,21 +63,18 @@ public class CurrentStatus {
             SharedPreferences sharedPref = context.getSharedPreferences(fileName, Context.MODE_PRIVATE);
             applicationStatus = sharedPref.getInt(applicationStatusKey, applicationStatusDefault);
             nextAlarmTime = sharedPref.getLong(nextAlarmTimeKey, nextAlarmTimeDefault);
-
             currentStatus = new CurrentStatus(applicationStatus,
                     nextAlarmTime
             );
 
-            if (applicationStatus != applicationStatusDefault) {                   //schedule is run
+            if (applicationStatus != applicationStatusDefault) {                   //schedule is run or pending
                 if (nextAlarmTime == nextAlarmTimeDefault ||
                         nextAlarmTime < currentTime ) {
                     TodayStatistics todayStatistics = TodayStatistics.getTodayStatisticsFromFile(context);
-                    currentStatus = currentStatus.recreate(context);
-                    todayStatistics.setCountOfExerciseDelta(context,-1);
+                    currentStatus = currentStatus.run(context);
+                    //todayStatistics.setCountOfExerciseDelta(context,-1);
                 }
             }
-
-            return currentStatus;
         } catch (Exception e){
             currentStatus.stop(context);
             MordanSoftLogger.addLog("getCurrentStatusFromFile Error: " + e, 'e');
@@ -92,15 +90,11 @@ public class CurrentStatus {
         );
     }
 
-    public CurrentStatus recreate(Context context){
-        this.stop(context);
-        return this.run(context);
-    }
-
     public CurrentStatus run(Context context){
         MordanSoftLogger.addLog("CurrentStatus.run START");
-        this.setApplicationStatus(context, applicationStatusActive);
+
         this.setNextAlarmTime(context,Schedule.run(context).getTimeInMillis());
+        this.setApplicationStatus(context, applicationStatusActive);
         //setNextAlarmTime(context, String.format("%tT",(Alarm.run(context).getTime())));
         MordanSoftLogger.addLog("CurrentStatus.run END");
         return this;
@@ -108,7 +102,7 @@ public class CurrentStatus {
 
     public CurrentStatus stop(Context context){
         MordanSoftLogger.addLog("CurrentStatus.stop START");
-        Schedule.stop(context);
+        //Schedule.stop(context);
         this.setApplicationStatus(context, applicationStatusDefault);
         this.setNextAlarmTime(context,nextAlarmTimeDefault);
         MordanSoftLogger.addLog("CurrentStatus.stop END");

@@ -32,7 +32,7 @@ public class Notification {
     public void createNotification(){
         MordanSoftLogger.addLog("ItsTimeNotification createNotification START");
 
-        Intent intent = new Intent(context, ToDoActivity.class);
+        Intent intent = new Intent(context, MainActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent,  0);
 
         Intent plusIntent = new Intent(context, NotificationReceiver.class);
@@ -88,7 +88,6 @@ public class Notification {
 
         MordanSoftLogger.addLog("ItsTimeNotification deleteNotification END");
     }
-
 
 
     private void createNotificationChannel() {

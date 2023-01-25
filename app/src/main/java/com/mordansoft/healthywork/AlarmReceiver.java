@@ -15,7 +15,8 @@ public class AlarmReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         MordanSoftLogger.addLog("AlarmReceiver START");
         currentStatus = CurrentStatus.getCurrentStatusFromFile(context);
-        if (currentStatus.getApplicationStatus() == CurrentStatus.applicationStatusActive) {
+        if (   currentStatus.getApplicationStatus() == CurrentStatus.applicationStatusActive
+            && currentStatus.getApplicationStatus() == CurrentStatus.applicationStatusPending) {
             Notification notification = new Notification(context);
             notification.createNotification();
 
@@ -25,6 +26,9 @@ public class AlarmReceiver extends BroadcastReceiver {
             Uri alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
             Ringtone ringtone = RingtoneManager.getRingtone(context, alarmUri);
             ringtone.play();
+
+            currentStatus.run(context);
+            currentStatus.setApplicationStatus(context, CurrentStatus.applicationStatusPending);
         }
 
         MordanSoftLogger.addLog("AlarmReceiver END");
