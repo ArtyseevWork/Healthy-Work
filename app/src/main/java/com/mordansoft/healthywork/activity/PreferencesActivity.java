@@ -1,4 +1,4 @@
-package com.mordansoft.healthywork;
+package com.mordansoft.healthywork.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
-
 import com.mordansoft.healthywork.databinding.ActivityPreferencesBinding;
+import com.mordansoft.healthywork.helpers.MordanSoftLogger;
+import com.mordansoft.healthywork.models.Preferences;
+import com.mordansoft.healthywork.R;
 
 public class PreferencesActivity extends AppCompatActivity {
 

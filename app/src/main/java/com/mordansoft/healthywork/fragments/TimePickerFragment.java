@@ -1,4 +1,4 @@
-package com.mordansoft.healthywork;
+package com.mordansoft.healthywork.fragments;
 
 import android.app.Dialog;
 import android.app.TimePickerDialog;
@@ -9,6 +9,8 @@ import android.widget.TimePicker;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
+
+import com.mordansoft.healthywork.interfaces.SetTime;
 
 public class TimePickerFragment extends DialogFragment
         implements TimePickerDialog.OnTimeSetListener {

@@ -1,4 +1,4 @@
-package com.mordansoft.healthywork;
+package com.mordansoft.healthywork.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -7,7 +7,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+
 import com.mordansoft.healthywork.databinding.ActivityToDoBinding;
+import com.mordansoft.healthywork.models.CurrentStatus;
+import com.mordansoft.healthywork.helpers.MordanSoftLogger;
+import com.mordansoft.healthywork.R;
+import com.mordansoft.healthywork.models.Exercise;
+import com.mordansoft.healthywork.models.TodayStatistics;
 
 public class ToDoActivity extends AppCompatActivity {
 

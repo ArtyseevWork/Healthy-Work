@@ -1,4 +1,4 @@
-package com.mordansoft.healthywork;
+package com.mordansoft.healthywork.models;
 
 import android.content.Context;
 import android.content.SharedPreferences;

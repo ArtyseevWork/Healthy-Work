@@ -1,7 +1,10 @@
-package com.mordansoft.healthywork;
+package com.mordansoft.healthywork.models;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+
+import com.mordansoft.healthywork.helpers.MordanSoftLogger;
+
 import java.util.Calendar;
 
 public class CurrentStatus {
@@ -93,7 +96,7 @@ public class CurrentStatus {
     public CurrentStatus run(Context context){
         MordanSoftLogger.addLog("CurrentStatus.run START");
 
-        this.setNextAlarmTime(context,Schedule.run(context).getTimeInMillis());
+        this.setNextAlarmTime(context, Schedule.run(context).getTimeInMillis());
         this.setApplicationStatus(context, applicationStatusActive);
         //setNextAlarmTime(context, String.format("%tT",(Alarm.run(context).getTime())));
         MordanSoftLogger.addLog("CurrentStatus.run END");

@@ -1,4 +1,4 @@
-package com.mordansoft.healthywork;
+package com.mordansoft.healthywork.models;
 
 import static android.content.Context.ALARM_SERVICE;
 import android.app.AlarmManager;
@@ -9,6 +9,12 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+
+import com.mordansoft.healthywork.receivers.AlarmReceiver;
+import com.mordansoft.healthywork.helpers.MordanSoftLogger;
+import com.mordansoft.healthywork.R;
+import com.mordansoft.healthywork.activity.MainActivity;
+
 import java.text.DecimalFormat;
 import java.util.Calendar;
 

@@ -1,4 +1,4 @@
-package com.mordansoft.healthywork;
+package com.mordansoft.healthywork.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,6 +9,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+
+import com.mordansoft.healthywork.adapters.ExerciseAdapter;
+import com.mordansoft.healthywork.models.Exercise;
+import com.mordansoft.healthywork.R;
 
 public class ExercisesMenuActivity extends AppCompatActivity {
     Button newExerciseBtn;
@@ -50,9 +54,9 @@ public class ExercisesMenuActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
         ExerciseAdapter adapter = new ExerciseAdapter(Exercise.getExercisesByQuery(this, "1=1"));
         recyclerView.setAdapter(adapter);
-        adapter.setListener(profitId -> {
+        adapter.setListener(exerciseId -> {
             Intent intent = new Intent(this, ExerciseActivity.class);
-            intent.putExtra("EXTRA_EXERCISE_ID", profitId);
+            intent.putExtra("EXTRA_EXERCISE_ID", exerciseId);
             startActivity(intent);
         });
     }

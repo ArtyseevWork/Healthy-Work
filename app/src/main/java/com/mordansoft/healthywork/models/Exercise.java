@@ -1,4 +1,4 @@
-package com.mordansoft.healthywork;
+package com.mordansoft.healthywork.models;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -8,6 +8,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.view.View;
 import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
+
+import com.mordansoft.healthywork.helpers.DatabaseHelper;
+import com.mordansoft.healthywork.helpers.MordanSoftLogger;
+import com.mordansoft.healthywork.R;
+import com.mordansoft.healthywork.activity.MainActivity;
 
 import java.util.ArrayList;
 

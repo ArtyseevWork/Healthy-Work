@@ -1,4 +1,4 @@
-package com.mordansoft.healthywork;
+package com.mordansoft.healthywork.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Spinner;
 
+import com.mordansoft.healthywork.models.Exercise;
+import com.mordansoft.healthywork.helpers.MordanSoftLogger;
+import com.mordansoft.healthywork.R;
 import com.mordansoft.healthywork.databinding.ActivityExerciseBinding;
 
 public class ExerciseActivity extends AppCompatActivity {

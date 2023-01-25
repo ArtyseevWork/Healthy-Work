@@ -1,4 +1,4 @@
-package com.mordansoft.healthywork;
+package com.mordansoft.healthywork.models;
 
 import static androidx.core.app.NotificationCompat.EXTRA_NOTIFICATION_ID;
 
@@ -13,6 +13,11 @@ import android.provider.Settings;
 
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+
+import com.mordansoft.healthywork.helpers.MordanSoftLogger;
+import com.mordansoft.healthywork.receivers.NotificationReceiver;
+import com.mordansoft.healthywork.R;
+import com.mordansoft.healthywork.activity.MainActivity;
 
 
 public class Notification {

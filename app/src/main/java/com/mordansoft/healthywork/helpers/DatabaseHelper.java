@@ -1,4 +1,4 @@
-package com.mordansoft.healthywork;
+package com.mordansoft.healthywork.helpers;
 
 
 import android.content.ContentValues;

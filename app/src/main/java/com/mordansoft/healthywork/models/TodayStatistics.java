@@ -1,7 +1,9 @@
-package com.mordansoft.healthywork;
+package com.mordansoft.healthywork.models;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+
+import com.mordansoft.healthywork.helpers.MordanSoftLogger;
 
 public class TodayStatistics {
 

@@ -14,7 +14,7 @@
         android:theme="@style/Theme.HealthyWork"
         tools:targetApi="31">
         <activity
-            android:name=".ToDoActivity"
+            android:name=".activity.ToDoActivity"
             android:exported="false"
             android:screenOrientation="portrait">
             <meta-data
@@ -22,7 +22,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ScheduleActivity"
+            android:name=".activity.ScheduleActivity"
             android:exported="false"
             android:screenOrientation="portrait">
             <meta-data
@@ -30,7 +30,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".PreferencesActivity"
+            android:name=".activity.PreferencesActivity"
             android:exported="false"
             android:screenOrientation="portrait">
             <meta-data
@@ -38,7 +38,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ExercisesMenuActivity"
+            android:name=".activity.ExercisesMenuActivity"
             android:exported="false"
             android:screenOrientation="portrait">
             <meta-data
@@ -46,7 +46,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ExerciseActivity"
+            android:name=".activity.ExerciseActivity"
             android:exported="false"
             android:screenOrientation="portrait">
             <meta-data
@@ -54,7 +54,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -68,7 +68,7 @@
                 android:value="" />
         </activity>
         <receiver
-            android:name=".NotificationReceiver"
+            android:name=".receivers.NotificationReceiver"
             android:enabled="true"
             android:exported="false">
             <intent-filter>
@@ -76,7 +76,7 @@
             </intent-filter>
         </receiver>
         <receiver
-            android:name=".AlarmReceiver"
+            android:name=".receivers.AlarmReceiver"
             android:enabled="true"
             android:exported="false">
             <intent-filter>

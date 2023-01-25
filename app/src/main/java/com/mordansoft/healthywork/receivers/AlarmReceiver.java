@@ -1,4 +1,4 @@
-package com.mordansoft.healthywork;
+package com.mordansoft.healthywork.receivers;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -7,6 +7,10 @@ import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Vibrator;
+
+import com.mordansoft.healthywork.helpers.MordanSoftLogger;
+import com.mordansoft.healthywork.models.CurrentStatus;
+import com.mordansoft.healthywork.models.Notification;
 
 public class AlarmReceiver extends BroadcastReceiver {
     CurrentStatus currentStatus;

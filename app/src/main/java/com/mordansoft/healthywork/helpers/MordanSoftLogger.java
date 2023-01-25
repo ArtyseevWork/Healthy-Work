@@ -1,8 +1,10 @@
-package com.mordansoft.healthywork;
+package com.mordansoft.healthywork.helpers;
 
 import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
+
+import com.mordansoft.healthywork.BuildConfig;
 /*
 Log.e() - ошибки (error)
 Log.w() - предупреждения (warning)
