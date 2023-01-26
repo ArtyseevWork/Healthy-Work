@@ -1,7 +1,10 @@
 package com.mordansoft.healthywork.adapters;
 
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -42,9 +45,14 @@ public class ExerciseAdapter  extends RecyclerView.Adapter<ExerciseAdapter.ViewH
     public void onBindViewHolder(final ExerciseAdapter.ViewHolder viewHolder, final int position) {  //download data from list to THE ite
         Exercise exercise = listExercise.get(position);
         CardView cardView = viewHolder.cardView;
-        viewHolder.v_name.setText(String.valueOf        (exercise.getName()));
-        viewHolder.v_enable.setText(String.valueOf        (exercise.isEnable()));
+        viewHolder.v_name.setText(String.valueOf(exercise.getName()));
+        viewHolder.v_count.setText(String.valueOf(exercise.getCount()));
 
+        if (exercise.isEnable()){
+            viewHolder.v_enable.setVisibility(View.VISIBLE);
+        } else {
+            viewHolder.v_enable.setVisibility(View.INVISIBLE);
+        }
 
         cardView.setOnClickListener(v -> {
             if (listener != null) {
@@ -60,7 +68,8 @@ public class ExerciseAdapter  extends RecyclerView.Adapter<ExerciseAdapter.ViewH
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
         final TextView v_name;
-        final TextView v_enable;
+        final ImageView v_enable;
+        final TextView v_count;
         private final CardView cardView;
 
         public ViewHolder(CardView v){
@@ -68,6 +77,7 @@ public class ExerciseAdapter  extends RecyclerView.Adapter<ExerciseAdapter.ViewH
             cardView       = v;
             v_name         = v.findViewById(R.id.exercise_card_name);
             v_enable       = v.findViewById(R.id.exercise_card_enable);
+            v_count         = v.findViewById(R.id.exercise_card_count);
         }
     }
 
