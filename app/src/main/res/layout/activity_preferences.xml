@@ -6,88 +6,74 @@
     android:layout_height="match_parent"
     tools:context=".activity.PreferencesActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_top"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@drawable/bkg_top"
+    <ImageView
+        android:id="@+id/iv_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_h1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/bkg_top" />
 
-        <TextView
-            android:id="@+id/tv_preferences_title"
-            style="@style/general_title_text_style"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/activity_preferences_title"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.35" />
-
-        <ImageButton
-            android:id="@+id/btn_preferences_back"
-            style="@style/button_style2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/base_indent"
-            app:srcCompat="@drawable/arrow_left"
-            android:contentDescription="@string/activity_exercise_back"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_preferences_title"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_preferences_title"
-             />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_bottom"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@drawable/bkg_bottom"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <TextView
+        android:id="@+id/tv_preferences_title"
+        style="@style/general_title_text_style"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/activity_preferences_title"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_h1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="@+id/guideline_v"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/btn_save_preferences"
-            style="@style/button_style"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/activity_preferences_save"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageButton
+        android:id="@+id/btn_preferences_back"
+        style="@style/button_style2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/base_margin"
+        android:contentDescription="@string/activity_exercise_back"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_h1"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_v"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/arrow_left" />
+
 
     <TextView
         android:id="@+id/tv_preferences_period_title"
         style="@style/general_title_2_text_style"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/base_indent"
+        android:layout_margin="@dimen/base_margin"
         android:text="@string/activity_preferences_period"
         app:layout_constraintBottom_toBottomOf="@+id/sw_preferences_period"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_v"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/sw_preferences_period" />
 
     <TextView
         android:id="@+id/tv_preferences_countdown_start_title"
         style="@style/general_title_2_text_style"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/base_indent"
+        android:layout_margin="@dimen/base_margin"
         android:text="@string/activity_preferences_countdown_start"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_preferences_minus_count"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_v"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sw_preferences_period" />
+        app:layout_constraintTop_toTopOf="@+id/btn_preferences_minus_count" />
 
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/sw_preferences_period"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
+        android:layout_margin="@dimen/base_margin"
         android:checked="false"
         android:minHeight="48dp"
         android:paddingTop="10dp"
@@ -96,8 +82,10 @@
         android:textOff="@string/activity_preferences_half_hour"
         android:textOn="@string/activity_preferences_hour"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/btn_preferences_minus_count"
-        app:layout_constraintTop_toBottomOf="@+id/cl_top"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline_v"
+        app:layout_constraintTop_toTopOf="@+id/guideline_h1"
         app:showText="true" />
 
 
@@ -105,38 +93,86 @@
         android:id="@+id/btn_preferences_plus_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/base_indent"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_preferences_countdown"
+        android:layout_margin="@dimen/base_margin"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_preferences_minus_count"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_preferences_countdown"
-        app:layout_constraintTop_toTopOf="@+id/tv_preferences_countdown"
+        app:layout_constraintTop_toTopOf="@+id/btn_preferences_minus_count"
         app:srcCompat="@drawable/ic_baseline_add_circle_outline_24" />
 
     <TextView
         android:id="@+id/tv_preferences_countdown"
         style="@style/general_title_2_text_style"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/base_indent"
-        android:layout_marginTop="@dimen/base_indent"
+        android:layout_margin="@dimen/base_margin"
         android:gravity="center"
         android:hint="@string/activity_exercise_count_hint"
         android:importantForAutofill="no"
         android:minWidth="48dp"
         android:minHeight="48dp"
         android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_preferences_countdown_start_title"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_preferences_minus_count"
+        app:layout_constraintEnd_toStartOf="@+id/btn_preferences_plus_count"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btn_preferences_minus_count"
-        app:layout_constraintTop_toTopOf="@+id/tv_preferences_countdown_start_title" />
+        app:layout_constraintTop_toTopOf="@+id/btn_preferences_minus_count" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_preferences_minus_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/base_indent"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_preferences_countdown"
+        android:layout_margin="@dimen/base_margin"
+        app:layout_constraintEnd_toStartOf="@+id/tv_preferences_countdown"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_preferences_countdown_start_title"
-        app:layout_constraintTop_toTopOf="@+id/tv_preferences_countdown"
+        app:layout_constraintStart_toStartOf="@+id/guideline_v"
+        app:layout_constraintTop_toBottomOf="@+id/sw_preferences_period"
         app:srcCompat="@drawable/ic_baseline_remove_circle_outline_24" />
+
+    <Button
+        android:id="@+id/btn_save_preferences"
+        style="@style/button_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/activity_preferences_save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline_h2" />
+
+    <ImageView
+        android:id="@+id/iv_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline_h2"
+        app:srcCompat="@drawable/bkg_bottom"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_v"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="@dimen/guideline_x" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_h1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="@dimen/guideline_y_top" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_h2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="@dimen/guideline_y_bottom" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

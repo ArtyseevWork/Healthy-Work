@@ -38,7 +38,7 @@
     <string name="activity_preferences_filename">Настройки</string>
     <string name="activity_preferences_back">Назад</string>
     <string name="activity_preferences_period">Период, мин</string>
-    <string name="activity_preferences_countdown_start">Время  отсчёта</string>
+    <string name="activity_preferences_countdown_start">Время  отсчёта, мм:</string>
     <string name="activity_preferences_save">Сохранить</string>
     <string name="activity_preferences_hour">60</string>
     <string name="activity_preferences_half_hour">30</string>

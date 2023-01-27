@@ -40,7 +40,7 @@
     <string name="activity_preferences_filename">Налаштування</string>
     <string name="activity_preferences_back">Назад</string>
     <string name="activity_preferences_period">Період, хв.</string>
-    <string name="activity_preferences_countdown_start">Час відліку</string>
+    <string name="activity_preferences_countdown_start">Час відліку, хв:</string>
     <string name="activity_preferences_save">Зберігти</string>
     <string name="activity_preferences_save_message">Налаштування збережено</string>
     <string name="activity_schedule_filename">Графік</string>

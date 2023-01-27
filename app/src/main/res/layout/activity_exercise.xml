@@ -32,7 +32,7 @@
             style="@style/button_style2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/base_indent"
+            android:layout_margin="@dimen/base_margin"
             app:srcCompat="@drawable/arrow_left"
             android:contentDescription="@string/activity_exercise_back"
             app:layout_constraintBottom_toBottomOf="@+id/tv_preferences_title"

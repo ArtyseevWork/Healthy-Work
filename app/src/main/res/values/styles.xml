@@ -35,7 +35,6 @@
         <item name="android:textColor">@color/color_primary</item>
         <item name="android:paddingStart">8sp</item>
         <item name="android:paddingEnd">8sp</item>
-        <item name="android:layout_marginBottom">@dimen/base_indent</item>
     </style>
 
     <style name="button_style2">

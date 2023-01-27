@@ -22,7 +22,7 @@
             style="@style/general_title_text_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/base_indent"
+            android:layout_marginTop="@dimen/base_margin"
             android:text="@string/app_name"
             android:textColor="@color/color_primary"
             android:textStyle="bold"
@@ -149,7 +149,7 @@
         android:id="@+id/guideline"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/base_indent"
+        android:layout_margin="@dimen/base_margin"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.52" />
 
@@ -157,7 +157,7 @@
         android:id="@+id/guideline2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/base_indent"
+        android:layout_margin="@dimen/base_margin"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.48" />
 

@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="button_radius">60dp</dimen>
-    <dimen name="base_indent">16dp</dimen>
+    <dimen name="base_margin">16dp</dimen>
+    <dimen name="base_small_margin">8dp</dimen>
+    <dimen name="guideline_x">0.4</dimen>
+    <dimen name="guideline_y_top">0.12</dimen>
+    <dimen name="guideline_y_bottom">0.88</dimen>
+
+
+
 
 </resources>
