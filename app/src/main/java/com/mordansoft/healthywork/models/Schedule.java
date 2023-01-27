@@ -20,6 +20,8 @@ import java.util.Calendar;
 
 public class Schedule {
 
+    private static final String fileName = "schedule";
+
     private boolean scheduleEnable;
     private int     startDayHours;
     private int     startDayMinutes;
@@ -73,6 +75,13 @@ public class Schedule {
     private static final boolean saDefault = false;
     private static final String saKey = "SA";
 
+    private int period;
+    private static final int periodDefault = 60;
+    private static final String periodKey = "PERIOD";
+    private int countdown;
+    private static final int countdownDefault = 0;
+    private static final String countdownKey = "COUNTDOWN";
+
     private Schedule(boolean scheduleEnable,
                     int startDayHours,
                     int startDayMinutes,
@@ -86,7 +95,8 @@ public class Schedule {
                     boolean su, boolean mo,
                     boolean tu, boolean we,
                     boolean th, boolean fr,
-                    boolean sa) {
+                    boolean sa, int period, int countdown
+                     ) {
         this.scheduleEnable = scheduleEnable;
         this.startDayHours = startDayHours;
         this.startDayMinutes = startDayMinutes;
@@ -104,6 +114,9 @@ public class Schedule {
         this.th = th;
         this.fr = fr;
         this.sa = sa;
+        this.period = period;
+        this.countdown = countdown;
+
     }
 
     public boolean isScheduleEnable() {
@@ -242,6 +255,30 @@ public class Schedule {
         this.sa = sa;
     }
 
+    public int getPeriod() {
+        return period;
+    }
+
+    public void setPeriod(Context context, int period) {
+        this.period = period;
+        SharedPreferences sharedPref = context.getSharedPreferences(fileName, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putInt(periodKey, period);
+        editor.apply();
+    }
+
+    public int getCountdown() {
+        return countdown;
+    }
+
+    public void setCountdown(Context context, int countdown) {
+        this.countdown = countdown;
+        SharedPreferences sharedPref = context.getSharedPreferences(fileName, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putInt(countdownKey, countdown);
+        editor.apply();
+    }
+
     public static Schedule getScheduleFromFile(Context context) {
         boolean scheduleEnable;
         int     startDayHours;
@@ -260,9 +297,10 @@ public class Schedule {
         boolean th;
         boolean fr;
         boolean sa;
+        int period;
+        int countdown;
 
-        String filename = context.getString(R.string.activity_schedule_filename);
-        SharedPreferences scheduleFile = context.getSharedPreferences(filename, Context.MODE_PRIVATE);
+        SharedPreferences scheduleFile = context.getSharedPreferences(fileName, Context.MODE_PRIVATE);
 
             scheduleEnable = scheduleFile.getBoolean(scheduleEnableKey,scheduleEnableDefault);
              startDayHours = scheduleFile.getInt(startDayHoursKey,startDayHoursDefault);
@@ -281,25 +319,19 @@ public class Schedule {
                         th = scheduleFile.getBoolean(thKey,thDefault);
                         fr = scheduleFile.getBoolean(frKey,frDefault);
                         sa = scheduleFile.getBoolean(saKey,saDefault);
+                    period =  scheduleFile.getInt(periodKey,periodDefault);
+                 countdown =  scheduleFile.getInt(countdownKey,countdownDefault);
+
 
 
         return new Schedule(scheduleEnable,
-                            startDayHours,
-                            startDayMinutes,
-                            endDayHours,
-                            endDayMinutes,
+                            startDayHours, startDayMinutes,
+                            endDayHours,    endDayMinutes,
                             recessEnable,
-                            startRecessHours,
-                            startRecessMinutes,
-                            endRecessHours,
-                            endRecessMinutes,
-                            su,
-                            mo,
-                            tu,
-                            we,
-                            th,
-                            fr,
-                            sa);
+                            startRecessHours, startRecessMinutes,
+                            endRecessHours, endRecessMinutes,
+                            su, mo, tu, we, th, fr, sa,
+                            period,  countdown);
     }
 
     public boolean check(Context context){
@@ -331,8 +363,7 @@ public class Schedule {
     }
 
     public void saveScheduleToFile(Context context){
-        String filename = context.getString(R.string.activity_schedule_filename);
-        SharedPreferences scheduleFile = context.getSharedPreferences(filename, Context.MODE_PRIVATE);
+        SharedPreferences scheduleFile = context.getSharedPreferences(fileName, Context.MODE_PRIVATE);
 
         SharedPreferences.Editor editor = scheduleFile.edit();
         editor.putBoolean(scheduleEnableKey, this.scheduleEnable);
@@ -352,6 +383,8 @@ public class Schedule {
         editor.putBoolean(thKey, this.th);
         editor.putBoolean(frKey, this.fr);
         editor.putBoolean(saKey, this.sa);
+        editor.putInt(periodKey, this.period);
+        editor.putInt(countdownKey, this.countdown);
         editor.apply();
     }
 
@@ -381,8 +414,8 @@ public class Schedule {
         Preferences preferences = Preferences.getPreferencesFromFile(context);
         Schedule schedule = Schedule.getScheduleFromFile(context);
 
-        int countdown = preferences.getCountdown();                                  //todo add time before end of the day and recess
-        int period = preferences.getPeriod();
+        //int countdown = preferences.getCountdown();                                  //todo add time before end of the day and recess
+        int period = schedule.getPeriod();
         int dayOfWeakIn = inCalendar.get(Calendar.DAY_OF_WEEK);
 
         if (schedule.isScheduleEnable()){                                            //schedule turn on
@@ -441,15 +474,14 @@ public class Schedule {
 
     public static Calendar getNextAlarmTimeSimple(Context context, Calendar calendar){
 
-        Preferences preferences = Preferences.getPreferencesFromFile(context);
-        //Schedule schedule = Schedule.getScheduleFromFile(context);
+        Schedule schedule = Schedule.getScheduleFromFile(context);
 
         int minutesAlarm;
         int hoursAlarm;
         int hoursNow;
         int minutesNow;
-        int countdown = preferences.getCountdown();
-        int period = preferences.getPeriod();
+        int countdown = schedule.getCountdown();
+        int period =    schedule.getPeriod();
 
         hoursNow = calendar.get(Calendar.HOUR_OF_DAY);
         minutesNow = calendar.get(Calendar.MINUTE);

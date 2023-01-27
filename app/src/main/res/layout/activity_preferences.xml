@@ -106,7 +106,7 @@
         style="@style/general_title_2_text_style"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/base_margin"
+        android:layout_margin="@dimen/base_small_margin"
         android:gravity="center"
         android:hint="@string/activity_exercise_count_hint"
         android:importantForAutofill="no"
@@ -126,6 +126,7 @@
         android:layout_margin="@dimen/base_margin"
         app:layout_constraintEnd_toStartOf="@+id/tv_preferences_countdown"
         app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toEndOf="@+id/tv_preferences_countdown_start_title"
         app:layout_constraintStart_toStartOf="@+id/guideline_v"
         app:layout_constraintTop_toBottomOf="@+id/sw_preferences_period"
@@ -150,8 +151,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline_h2"
-        app:srcCompat="@drawable/bkg_bottom"
-        />
+        app:srcCompat="@drawable/bkg_bottom" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_v"

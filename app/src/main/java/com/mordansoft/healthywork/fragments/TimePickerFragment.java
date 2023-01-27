@@ -27,7 +27,7 @@ public class TimePickerFragment extends DialogFragment
         assert getArguments() != null;
         this.minute = getArguments().getInt("MINUTE");
         this.hour = getArguments().getInt("HOUR");
-        this.viewId = getArguments().getInt("VIEWID");
+        this.viewId = getArguments().getInt("VIEW_ID");
 
         // Create a new instance of TimePickerDialog and return it
         return new TimePickerDialog(getActivity(), this, this.hour, this.minute,

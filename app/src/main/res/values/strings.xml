@@ -64,7 +64,6 @@
     <!--end activity_preferences   -->
 
     <!--start activity_schedule  -->
-    <string name="activity_schedule_filename">schedule</string>
     <string name="activity_schedule_title">Schedule</string>
     <string name="activity_schedule_back">Go back</string>
     <string name="activity_schedule_switch">Enable Graph</string>

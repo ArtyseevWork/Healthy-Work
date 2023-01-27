@@ -35,19 +35,7 @@ public class PreferencesActivity extends AppCompatActivity {
         binding.btnPreferencesPlusCount.setOnClickListener(btnPlusListener);
     }
     private void updateUi(){
-        MordanSoftLogger.addLog("PreferencesActivity.updateUi START");
-        binding.tvPreferencesCountdown.setText(String.valueOf(preferences.getCountdown()));
 
-        int period = preferences.getPeriod();
-        if (String.valueOf(period).equals(getString(R.string.activity_preferences_half_hour))){
-            binding.swPreferencesPeriod.setChecked(false);
-        } else if (String.valueOf(period).equals(getString(R.string.activity_preferences_hour))){
-            binding.swPreferencesPeriod.setChecked(true);
-        } else {
-            MordanSoftLogger.addLog("PreferencesActivity  updateUi period error: ",
-                                    'e');
-        }
-        MordanSoftLogger.addLog("PreferencesActivity.updateUi END");
     }
 
     @Override
@@ -79,16 +67,6 @@ public class PreferencesActivity extends AppCompatActivity {
     }
     private void saveState(){ //todo checks
         try {
-            String countdownStr = String.valueOf(binding.tvPreferencesCountdown.getText());
-            int countdownInt = Integer.parseInt(countdownStr);
-            preferences.setCountdown(this,countdownInt);
-            if (binding.swPreferencesPeriod.isChecked()){
-                preferences.setPeriod(this,
-                        Integer.parseInt(getString(R.string.activity_preferences_hour)));
-            } else {
-                preferences.setPeriod(this,
-                        Integer.parseInt(getString(R.string.activity_preferences_half_hour)));
-            }
             Toast.makeText(this, getString(R.string.activity_preferences_save_message), Toast.LENGTH_LONG).show();
         } catch(Exception e) {
             MordanSoftLogger.addLog("btnSaveListener - " + e, 'e');

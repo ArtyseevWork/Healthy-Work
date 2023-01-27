@@ -44,6 +44,9 @@ public class ScheduleActivity extends AppCompatActivity implements SetTime {
         binding.etScheduleEndDay.setOnClickListener(setTimeListener);
         binding.etScheduleStartRecess.setOnClickListener(setTimeListener);
         binding.etScheduleEndRecess.setOnClickListener(setTimeListener);
+
+        binding.btnScheduleMinusCount.setOnClickListener(btnMinusListener);
+        binding.btnSchedulePlusCount.setOnClickListener(btnPlusListener);
     }
 
     private void updateUi() {
@@ -65,10 +68,22 @@ public class ScheduleActivity extends AppCompatActivity implements SetTime {
                 schedule.getStartRecessMinutes()));
         binding.etScheduleEndRecess.setText(Schedule.getStringTime(schedule.getEndRecessHours(),
                 schedule.getEndRecessMinutes()));
+
+        binding.tvScheduleCountdown.setText(String.valueOf(schedule.getCountdown()));
+
+        int period = schedule.getPeriod();
+        if (String.valueOf(period).equals(getString(R.string.activity_preferences_half_hour))){
+            binding.swSchedulePeriod.setChecked(false);
+        } else if (String.valueOf(period).equals(getString(R.string.activity_preferences_hour))){
+            binding.swSchedulePeriod.setChecked(true);
+        }
         MordanSoftLogger.addLog("ScheduleActivity.updateUi END");
     }
 
     View.OnClickListener btnBackListener = v -> goBack();
+
+    View.OnClickListener btnPlusListener = v -> changeCount(5);
+    View.OnClickListener btnMinusListener = v -> changeCount(-5);
 
     View.OnClickListener setTimeListener = v -> {
         switch (v.getId()){
@@ -102,7 +117,7 @@ public class ScheduleActivity extends AppCompatActivity implements SetTime {
             Bundle args = new Bundle();
             args.putInt("MINUTE", minutes);
             args.putInt("HOUR", hours);
-            args.putInt("VIEWID", viewId); //todo "_" in words
+            args.putInt("VIEW_ID", viewId); //todo "_" in words
             newFragment.setArguments(args);
 
             newFragment.show(getSupportFragmentManager(), "ScheduleActivity");
@@ -110,6 +125,16 @@ public class ScheduleActivity extends AppCompatActivity implements SetTime {
         } catch(Exception e) {
             MordanSoftLogger.addLog("showTimePickerDialog - " + e, 'e');
         }
+    }
+
+    private void changeCount(int delta){
+        int count = Integer.parseInt(String.valueOf(binding.tvScheduleCountdown.getText())) + delta;
+        if (count > 59){
+            count = 0;
+        } else if (count < 0){
+            count = 55;
+        }
+        binding.tvScheduleCountdown.setText(String.valueOf(count) );
     }
 
     @Override
@@ -147,6 +172,17 @@ public class ScheduleActivity extends AppCompatActivity implements SetTime {
             this.schedule.setFr(binding.chbScheduleFr.isChecked());
             this.schedule.setSa(binding.chbScheduleSa.isChecked());
             this.schedule.setRecessEnable(binding.chbScheduleRecessEnable.isChecked());
+
+            String countdownStr = String.valueOf(binding.tvScheduleCountdown.getText());
+            int countdownInt = Integer.parseInt(countdownStr);
+            schedule.setCountdown(this,countdownInt);
+            if (binding.swSchedulePeriod.isChecked()){
+                schedule.setPeriod(this,
+                        Integer.parseInt(getString(R.string.activity_preferences_hour)));
+            } else {
+                schedule.setPeriod(this,
+                        Integer.parseInt(getString(R.string.activity_preferences_half_hour)));
+            }
             if (schedule.check(this)) {
                 schedule.saveScheduleToFile(this);
                 Toast.makeText(this, getString(R.string.activity_preferences_save_message), Toast.LENGTH_LONG).show();
