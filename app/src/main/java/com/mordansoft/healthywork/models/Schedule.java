@@ -9,7 +9,6 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
-
 import com.mordansoft.healthywork.receivers.AlarmReceiver;
 import com.mordansoft.healthywork.helpers.MordanSoftLogger;
 import com.mordansoft.healthywork.R;
@@ -411,7 +410,6 @@ public class Schedule {
         }
 
         Calendar outCalendar = (Calendar) inCalendar.clone();
-        Preferences preferences = Preferences.getPreferencesFromFile(context);
         Schedule schedule = Schedule.getScheduleFromFile(context);
 
         //int countdown = preferences.getCountdown();                                  //todo add time before end of the day and recess
@@ -489,7 +487,7 @@ public class Schedule {
         hoursAlarm = hoursNow;
 
         if (period == 30){
-            if (minutesNow > (countdown+period)){
+            if (minutesNow >= (countdown+period)){
                 hoursAlarm = hoursNow +1;
             }
             else if (minutesNow >= (countdown)){
@@ -511,34 +509,20 @@ public class Schedule {
     public static Calendar run(Context context){
         MordanSoftLogger.addLog("Schedule run START " );
         Calendar nextAlarmTime = getNextAlarmTime(context, null);
-        long intervalMs = 60*1000;
-        Intent intent = new Intent(context, AlarmReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context,
-                0,
-                intent,
-                PendingIntent.FLAG_UPDATE_CURRENT|  Intent.FILL_IN_DATA);
+        PendingIntent pendingIntent = getPendingIntent(context);
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
 
         alarmManager.cancel(pendingIntent);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, nextAlarmTime.getTimeInMillis(), pendingIntent);
-            /*alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, nextAlarmTime.getTimeInMillis(),
-                    intervalMs,
-                    pendingIntent);*/
         } else {
-            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, nextAlarmTime.getTimeInMillis(),
-                    intervalMs,
-                    pendingIntent);
-            //alarmManager.setAlarmClock(new AlarmManager.AlarmClockInfo(nextAlarmTime.getTimeInMillis(),pendingIntent),pendingIntent);
+            alarmManager.setAlarmClock(new AlarmManager.AlarmClockInfo(nextAlarmTime.getTimeInMillis(),pendingIntent),pendingIntent);
             //alarmManager.setExact(AlarmManager.RTC_WAKEUP,nextAlarmTime.getTimeInMillis(),pendingIntent);
             /*alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, nextAlarmTime.getTimeInMillis(),
                     intervalMs,
                     pendingIntent);*/
         }
-
-        //alarmManager.cancel(pendingIntent);
-        //Toast.makeText(context, "someText",Toast.LENGTH_LONG).show();
 
         MordanSoftLogger.addLog("Schedule run END " );
         return nextAlarmTime;
@@ -546,17 +530,26 @@ public class Schedule {
 
     public static void stop(Context context){
         MordanSoftLogger.addLog("Schedule.stop START " );
-        Intent intent = new Intent(context, AlarmReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context,
-                0,
-                intent,
-                PendingIntent.FLAG_UPDATE_CURRENT|  Intent.FILL_IN_DATA);
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
+        alarmManager.cancel(getPendingIntent(context));
         MordanSoftLogger.addLog("Schedule.stop END " );
     }
 
-    public static boolean checkDialog(Context context, String text) {
-        boolean result = false;
+
+    private static PendingIntent getPendingIntent(Context context){
+        int flags;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            flags = PendingIntent.FLAG_UPDATE_CURRENT|  Intent.FILL_IN_DATA | PendingIntent.FLAG_IMMUTABLE;
+        } else {
+            flags = PendingIntent.FLAG_UPDATE_CURRENT|  Intent.FILL_IN_DATA;
+        }
+        Intent intent = new Intent(context, AlarmReceiver.class);
+        return PendingIntent.getBroadcast(context,
+                0,
+                intent, flags);
+    }
+
+    public static void checkDialog(Context context, String text) {
         text += context.getString(R.string.activity_schedule_save_error_question);
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("Save Error");
@@ -567,7 +560,6 @@ public class Schedule {
         });
         builder.setNegativeButton(context.getString(R.string.no), (dialog, id) -> dialog.cancel());
         builder.show();
-        return result;
     }
 
 }

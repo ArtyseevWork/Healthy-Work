@@ -94,7 +94,6 @@ public class TodayStatistics {
 
     public TodayStatistics recreate(Context context){
         MordanSoftLogger.addLog("TodayStatistics.stop START");
-        Schedule.stop(context);
         this.setCountOfExerciseDone(context,countOfExerciseDoneDefault);
         this.setCountOfExerciseSkipped(context,countOfExerciseSkippedDefault);
         MordanSoftLogger.addLog("TodayStatistics.stop END");
