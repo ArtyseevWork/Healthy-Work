@@ -7,6 +7,7 @@ import android.content.Intent;
 
 import com.mordansoft.healthywork.activity.MainActivity;
 import com.mordansoft.healthywork.helpers.MordanSoftLogger;
+import com.mordansoft.healthywork.models.CurrentStatus;
 import com.mordansoft.healthywork.models.Notification;
 import com.mordansoft.healthywork.models.TodayStatistics;
 
@@ -31,6 +32,9 @@ public class NotificationReceiver extends BroadcastReceiver {
 
         TodayStatistics todayStatistics = TodayStatistics.getTodayStatisticsFromFile(context);
         todayStatistics.setCountOfExerciseDelta(context, exCntDelta);
+        CurrentStatus currentStatus = CurrentStatus.getCurrentStatusFromFile(context);
+        currentStatus.run(context);
+
 
         Notification itsTimeNotification = new Notification(context);
         itsTimeNotification.deleteNotification();

@@ -20,10 +20,15 @@ public class CurrentStatus {
     private static final long nextAlarmTimeDefault = 0L;
     private static final String nextAlarmTimeKey="NEXT_ALARM_TIME";
 
+    private int exerciseId;
+    private static final int exerciseIdDefault = 0;
+    private static final String exerciseIdKey = "EXERCISE_ID";
 
-    public CurrentStatus(int applicationStatus, long nextAlarmTime) {
+
+    public CurrentStatus(int applicationStatus, long nextAlarmTime, int exerciseId) {
         this.applicationStatus = applicationStatus;
         this.nextAlarmTime = nextAlarmTime;
+        this.exerciseId = exerciseId;
     }
 
     public long getNextAlarmTime() {
@@ -55,6 +60,18 @@ public class CurrentStatus {
         editor.apply();
     }
 
+    public int getExerciseId() {
+        return this.exerciseId;
+    }
+
+    public void setExerciseId(Context context, int exerciseId) {
+        this.exerciseId = exerciseId;
+        SharedPreferences sharedPref = context.getSharedPreferences(fileName, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putInt(exerciseIdKey, exerciseId);
+        editor.apply();
+    }
+
 
     public static CurrentStatus getCurrentStatusFromFile(Context context) {
         MordanSoftLogger.addLog("getCurrentStatusFromFile START");
@@ -62,20 +79,23 @@ public class CurrentStatus {
         int applicationStatus;
         long nextAlarmTime;
         long currentTime = Calendar.getInstance().getTimeInMillis();
+        int exerciseId;
         try {
             SharedPreferences sharedPref = context.getSharedPreferences(fileName, Context.MODE_PRIVATE);
             applicationStatus = sharedPref.getInt(applicationStatusKey, applicationStatusDefault);
             nextAlarmTime = sharedPref.getLong(nextAlarmTimeKey, nextAlarmTimeDefault);
+            exerciseId = sharedPref.getInt(exerciseIdKey, exerciseIdDefault);
+
+
             currentStatus = new CurrentStatus(applicationStatus,
-                    nextAlarmTime
+                    nextAlarmTime,
+                    exerciseId
             );
 
             if (applicationStatus != applicationStatusDefault) {                   //schedule is run or pending
                 if (nextAlarmTime == nextAlarmTimeDefault ||
                         nextAlarmTime < currentTime ) {
-                    TodayStatistics todayStatistics = TodayStatistics.getTodayStatisticsFromFile(context);
                     currentStatus = currentStatus.run(context);
-                    //todayStatistics.setCountOfExerciseDelta(context,-1);
                 }
             }
         } catch (Exception e){
@@ -89,7 +109,7 @@ public class CurrentStatus {
     public static CurrentStatus getCleanStatus() {
         return new CurrentStatus(
                applicationStatusDefault,
-               nextAlarmTimeDefault
+               nextAlarmTimeDefault, exerciseIdDefault
         );
     }
 
@@ -98,6 +118,8 @@ public class CurrentStatus {
 
         this.setNextAlarmTime(context, Schedule.run(context).getTimeInMillis());
         this.setApplicationStatus(context, applicationStatusActive);
+        changeExercise(context);
+
         //setNextAlarmTime(context, String.format("%tT",(Alarm.run(context).getTime())));
         MordanSoftLogger.addLog("CurrentStatus.run END");
         return this;
@@ -110,6 +132,12 @@ public class CurrentStatus {
         this.setNextAlarmTime(context,nextAlarmTimeDefault);
         MordanSoftLogger.addLog("CurrentStatus.stop END");
         return this;
+    }
+
+    public int changeExercise(Context context){
+        int newExercise = Exercise.getRandomExercise(context).getId();
+        this.setExerciseId(context, newExercise);
+        return newExercise;
     }
 
 
