@@ -79,7 +79,7 @@
 
     <EditText
         android:id="@+id/et_exercise_name"
-        style="@style/header_2_text"
+        style="@style/header_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
