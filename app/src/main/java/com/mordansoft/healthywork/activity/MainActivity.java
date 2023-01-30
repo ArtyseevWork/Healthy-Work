@@ -65,20 +65,20 @@ public class MainActivity extends AppCompatActivity {
          if (currentStatus.getApplicationStatus() == CurrentStatus.applicationStatusActive){ //application enable
             exercise = Exercise.getExerciseById(this, currentStatus.getExerciseId());
             binding.tvMainNextAlertTimer.setText(currentStatus.getStringNextAlarmTime());
-            binding.btnMainStart.setText(getText(R.string.activity_main_start));
+            binding.btnMainStart.setText(getText(R.string.activity_main_stop));
             binding.tvMainNextAlertTimer.setVisibility(View.VISIBLE);
             binding.spMainExercise.setText(exercise.getName());
             binding.tvMainPerformedCount.setText(String.valueOf(todayStatistics.getCountOfExerciseDone()));
             binding.tvMainMissedCount.setText(String.valueOf(todayStatistics.getCountOfExerciseSkipped()));
 
-             binding.tvMainNextAlert.setVisibility     (View.VISIBLE);
-             binding.tvMainNextAlertTimer.setVisibility(View.VISIBLE);
-             binding.tvMainExercise.setVisibility      (View.VISIBLE);
-             binding.spMainExercise.setVisibility      (View.VISIBLE);
-             binding.tvMainComleted.setVisibility      (View.VISIBLE);
-             binding.tvMainPerformedCount.setVisibility(View.VISIBLE);
-             binding.tvMainMissed.setVisibility        (View.VISIBLE);
-             binding.tvMainMissedCount.setVisibility   (View.VISIBLE);
+            binding.tvMainNextAlert.setVisibility     (View.VISIBLE);
+            binding.tvMainNextAlertTimer.setVisibility(View.VISIBLE);
+            binding.tvMainExercise.setVisibility      (View.VISIBLE);
+            binding.spMainExercise.setVisibility      (View.VISIBLE);
+            binding.tvMainComleted.setVisibility      (View.VISIBLE);
+            binding.tvMainPerformedCount.setVisibility(View.VISIBLE);
+            binding.tvMainMissed.setVisibility        (View.VISIBLE);
+            binding.tvMainMissedCount.setVisibility   (View.VISIBLE);
 
             binding.btnMainSchedule      .setVisibility(View.GONE);
             binding.btnMainChangeExercise.setVisibility(View.VISIBLE);

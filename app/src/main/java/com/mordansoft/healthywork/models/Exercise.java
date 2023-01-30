@@ -161,11 +161,11 @@ public class Exercise {
     }
 
     public static Exercise getExerciseById(Context context, int id){
-        if (id == 0){
-            return getNewExercise(context);
-        }
         MordanSoftLogger.addLog("getExerciseById START id = " + id);
         Exercise exercise = Exercise.getNewExercise(context);
+        if (id == 0){
+            return exercise;
+        }
         try {
             SQLiteDatabase db =  DatabaseHelper.getDatabase(context);
             Cursor cursor = db.query("EXERCISE", new String[]{"name",
