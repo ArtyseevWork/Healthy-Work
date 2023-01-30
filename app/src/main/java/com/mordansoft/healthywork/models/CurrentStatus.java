@@ -2,13 +2,10 @@ package com.mordansoft.healthywork.models;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-
 import com.mordansoft.healthywork.helpers.MordanSoftLogger;
-
 import java.util.Calendar;
 
 public class CurrentStatus {
-
 
     private static final String fileName = "currentStatus";
     private int applicationStatus;
@@ -19,11 +16,9 @@ public class CurrentStatus {
     private long nextAlarmTime;
     private static final long nextAlarmTimeDefault = 0L;
     private static final String nextAlarmTimeKey="NEXT_ALARM_TIME";
-
     private int nextExerciseId;
     private static final int nextExerciseIdDefault = 0;
     private static final String nextExerciseIdKey = "NEXT_EXERCISE_ID";
-
     private int currentExerciseId;
     private static final int currentExerciseIdDefault = 0;
     private static final String currentExerciseIdKey = "CURRENT_EXERCISE_ID";
@@ -108,7 +103,6 @@ public class CurrentStatus {
             nextExerciseId = sharedPref.getInt(nextExerciseIdKey, nextExerciseIdDefault);
             currentExerciseId = sharedPref.getInt(currentExerciseIdKey, currentExerciseIdDefault);
 
-
             currentStatus = new CurrentStatus(applicationStatus,
                     nextAlarmTime,
                     nextExerciseId,
@@ -131,8 +125,8 @@ public class CurrentStatus {
 
     public static CurrentStatus getCleanStatus() {
         return new CurrentStatus(
-               applicationStatusDefault,
-               nextAlarmTimeDefault,
+                applicationStatusDefault,
+                nextAlarmTimeDefault,
                 nextExerciseIdDefault,
                 currentExerciseIdDefault
         );
@@ -143,9 +137,6 @@ public class CurrentStatus {
         this.nextExerciseId = changeExercise(context);
         this.setNextAlarmTime(context, Schedule.run(context).getTimeInMillis());
         this.setApplicationStatus(context, applicationStatusActive);
-
-
-        //setNextAlarmTime(context, String.format("%tT",(Alarm.run(context).getTime())));
         MordanSoftLogger.addLog("CurrentStatus.run END");
         return this;
     }
@@ -164,6 +155,5 @@ public class CurrentStatus {
         this.setNextExerciseId(context, newExercise);
         return newExercise;
     }
-
 
 }

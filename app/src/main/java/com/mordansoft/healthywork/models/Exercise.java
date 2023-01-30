@@ -2,27 +2,20 @@ package com.mordansoft.healthywork.models;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.view.View;
-import android.widget.Toast;
-import androidx.appcompat.app.AlertDialog;
-
 import com.mordansoft.healthywork.helpers.DatabaseHelper;
 import com.mordansoft.healthywork.helpers.MordanSoftLogger;
 import com.mordansoft.healthywork.R;
-import com.mordansoft.healthywork.activity.MainActivity;
-
 import java.util.ArrayList;
 
 public class Exercise {
 
     private final int id;
-    private String  name;
-    private String  description;
-    private String  unit;
-    private int     count;
+    private String name;
+    private String description;
+    private String unit;
+    private int count;
     private boolean enable;
 
     public Exercise(int id, String name, String description, String unit, int count, boolean enable) {
@@ -78,7 +71,7 @@ public class Exercise {
         this.enable = enable;
     }
 
-    public long saveExercise(Context context){
+    public long saveExercise(Context context){ //todo run static
         long id = this.id;
         MordanSoftLogger.addLog("updateExercise START id = " + id);
         SQLiteDatabase db = DatabaseHelper.getDatabase(context);
@@ -96,7 +89,6 @@ public class Exercise {
         db.close();
         MordanSoftLogger.addLog("UpdateExercise END");
         return  id;
-        
     }
 
     public static long saveExercise(Context context, Exercise exercise){
@@ -117,7 +109,6 @@ public class Exercise {
         db.close();
         MordanSoftLogger.addLog("UpdateExercise END");
         return  id;
-
     }
 
     public static void deleteExercise(Context context, Exercise exercise){
@@ -223,8 +214,5 @@ public class Exercise {
         saveExercise(context, new Exercise(0, context.getString(R.string.demo_data_exercise_name_5),  context.getString(R.string.demo_data_exercise_description_5), context.getString(R.string.demo_data_unit_seconds), 60, true));       //Eye Exercises
         saveExercise(context, new Exercise(0, context.getString(R.string.demo_data_exercise_name_6),  context.getString(R.string.demo_data_exercise_description_6), context.getString(R.string.demo_data_unit_times),    5, true));       //Scapular wall slides
     }
-
-
-
 
 }

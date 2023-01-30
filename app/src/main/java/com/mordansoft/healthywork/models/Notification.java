@@ -33,7 +33,6 @@ public class Notification {
         notificationManager = NotificationManagerCompat.from(context);
     }
 
-
     public void createNotification(){
         MordanSoftLogger.addLog("ItsTimeNotification createNotification START");
 
@@ -85,6 +84,7 @@ public class Notification {
         MordanSoftLogger.addLog("ItsTimeNotification createNotification END");
 
     }
+
     public void deleteNotification(){
         MordanSoftLogger.addLog("ItsTimeNotification deleteNotification START");
 
@@ -93,7 +93,6 @@ public class Notification {
 
         MordanSoftLogger.addLog("ItsTimeNotification deleteNotification END");
     }
-
 
     private void createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

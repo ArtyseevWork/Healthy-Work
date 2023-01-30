@@ -20,7 +20,6 @@ import java.util.Calendar;
 public class Schedule {
 
     private static final String fileName = "schedule";
-
     private boolean scheduleEnable;
     private int     startDayHours;
     private int     startDayMinutes;
@@ -38,7 +37,6 @@ public class Schedule {
     private boolean th;
     private boolean fr;
     private boolean sa;
-
     private static final boolean scheduleEnableDefault = false;
     private static final String scheduleEnableKey = "SCHEDULE_ENABLE";
     private static final int startDayHoursDefault = 9;
@@ -73,7 +71,6 @@ public class Schedule {
     private static final String frKey = "FR";
     private static final boolean saDefault = false;
     private static final String saKey = "SA";
-
     private int period;
     private static final int periodDefault = 60;
     private static final String periodKey = "PERIOD";
@@ -404,7 +401,7 @@ public class Schedule {
             inCalendar = Calendar.getInstance();
         }
 
-        if (true) {//debug
+        if (false) {//debug
             inCalendar.setTimeInMillis(inCalendar.getTimeInMillis() + (60*1000));
             return inCalendar;
         }
@@ -412,7 +409,6 @@ public class Schedule {
         Calendar outCalendar = (Calendar) inCalendar.clone();
         Schedule schedule = Schedule.getScheduleFromFile(context);
 
-        //int countdown = preferences.getCountdown();                                  //todo add time before end of the day and recess
         int period = schedule.getPeriod();
         int dayOfWeakIn = inCalendar.get(Calendar.DAY_OF_WEEK);
 
@@ -479,7 +475,7 @@ public class Schedule {
         int hoursNow;
         int minutesNow;
         int countdown = schedule.getCountdown();
-        int period =    schedule.getPeriod();
+        int period = schedule.getPeriod();
 
         hoursNow = calendar.get(Calendar.HOUR_OF_DAY);
         minutesNow = calendar.get(Calendar.MINUTE);
@@ -511,9 +507,7 @@ public class Schedule {
         Calendar nextAlarmTime = getNextAlarmTime(context, null);
         PendingIntent pendingIntent = getPendingIntent(context);
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
-
         alarmManager.cancel(pendingIntent);
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, nextAlarmTime.getTimeInMillis(), pendingIntent);
         } else {
@@ -523,7 +517,6 @@ public class Schedule {
                     intervalMs,
                     pendingIntent);*/
         }
-
         MordanSoftLogger.addLog("Schedule run END " );
         return nextAlarmTime;
     }

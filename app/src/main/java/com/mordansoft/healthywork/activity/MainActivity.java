@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
-
 import com.mordansoft.healthywork.databinding.ActivityMainBinding;
 import com.mordansoft.healthywork.models.CurrentStatus;
 import com.mordansoft.healthywork.models.Exercise;
@@ -31,8 +30,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         MordanSoftLogger.addLog("Start MainActivity");
         super.onCreate(savedInstanceState);
-        //init();
-        //updateUi();
     }
 
     public void init(){
@@ -105,10 +102,6 @@ public class MainActivity extends AppCompatActivity {
             binding.btnMainChangeExercise.setVisibility(View.GONE);
             binding.btnMainExercises     .setVisibility(View.VISIBLE);
          }
-
-         CurrentStatus currentStatus1 =CurrentStatus.getCurrentStatusFromFile(this);
-         int x = 0;
-
     }
 
     public static MainActivity  getInstance(){
@@ -176,6 +169,5 @@ public class MainActivity extends AppCompatActivity {
             back_pressed = System.currentTimeMillis();
         }
     }
-
 
 }
