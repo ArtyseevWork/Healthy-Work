@@ -10,7 +10,7 @@
     <string name="activity_main_until_the_next_exercise">Час:</string>
     <string name="activity_main_start">Старт</string>
     <string name="activity_main_stop">Стоп</string>
-    <string name="activity_main_performed">Виконано</string>
+    <string name="activity_main_performed">Виконано:</string>
     <string name="activity_main_settings">Налаштування</string>
     <string name="activity_main_current_exercise">Вправа:</string>
     <string name="activity_main_exercises">Вправи</string>
@@ -80,7 +80,7 @@
     <string name="dialog_save_changes">Зберігти зміни перед виходом?</string>
     <string name="dialog_yes">Так</string>
     <string name="dialog_no">Ні</string>
-    <string name="activity_main_missed">Пропущено</string>
+    <string name="activity_main_missed">Пропущено:</string>
     <string name="activity_schedule_save_error_question">" Хочете вийти без збереження?"</string>
     <string name="activity_to_do_title">Час рухатись!</string>
     <string name="notification_title">Час рухатись!</string>
@@ -135,5 +135,6 @@
          вздовж стіни, повертаючи їх у вихідне положення.
     </string>
     <string name="activity_main_change_exercise">Змінити вправу</string>
+    <string name="activity_main_next_exercise">Вправа:</string>
     <!--end demo data   -->
 </resources>

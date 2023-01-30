@@ -66,6 +66,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/button_style"
+            android:layout_margin="@dimen/base_margin"
             android:text="@string/activity_exercises_menu_add"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

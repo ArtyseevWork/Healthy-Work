@@ -7,9 +7,9 @@
     <string name="activity_main_until_the_next_exercise">Время:</string>
     <string name="activity_main_start">Старт</string>
     <string name="activity_main_stop">Стоп</string>
-    <string name="activity_main_current_exercise">Упражнение</string>
-    <string name="activity_main_performed">Выполнено</string>
-    <string name="activity_main_missed">Пропущенно</string>
+    <string name="activity_main_current_exercise">Упражнение:</string>
+    <string name="activity_main_performed">Выполнено:</string>
+    <string name="activity_main_missed">Пропущенно:</string>
     <string name="activity_main_settings">Настройки</string>
     <string name="activity_main_exercises">Упражнения</string>
     <string name="activity_main_exercises_list">Меню упражнений</string>
@@ -133,5 +133,6 @@
         сможете, не отрывая спину, плечи, локти или запястья от стены. Медленно опустите руки,
         скользя ими по стене, возвращая их в исходное положение.</string>
     <string name="activity_main_change_exercise">Изменить упражнение</string>
+    <string name="activity_main_next_exercise">Упражнение:</string>
     <!--end demo data   -->
 </resources>

@@ -7,11 +7,12 @@
     <string name="channel_description" translatable="false">Healthy work notification for chanel</string>
 
 
-    <!--start activity_main  -->
-    <string name="activity_main_until_the_next_exercise">Next exercise:</string>
+    <!--start activity_main & to_do -->
+    <string name="activity_main_until_the_next_exercise">Next time:</string>
     <string name="activity_main_start">Start</string>
     <string name="activity_main_stop">Stop</string>
     <string name="activity_main_current_exercise">Current exercise:</string>
+    <string name="activity_main_next_exercise">Next exercise:</string>
     <string name="activity_main_performed">Performed:</string>
     <string name="activity_main_missed">Missed:</string>
     <string name="activity_main_settings">Settings</string>
@@ -20,7 +21,7 @@
     <string name="activity_main_schedules">Schedules</string>
     <string name="activity_main_exit_message">Press again to exit.</string>
     <string name="activity_main_change_exercise">Change exercise</string>
-    <!--end activity_main   -->
+    <!--end activity_main & to_do  -->
 
     <!--start activity_exercise  -->
     <string name="activity_exercise_title">Exercise:</string>

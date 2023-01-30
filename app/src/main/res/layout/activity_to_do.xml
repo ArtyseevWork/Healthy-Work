@@ -62,11 +62,11 @@
 
     <TextView
         android:id="@+id/tv_todo_title"
-        style="@style/header_2_text"
+        style="@style/header_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/activity_to_do_title"
-        app:layout_constraintBottom_toTopOf="@+id/tv_todo_exercise_name"
+        app:layout_constraintBottom_toTopOf="@+id/cl_button_main"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cl_top" />
@@ -77,9 +77,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/sample_text"
-        app:layout_constraintBottom_toTopOf="@+id/cl_button_main"
+        app:layout_constraintBottom_toTopOf="@+id/cl_bottom"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/tv_todo_title" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
         android:id="@+id/tv_todo_exercise_count"
@@ -105,6 +105,7 @@
             style="@style/button_style"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
+            android:layout_marginBottom="@dimen/base_margin"
             android:text="@string/activity_to_do_negative"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btn_todo_exit"
@@ -116,6 +117,7 @@
             style="@style/button_style"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
+            android:layout_marginBottom="@dimen/base_margin"
             android:text="@string/activity_to_do_exit"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -123,27 +125,6 @@
             app:layout_constraintStart_toEndOf="@+id/btn_todo_negative" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/tv_schedule_already_done_title"
-        style="@style/header_2_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/activity_to_do_already_done"
-        app:layout_constraintBottom_toTopOf="@+id/cl_bottom"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintTop_toBottomOf="@+id/cl_button_main" />
-
-    <TextView
-        android:id="@+id/tv_todo_already_done"
-        style="@style/header_2_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/sample_text"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_schedule_already_done_title"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/tv_schedule_already_done_title" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -160,5 +141,17 @@
         android:layout_margin="@dimen/base_margin"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.48" />
+
+    <TextView
+        android:id="@+id/textView"
+        style="@style/header_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/activity_main_current_exercise"
+        app:layout_constraintBottom_toTopOf="@+id/tv_todo_exercise_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cl_button_main" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
