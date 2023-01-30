@@ -89,7 +89,7 @@
     <string name="activity_schedule_save_wrong_break_time">" Неверное время перерыва."</string>
 
     <!--start demo data  -->
-    <string name="demo_data_unit_times"><item>@string/activity_exercise_unit_times</item></string>
+    <string name="demo_data_unit_times">@string/activity_exercise_unit_times</string>
     <string name="demo_data_unit_seconds">@string/activity_exercise_unit_seconds</string>
     <string name="demo_data_exercise_name_1">Отжимания</string>
     <string name="demo_data_exercise_name_2">Приседания</string>
@@ -134,5 +134,6 @@
         скользя ими по стене, возвращая их в исходное положение.</string>
     <string name="activity_main_change_exercise">Изменить упражнение</string>
     <string name="activity_main_next_exercise">Упражнение:</string>
+    <string name="notification_content_text_start">"Пора выполнять: "</string>
     <!--end demo data   -->
 </resources>

@@ -114,6 +114,8 @@
     <string name="notification_negative">Skip</string>
     <string name="notification_exit">Close</string>
     <string name="notification_already_done">Already done:</string>
+    <string name="notification_content_text_start">It\'s Time to perform: </string>
+
     <!--end notifications   -->
 
     <!--start dialog  -->
@@ -123,7 +125,7 @@
     <!--end dialog   -->
 
     <!--start demo data  -->
-    <string name="demo_data_unit_times"><item>@string/activity_exercise_unit_times</item></string>
+    <string name="demo_data_unit_times">@string/activity_exercise_unit_times</string>
     <string name="demo_data_unit_seconds">@string/activity_exercise_unit_seconds</string>
     <string name="demo_data_exercise_name_1">Push-Ups</string>
     <string name="demo_data_exercise_name_2">Squats</string>

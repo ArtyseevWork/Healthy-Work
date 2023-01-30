@@ -89,7 +89,7 @@
     <string name="activity_schedule_save_wrong_break_time">" Невірний час перерви. "</string>
 
     <!--start demo data  -->
-    <string name="demo_data_unit_times"><item>@string/activity_exercise_unit_times</item></string>
+    <string name="demo_data_unit_times">@string/activity_exercise_unit_times</string>
     <string name="demo_data_unit_seconds">@string/activity_exercise_unit_seconds</string>
     <string name="demo_data_exercise_name_1">Віджимання</string>
     <string name="demo_data_exercise_name_2">Присідання</string>
@@ -136,5 +136,6 @@
     </string>
     <string name="activity_main_change_exercise">Змінити вправу</string>
     <string name="activity_main_next_exercise">Вправа:</string>
+    <string name="notification_content_text_start">"Час виконувати: "</string>
     <!--end demo data   -->
 </resources>
