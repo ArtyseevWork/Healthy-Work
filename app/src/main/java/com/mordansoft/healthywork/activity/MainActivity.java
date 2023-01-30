@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         Preferences.getPreferencesFromFile(this);
         binding.clButtonMain.setOnClickListener(btnMainStartListener);
         binding.clButtonMain.setOnTouchListener(handleTouch);
-        binding.btnMainProperties.setOnClickListener(btnSettingsListener);
+        binding.btnMainChangeExercise.setOnClickListener(btnChangeExerciseListener);
         binding.btnMainExercises.setOnClickListener(btnExercisesListener);
         binding.btnMainSchedule.setOnClickListener(btnScheduleListener);
     }
@@ -61,31 +61,44 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void updateUi(){
-        int visible = View.INVISIBLE;
-        String mainButtonText = "Start";
 
-         if (currentStatus.getApplicationStatus() == CurrentStatus.applicationStatusActive){
-            visible = View.VISIBLE;
-            exercise = Exercise.getExerciseById(this, todayStatistics.getExerciseId());
-            mainButtonText = "Stop";
+         if (currentStatus.getApplicationStatus() == CurrentStatus.applicationStatusActive){ //application enable
+            exercise = Exercise.getExerciseById(this, currentStatus.getExerciseId());
             binding.tvMainNextAlertTimer.setText(currentStatus.getStringNextAlarmTime());
-            binding.btnMainStart.setText(exercise.getName());
-            binding.tvMainNextAlertTimer.setVisibility(visible);
+            binding.btnMainStart.setText(getText(R.string.activity_main_start));
+            binding.tvMainNextAlertTimer.setVisibility(View.VISIBLE);
             binding.spMainExercise.setText(exercise.getName());
             binding.tvMainPerformedCount.setText(String.valueOf(todayStatistics.getCountOfExerciseDone()));
             binding.tvMainMissedCount.setText(String.valueOf(todayStatistics.getCountOfExerciseSkipped()));
-        }
 
-        binding.btnMainStart.setText(mainButtonText);
-        binding.tvMainNextAlert.setVisibility(visible);
-        binding.tvMainNextAlertTimer.setVisibility(visible);
-        binding.tvMainExercise.setVisibility(visible);
-        binding.spMainExercise.setVisibility(visible);
-        binding.tvMainComleted.setVisibility(visible);
-        binding.tvMainPerformedCount.setVisibility(visible);
-        binding.tvMainMissed.setVisibility(visible);
-        binding.tvMainMissedCount.setVisibility(visible);
-        //binding.mainCounter.setText(String.valueOf(Exercise.getCntExercise(this)));
+             binding.tvMainNextAlert.setVisibility     (View.VISIBLE);
+             binding.tvMainNextAlertTimer.setVisibility(View.VISIBLE);
+             binding.tvMainExercise.setVisibility      (View.VISIBLE);
+             binding.spMainExercise.setVisibility      (View.VISIBLE);
+             binding.tvMainComleted.setVisibility      (View.VISIBLE);
+             binding.tvMainPerformedCount.setVisibility(View.VISIBLE);
+             binding.tvMainMissed.setVisibility        (View.VISIBLE);
+             binding.tvMainMissedCount.setVisibility   (View.VISIBLE);
+
+            binding.btnMainSchedule      .setVisibility(View.GONE);
+            binding.btnMainChangeExercise.setVisibility(View.VISIBLE);
+            binding.btnMainExercises     .setVisibility(View.GONE);
+         } else {                                                                           //application disable
+            binding.btnMainStart.setText(getText(R.string.activity_main_start));
+            binding.tvMainNextAlert.setVisibility(View.INVISIBLE);
+            binding.tvMainNextAlertTimer.setVisibility(View.INVISIBLE);
+            binding.tvMainExercise.setVisibility(View.INVISIBLE);
+            binding.spMainExercise.setVisibility(View.INVISIBLE);
+            binding.tvMainComleted.setVisibility(View.INVISIBLE);
+            binding.tvMainPerformedCount.setVisibility(View.INVISIBLE);
+            binding.tvMainMissed.setVisibility(View.INVISIBLE);
+            binding.tvMainMissedCount.setVisibility(View.INVISIBLE);
+
+            binding.btnMainSchedule      .setVisibility(View.VISIBLE);
+            binding.btnMainChangeExercise.setVisibility(View.GONE);
+            binding.btnMainExercises     .setVisibility(View.VISIBLE);
+         }
+
     }
 
     public static MainActivity  getInstance(){
@@ -104,9 +117,9 @@ public class MainActivity extends AppCompatActivity {
         updateUi();
     };
 
-    View.OnClickListener btnSettingsListener = v -> {
-        Intent intent = new Intent(getApplicationContext(), PreferencesActivity.class);
-        startActivity(intent);
+    View.OnClickListener btnChangeExerciseListener = v -> {
+        currentStatus.changeExercise(this);
+        updateUi();
     };
 
     View.OnClickListener btnExercisesListener = v -> {

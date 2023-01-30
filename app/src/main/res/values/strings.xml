@@ -19,6 +19,7 @@
     <string name="activity_main_exercises_list">List of exercises</string>
     <string name="activity_main_schedules">Schedules</string>
     <string name="activity_main_exit_message">Press again to exit.</string>
+    <string name="activity_main_change_exercise">Change exercise</string>
     <!--end activity_main   -->
 
     <!--start activity_exercise  -->

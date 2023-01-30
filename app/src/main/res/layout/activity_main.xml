@@ -187,16 +187,16 @@
             android:layout_height="50dp"
             android:text="@string/activity_main_exercises"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btn_main_properties"
+            app:layout_constraintEnd_toStartOf="@+id/btn_main_change_exercise"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/btn_main_schedule" />
 
         <Button
-            android:id="@+id/btn_main_properties"
+            android:id="@+id/btn_main_change_exercise"
             style="@style/button_style"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:text="@string/activity_main_settings"
+            android:text="@string/activity_main_change_exercise"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

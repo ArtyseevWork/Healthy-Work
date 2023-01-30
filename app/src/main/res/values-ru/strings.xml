@@ -44,7 +44,6 @@
     <string name="activity_preferences_half_hour">30</string>
     <string name="activity_preferences_title">Настройки</string>
     <string name="activity_preferences_save_message">Настройки сохранены</string>
-    <string name="activity_schedule_filename">График</string>
     <string name="activity_schedule_title">График</string>
     <string name="activity_schedule_back">Назад</string>
     <string name="activity_schedule_switch">Включить график</string>
@@ -133,5 +132,6 @@
         Это исходное положение. Медленно поднимите руки вверх по стене так высоко, как только
         сможете, не отрывая спину, плечи, локти или запястья от стены. Медленно опустите руки,
         скользя ими по стене, возвращая их в исходное положение.</string>
+    <string name="activity_main_change_exercise">Изменить упражнение</string>
     <!--end demo data   -->
 </resources>

@@ -43,7 +43,6 @@
     <string name="activity_preferences_countdown_start">Час відліку, хв:</string>
     <string name="activity_preferences_save">Зберігти</string>
     <string name="activity_preferences_save_message">Налаштування збережено</string>
-    <string name="activity_schedule_filename">Графік</string>
     <string name="activity_schedule_title">Графік</string>
     <string name="activity_schedule_back">Назад</string>
     <string name="activity_schedule_switch">Ввімкнути графік</string>
@@ -135,5 +134,6 @@
          зможете, не відриваючи спину, плечі, лікті чи зап\'ястя від стіни. Повільно опустіть руки,
          вздовж стіни, повертаючи їх у вихідне положення.
     </string>
+    <string name="activity_main_change_exercise">Змінити вправу</string>
     <!--end demo data   -->
 </resources>
