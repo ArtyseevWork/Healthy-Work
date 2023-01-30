@@ -20,7 +20,7 @@ public class AlarmReceiver extends BroadcastReceiver {
         MordanSoftLogger.addLog("AlarmReceiver START");
         currentStatus = CurrentStatus.getCurrentStatusFromFile(context);
         if (   currentStatus.getApplicationStatus() == CurrentStatus.applicationStatusActive
-            && currentStatus.getApplicationStatus() == CurrentStatus.applicationStatusPending) {
+            || currentStatus.getApplicationStatus() == CurrentStatus.applicationStatusPending) {
             Notification notification = new Notification(context);
             notification.createNotification();
 
