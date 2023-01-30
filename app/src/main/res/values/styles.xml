@@ -1,26 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--start text  -->
-    <style name="general_text_style">
+    <style name="normal_text">
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/color_primary</item>
     </style>
 
-    <style name="general_title_text_style" parent="general_text_style">
+    <style name="title_text" parent="normal_text">
         <item name="android:textSize">34sp</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="general_title_2_text_style" parent="general_text_style">
+    <style name="header_2_text" parent="normal_text">
         <item name="android:textSize">18sp</item>
     </style>
 
-    <style name="general_additional_text_style" parent="general_text_style">
+    <style name="header_text" parent="title_text">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="subtext_text" parent="normal_text">
         <item name="android:textSize">12sp</item>
     </style>
 
-    <style name="general_main_button_text_style" parent="general_text_style">
+    <style name="general_main_button_text_style" parent="normal_text">
         <item name="android:textSize">30sp</item>
         <item name="android:textStyle">bold</item>
     </style>

@@ -19,7 +19,7 @@
 
     <TextView
         android:id="@+id/tv_preferences_title"
-        style="@style/general_title_text_style"
+        style="@style/title_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/activity_preferences_title"
@@ -44,7 +44,7 @@
 
     <TextView
         android:id="@+id/tv_preferences_period_title"
-        style="@style/general_title_2_text_style"
+        style="@style/header_2_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/base_margin"
@@ -57,7 +57,7 @@
 
     <TextView
         android:id="@+id/tv_preferences_countdown_start_title"
-        style="@style/general_title_2_text_style"
+        style="@style/header_2_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/base_margin"
@@ -103,7 +103,7 @@
 
     <TextView
         android:id="@+id/tv_preferences_countdown"
-        style="@style/general_title_2_text_style"
+        style="@style/header_2_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/base_small_margin"

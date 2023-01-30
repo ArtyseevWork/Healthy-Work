@@ -20,7 +20,7 @@
             android:text="@string/activity_exercises_menu_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/general_title_text_style"
+            style="@style/title_text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

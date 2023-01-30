@@ -19,7 +19,7 @@
 
         <TextView
             android:id="@+id/tv_main_title"
-            style="@style/general_title_text_style"
+            style="@style/title_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/base_margin"
@@ -62,7 +62,7 @@
 
     <TextView
         android:id="@+id/tv_todo_title"
-        style="@style/general_title_2_text_style"
+        style="@style/header_2_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/activity_to_do_title"
@@ -73,7 +73,7 @@
 
     <TextView
         android:id="@+id/tv_todo_exercise_name"
-        style="@style/general_title_2_text_style"
+        style="@style/header_2_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/sample_text"
@@ -83,7 +83,7 @@
 
     <TextView
         android:id="@+id/tv_todo_exercise_count"
-        style="@style/general_title_2_text_style"
+        style="@style/header_2_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/sample_text"
@@ -126,7 +126,7 @@
 
     <TextView
         android:id="@+id/tv_schedule_already_done_title"
-        style="@style/general_title_2_text_style"
+        style="@style/header_2_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/activity_to_do_already_done"
@@ -137,7 +137,7 @@
 
     <TextView
         android:id="@+id/tv_todo_already_done"
-        style="@style/general_title_2_text_style"
+        style="@style/header_2_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/sample_text"

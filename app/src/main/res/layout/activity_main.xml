@@ -20,7 +20,7 @@
 
         <TextView
             android:id="@+id/tv_main_title"
-            style="@style/general_title_text_style"
+            style="@style/title_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/app_name"
@@ -34,7 +34,7 @@
 
     <TextView
         android:id="@+id/tv_main_next_alert"
-        style="@style/general_title_2_text_style"
+        style="@style/header_2_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/activity_main_until_the_next_exercise"
@@ -46,7 +46,7 @@
 
     <TextView
         android:id="@+id/tv_main_next_alert_timer"
-        style="@style/general_text_style"
+        style="@style/normal_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/sample_text"
@@ -88,7 +88,7 @@
 
     <TextView
         android:id="@+id/tv_main_exercise"
-        style="@style/general_title_2_text_style"
+        style="@style/header_2_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/activity_main_current_exercise"
@@ -101,7 +101,7 @@
 
     <TextView
         android:id="@+id/sp_main_exercise"
-        style="@style/general_text_style"
+        style="@style/normal_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/activity_main_exercises_list"
@@ -114,7 +114,7 @@
 
     <TextView
         android:id="@+id/tv_main_comleted"
-        style="@style/general_title_2_text_style"
+        style="@style/header_2_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/activity_main_performed"
@@ -126,7 +126,7 @@
 
     <TextView
         android:id="@+id/tv_main_performed_count"
-        style="@style/general_text_style"
+        style="@style/normal_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/sample_text"
@@ -138,7 +138,7 @@
 
     <TextView
         android:id="@+id/tv_main_missed"
-        style="@style/general_title_2_text_style"
+        style="@style/header_2_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/activity_main_missed"
@@ -150,7 +150,7 @@
 
     <TextView
         android:id="@+id/tv_main_missed_count"
-        style="@style/general_text_style"
+        style="@style/normal_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/sample_text"
