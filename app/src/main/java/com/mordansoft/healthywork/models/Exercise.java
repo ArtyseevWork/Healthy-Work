@@ -215,31 +215,6 @@ public class Exercise {
         return exercises.get(num);
     }
 
-    public static void test(Context context, View view, Exercise exercise) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle(context.getString(R.string.activity_exercise_delete));
-        builder.setMessage(context.getString(R.string.activity_exercise_delete_message));
-        builder.setPositiveButton(context.getString(R.string.yes), (dialog, id) -> {
-            try {
-                Exercise.deleteExercise(view.getContext(), exercise);
-                Toast toast = Toast.makeText(view.getContext(),
-                        context.getString(R.string.activity_exercise_delete_complete_message),
-                        Toast.LENGTH_LONG);
-                Intent intent;
-                intent = new Intent(view.getContext(), MainActivity.class);
-                toast.show();
-                context.startActivity(intent);
-            } catch (Exception e){
-                Toast toast = Toast.makeText(view.getContext(),
-                        "deleteKnife error: " + e,
-                        Toast.LENGTH_SHORT);
-                toast.show();
-            }
-        });
-        builder.setNegativeButton(context.getString(R.string.no), (dialog, id) -> dialog.cancel());
-        builder.show();
-    }
-
     public static void insertConstantsData(Context context) {
         saveExercise(context, new Exercise(0, context.getString(R.string.demo_data_exercise_name_1),  context.getString(R.string.demo_data_exercise_description_1), context.getString(R.string.demo_data_unit_times),   10, true));       //Push-Ups
         saveExercise(context, new Exercise(0, context.getString(R.string.demo_data_exercise_name_2),  context.getString(R.string.demo_data_exercise_description_2), context.getString(R.string.demo_data_unit_times),   15, true));       //Squats

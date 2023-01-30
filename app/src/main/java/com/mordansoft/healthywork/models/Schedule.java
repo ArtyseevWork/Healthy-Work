@@ -404,8 +404,8 @@ public class Schedule {
             inCalendar = Calendar.getInstance();
         }
 
-        if (false) {//debug
-            inCalendar.setTimeInMillis(inCalendar.getTimeInMillis() + (30*1000));
+        if (true) {//debug
+            inCalendar.setTimeInMillis(inCalendar.getTimeInMillis() + (60*1000));
             return inCalendar;
         }
 
@@ -517,8 +517,8 @@ public class Schedule {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, nextAlarmTime.getTimeInMillis(), pendingIntent);
         } else {
-            alarmManager.setAlarmClock(new AlarmManager.AlarmClockInfo(nextAlarmTime.getTimeInMillis(),pendingIntent),pendingIntent);
-            //alarmManager.setExact(AlarmManager.RTC_WAKEUP,nextAlarmTime.getTimeInMillis(),pendingIntent);
+            //alarmManager.setAlarmClock(new AlarmManager.AlarmClockInfo(nextAlarmTime.getTimeInMillis(),pendingIntent),pendingIntent);
+            alarmManager.setExact(AlarmManager.RTC_WAKEUP,nextAlarmTime.getTimeInMillis(),pendingIntent);
             /*alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, nextAlarmTime.getTimeInMillis(),
                     intervalMs,
                     pendingIntent);*/

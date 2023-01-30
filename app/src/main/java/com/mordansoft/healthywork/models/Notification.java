@@ -65,7 +65,7 @@ public class Notification {
                 new NotificationCompat.Builder(context, CHANNEL_ID)
                         .setSmallIcon(R.drawable.ic_baseline_alarm_add_24)
                         .setContentTitle(context.getText(R.string.app_name))
-                        .setContentText(context.getText(R.string.notification_title))
+                        .setContentText(generateContentText())
                         .setSound(Settings.System.DEFAULT_NOTIFICATION_URI)
                         .setContentIntent(pendingIntent)
                         .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
@@ -111,9 +111,15 @@ public class Notification {
         }
     }
 
+    private String generateContentText(){
+        CurrentStatus currentStatus = CurrentStatus.getCurrentStatusFromFile(context);
+        Exercise exercise = Exercise.getExerciseById(context, currentStatus.getCurrentExerciseId());
+        String exerciseName = exercise.getName();;
+        int exerciseCount = exercise.getCount();
+        String exerciseUnit = exercise.getUnit();
 
-
-
-
-
+        context.getString(R.string.notification_content_text_start);
+        return(context.getString(R.string.notification_content_text_start) + exerciseName + ", "
+                + exerciseCount + " " + exerciseUnit);
+    }
 }

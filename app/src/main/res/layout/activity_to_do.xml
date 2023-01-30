@@ -78,7 +78,9 @@
         android:layout_height="wrap_content"
         android:text="@string/sample_text"
         app:layout_constraintBottom_toTopOf="@+id/cl_bottom"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintEnd_toStartOf="@+id/tv_todo_exercise_count"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
@@ -88,7 +90,9 @@
         android:layout_height="wrap_content"
         android:text="@string/sample_text"
         app:layout_constraintBottom_toBottomOf="@+id/tv_todo_exercise_name"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tv_todo_exercise_name"
         app:layout_constraintTop_toTopOf="@+id/tv_todo_exercise_name" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -125,22 +129,6 @@
             app:layout_constraintStart_toEndOf="@+id/btn_todo_negative" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/base_margin"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.52" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/base_margin"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.48" />
 
     <TextView
         android:id="@+id/textView"

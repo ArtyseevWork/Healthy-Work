@@ -52,7 +52,7 @@ public class ToDoActivity extends AppCompatActivity {
 
     private void updateUi(){
         binding.tvTodoExerciseName.setText(exercise.getName());
-        binding.tvTodoExerciseCount.setText(String.valueOf(exercise.getCount()));
+        binding.tvTodoExerciseCount.setText(exercise.getCount() + " " +  exercise.getUnit());
     }
 
     /********** Listeners **********/

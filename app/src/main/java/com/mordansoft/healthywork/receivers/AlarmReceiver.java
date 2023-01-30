@@ -21,6 +21,7 @@ public class AlarmReceiver extends BroadcastReceiver {
         currentStatus = CurrentStatus.getCurrentStatusFromFile(context);
         if (   currentStatus.getApplicationStatus() == CurrentStatus.applicationStatusActive
             || currentStatus.getApplicationStatus() == CurrentStatus.applicationStatusPending) {
+            currentStatus.setCurrentExerciseId(context, currentStatus.getNextExerciseId());
             Notification notification = new Notification(context);
             notification.createNotification();
 

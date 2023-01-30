@@ -33,6 +33,7 @@ public class NotificationReceiver extends BroadcastReceiver {
         TodayStatistics todayStatistics = TodayStatistics.getTodayStatisticsFromFile(context);
         todayStatistics.setCountOfExerciseDelta(context, exCntDelta);
         CurrentStatus currentStatus = CurrentStatus.getCurrentStatusFromFile(context);
+        currentStatus.setApplicationStatus(context, CurrentStatus.applicationStatusActive);
         currentStatus.run(context);
 
 
@@ -40,6 +41,7 @@ public class NotificationReceiver extends BroadcastReceiver {
         itsTimeNotification.deleteNotification();
 
         try {
+            MainActivity.getInstance().init();
             MainActivity.getInstance().updateUi();
         } catch (Exception e) {
             MordanSoftLogger.addLog("NotificationReceiver updateUI error: " + e, 'e');

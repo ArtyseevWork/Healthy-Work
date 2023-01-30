@@ -31,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         MordanSoftLogger.addLog("Start MainActivity");
         super.onCreate(savedInstanceState);
-        init();
-        updateUi();
+        //init();
+        //updateUi();
     }
 
     public void init(){
@@ -58,6 +58,13 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         binding = null;
         MordanSoftLogger.addLog("Destroy MainActivity");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        init();
+        updateUi();
     }
 
     public void updateUi(){
@@ -98,6 +105,9 @@ public class MainActivity extends AppCompatActivity {
             binding.btnMainChangeExercise.setVisibility(View.GONE);
             binding.btnMainExercises     .setVisibility(View.VISIBLE);
          }
+
+         CurrentStatus currentStatus1 =CurrentStatus.getCurrentStatusFromFile(this);
+         int x = 0;
 
     }
 

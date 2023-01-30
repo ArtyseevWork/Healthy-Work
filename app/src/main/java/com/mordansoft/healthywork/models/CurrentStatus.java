@@ -82,7 +82,7 @@ public class CurrentStatus {
     }
 
     public void setCurrentExerciseId(Context context, int exerciseId) {
-        this.nextExerciseId = exerciseId;
+        this.currentExerciseId = exerciseId;
         SharedPreferences sharedPref = context.getSharedPreferences(fileName, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putInt(currentExerciseIdKey, exerciseId);
@@ -98,14 +98,15 @@ public class CurrentStatus {
         int applicationStatus;
         long nextAlarmTime;
         long currentTime = Calendar.getInstance().getTimeInMillis();
-        int currentExerciseId;
         int nextExerciseId;
+        int currentExerciseId;
+
         try {
             SharedPreferences sharedPref = context.getSharedPreferences(fileName, Context.MODE_PRIVATE);
             applicationStatus = sharedPref.getInt(applicationStatusKey, applicationStatusDefault);
             nextAlarmTime = sharedPref.getLong(nextAlarmTimeKey, nextAlarmTimeDefault);
-            currentExerciseId = sharedPref.getInt(currentExerciseIdKey, currentExerciseIdDefault);
             nextExerciseId = sharedPref.getInt(nextExerciseIdKey, nextExerciseIdDefault);
+            currentExerciseId = sharedPref.getInt(currentExerciseIdKey, currentExerciseIdDefault);
 
 
             currentStatus = new CurrentStatus(applicationStatus,
@@ -114,10 +115,10 @@ public class CurrentStatus {
                     currentExerciseId
             );
 
-            if (applicationStatus != applicationStatusDefault) {                   //schedule is run or pending
+            if (applicationStatus != applicationStatusDefault) {
                 if (nextAlarmTime == nextAlarmTimeDefault ||
-                        nextAlarmTime < currentTime ) {
-                    currentStatus = currentStatus.run(context);
+                        nextAlarmTime < currentTime ) { // something is wrong
+                    currentStatus.stop(context);
                 }
             }
         } catch (Exception e){
@@ -131,16 +132,18 @@ public class CurrentStatus {
     public static CurrentStatus getCleanStatus() {
         return new CurrentStatus(
                applicationStatusDefault,
-               nextAlarmTimeDefault, nextExerciseIdDefault, currentExerciseIdDefault
+               nextAlarmTimeDefault,
+                nextExerciseIdDefault,
+                currentExerciseIdDefault
         );
     }
 
     public CurrentStatus run(Context context){
         MordanSoftLogger.addLog("CurrentStatus.run START");
-
+        this.nextExerciseId = changeExercise(context);
         this.setNextAlarmTime(context, Schedule.run(context).getTimeInMillis());
         this.setApplicationStatus(context, applicationStatusActive);
-        changeExercise(context);
+
 
         //setNextAlarmTime(context, String.format("%tT",(Alarm.run(context).getTime())));
         MordanSoftLogger.addLog("CurrentStatus.run END");
