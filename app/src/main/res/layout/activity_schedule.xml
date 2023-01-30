@@ -8,7 +8,7 @@
 
 
     <View
-        android:id="@+id/view2"
+        android:id="@+id/viewTop"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/bkg_top"
@@ -32,7 +32,7 @@
 
     <TextView
         android:id="@+id/tv_schedule_title"
-        style="@style/general_title_text_style"
+        style="@style/title_text"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center_horizontal|center_vertical"
@@ -46,7 +46,7 @@
 
     <TextView
         android:id="@+id/tv_schedule_period_title"
-        style="@style/general_title_2_text_style"
+        style="@style/header_2_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/base_margin"
@@ -59,7 +59,7 @@
 
     <TextView
         android:id="@+id/tv_schedule_countdown_start_title"
-        style="@style/general_title_2_text_style"
+        style="@style/header_2_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/base_margin"
@@ -105,7 +105,7 @@
 
     <TextView
         android:id="@+id/tv_schedule_countdown"
-        style="@style/general_title_2_text_style"
+        style="@style/header_2_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/base_small_margin"
@@ -137,7 +137,7 @@
 
     <TextView
         android:id="@+id/tv_schedule_available_title"
-        style="@style/general_title_text_style"
+        style="@style/header_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/base_margin"
@@ -161,7 +161,7 @@
 
     <TextView
         android:id="@+id/tv_schedule_days_of_week"
-        style="@style/general_title_2_text_style"
+        style="@style/header_2_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -235,7 +235,7 @@
 
     <TextView
         android:id="@+id/tv_schedule_su"
-        style="@style/general_title_2_text_style"
+        style="@style/header_2_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -246,7 +246,7 @@
 
     <TextView
         android:id="@+id/tv_schedule_mo"
-        style="@style/general_title_2_text_style"
+        style="@style/header_2_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -257,7 +257,7 @@
 
     <TextView
         android:id="@+id/tv_schedule_tu"
-        style="@style/general_title_2_text_style"
+        style="@style/header_2_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -268,7 +268,7 @@
 
     <TextView
         android:id="@+id/tv_schedule_we"
-        style="@style/general_title_2_text_style"
+        style="@style/header_2_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -279,7 +279,7 @@
 
     <TextView
         android:id="@+id/tv_schedule_th"
-        style="@style/general_title_2_text_style"
+        style="@style/header_2_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -290,7 +290,7 @@
 
     <TextView
         android:id="@+id/tv_schedule_fr"
-        style="@style/general_title_2_text_style"
+        style="@style/header_2_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -301,7 +301,7 @@
 
     <TextView
         android:id="@+id/tv_schedule_sa"
-        style="@style/general_title_2_text_style"
+        style="@style/header_2_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -312,7 +312,7 @@
 
     <TextView
         android:id="@+id/tv_schedule_start_title"
-        style="@style/general_title_2_text_style"
+        style="@style/header_2_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/base_margin"
@@ -324,7 +324,7 @@
 
     <TextView
         android:id="@+id/tv_schedule_end_title"
-        style="@style/general_title_2_text_style"
+        style="@style/header_2_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/base_margin"
@@ -335,7 +335,7 @@
 
     <TextView
         android:id="@+id/et_schedule_start_day"
-        style="@style/general_text_style"
+        style="@style/normal_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -347,7 +347,7 @@
 
     <TextView
         android:id="@+id/et_schedule_end_day"
-        style="@style/general_text_style"
+        style="@style/normal_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -359,7 +359,7 @@
 
     <TextView
         android:id="@+id/tv_schedule_recess_enable_title"
-        style="@style/general_title_2_text_style"
+        style="@style/header_2_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/base_margin"
@@ -374,7 +374,7 @@
 
     <TextView
         android:id="@+id/tv_schedule_start_recess_title"
-        style="@style/general_title_2_text_style"
+        style="@style/header_2_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/base_margin"
@@ -389,7 +389,7 @@
 
     <TextView
         android:id="@+id/tv_schedule_end_recess_title"
-        style="@style/general_title_2_text_style"
+        style="@style/header_2_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/base_margin"
@@ -404,7 +404,7 @@
 
     <TextView
         android:id="@+id/et_schedule_start_recess"
-        style="@style/general_text_style"
+        style="@style/normal_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -416,7 +416,7 @@
 
     <TextView
         android:id="@+id/et_schedule_end_recess"
-        style="@style/general_text_style"
+        style="@style/normal_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -470,7 +470,7 @@
         app:layout_constraintGuide_percent="@dimen/guideline_y_bottom" />
 
     <View
-        android:id="@+id/view3"
+        android:id="@+id/viewBottom"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/bkg_bottom"

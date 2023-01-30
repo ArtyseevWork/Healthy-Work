@@ -53,7 +53,6 @@ public class PreferencesActivity extends AppCompatActivity {
     View.OnClickListener btnPlusListener = v -> changeCount(5);
     View.OnClickListener btnMinusListener = v -> changeCount(-5);
 
-
     /* ****** ! Listeners **********/
 
     private void changeCount(int delta){
