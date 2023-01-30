@@ -127,7 +127,7 @@ public class CurrentStatus {
 
     public CurrentStatus stop(Context context){
         MordanSoftLogger.addLog("CurrentStatus.stop START");
-        //Schedule.stop(context);
+        Schedule.stop(context);
         this.setApplicationStatus(context, applicationStatusDefault);
         this.setNextAlarmTime(context,nextAlarmTimeDefault);
         MordanSoftLogger.addLog("CurrentStatus.stop END");
