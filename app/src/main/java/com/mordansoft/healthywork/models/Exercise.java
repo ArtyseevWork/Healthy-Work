@@ -200,8 +200,8 @@ public class Exercise {
                         0,
                         context.getString(R.string.activity_exercise_new),
                         context.getString(R.string.activity_exercise_description),
-                        context.getString(R.string.activity_exercise_units), //todo default units
-                        5,                                                   //todo default counts
+                        context.getString(R.string.activity_exercise_unit_times), //todo default units
+                        5,        //todo default counts
                         true);
         MordanSoftLogger.addLog("getNewExercise END");
         return exercise;

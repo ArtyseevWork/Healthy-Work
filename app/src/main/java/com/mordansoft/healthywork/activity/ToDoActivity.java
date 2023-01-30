@@ -47,7 +47,7 @@ public class ToDoActivity extends AppCompatActivity {
         binding.btnTodoNegative.setOnClickListener(btnNegativeListener);
         binding.btnTodoExit.setOnClickListener(btnExitListener);
         binding.clButtonMain.setOnTouchListener(handleTouch);
-        exercise = Exercise.getExerciseById(this, currentStatus.getExerciseId());
+        exercise = Exercise.getExerciseById(this, currentStatus.getCurrentExerciseId());
     }
 
     private void updateUi(){

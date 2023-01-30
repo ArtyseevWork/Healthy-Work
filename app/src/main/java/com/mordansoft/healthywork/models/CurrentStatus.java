@@ -20,15 +20,20 @@ public class CurrentStatus {
     private static final long nextAlarmTimeDefault = 0L;
     private static final String nextAlarmTimeKey="NEXT_ALARM_TIME";
 
-    private int exerciseId;
-    private static final int exerciseIdDefault = 0;
-    private static final String exerciseIdKey = "EXERCISE_ID";
+    private int nextExerciseId;
+    private static final int nextExerciseIdDefault = 0;
+    private static final String nextExerciseIdKey = "NEXT_EXERCISE_ID";
+
+    private int currentExerciseId;
+    private static final int currentExerciseIdDefault = 0;
+    private static final String currentExerciseIdKey = "CURRENT_EXERCISE_ID";
 
 
-    public CurrentStatus(int applicationStatus, long nextAlarmTime, int exerciseId) {
+    public CurrentStatus(int applicationStatus, long nextAlarmTime, int nextExerciseId, int currentExerciseId) {
         this.applicationStatus = applicationStatus;
         this.nextAlarmTime = nextAlarmTime;
-        this.exerciseId = exerciseId;
+        this.nextExerciseId = nextExerciseId;
+        this.currentExerciseId = currentExerciseId;
     }
 
     public long getNextAlarmTime() {
@@ -60,17 +65,31 @@ public class CurrentStatus {
         editor.apply();
     }
 
-    public int getExerciseId() {
-        return this.exerciseId;
+    public int getNextExerciseId() {
+        return this.nextExerciseId;
     }
 
-    public void setExerciseId(Context context, int exerciseId) {
-        this.exerciseId = exerciseId;
+    public void setNextExerciseId(Context context, int exerciseId) {
+        this.nextExerciseId = exerciseId;
         SharedPreferences sharedPref = context.getSharedPreferences(fileName, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putInt(exerciseIdKey, exerciseId);
+        editor.putInt(nextExerciseIdKey, exerciseId);
         editor.apply();
     }
+
+    public int getCurrentExerciseId() {
+        return this.currentExerciseId;
+    }
+
+    public void setCurrentExerciseId(Context context, int exerciseId) {
+        this.nextExerciseId = exerciseId;
+        SharedPreferences sharedPref = context.getSharedPreferences(fileName, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putInt(currentExerciseIdKey, exerciseId);
+        editor.apply();
+    }
+
+
 
 
     public static CurrentStatus getCurrentStatusFromFile(Context context) {
@@ -79,17 +98,20 @@ public class CurrentStatus {
         int applicationStatus;
         long nextAlarmTime;
         long currentTime = Calendar.getInstance().getTimeInMillis();
-        int exerciseId;
+        int currentExerciseId;
+        int nextExerciseId;
         try {
             SharedPreferences sharedPref = context.getSharedPreferences(fileName, Context.MODE_PRIVATE);
             applicationStatus = sharedPref.getInt(applicationStatusKey, applicationStatusDefault);
             nextAlarmTime = sharedPref.getLong(nextAlarmTimeKey, nextAlarmTimeDefault);
-            exerciseId = sharedPref.getInt(exerciseIdKey, exerciseIdDefault);
+            currentExerciseId = sharedPref.getInt(currentExerciseIdKey, currentExerciseIdDefault);
+            nextExerciseId = sharedPref.getInt(nextExerciseIdKey, nextExerciseIdDefault);
 
 
             currentStatus = new CurrentStatus(applicationStatus,
                     nextAlarmTime,
-                    exerciseId
+                    nextExerciseId,
+                    currentExerciseId
             );
 
             if (applicationStatus != applicationStatusDefault) {                   //schedule is run or pending
@@ -109,7 +131,7 @@ public class CurrentStatus {
     public static CurrentStatus getCleanStatus() {
         return new CurrentStatus(
                applicationStatusDefault,
-               nextAlarmTimeDefault, exerciseIdDefault
+               nextAlarmTimeDefault, nextExerciseIdDefault, currentExerciseIdDefault
         );
     }
 
@@ -136,7 +158,7 @@ public class CurrentStatus {
 
     public int changeExercise(Context context){
         int newExercise = Exercise.getRandomExercise(context).getId();
-        this.setExerciseId(context, newExercise);
+        this.setNextExerciseId(context, newExercise);
         return newExercise;
     }
 

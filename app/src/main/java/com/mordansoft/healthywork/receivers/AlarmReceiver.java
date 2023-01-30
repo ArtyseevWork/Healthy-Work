@@ -31,6 +31,7 @@ public class AlarmReceiver extends BroadcastReceiver {
             Ringtone ringtone = RingtoneManager.getRingtone(context, alarmUri);
             ringtone.play();
 
+            currentStatus.setCurrentExerciseId(context, currentStatus.getNextExerciseId());
             currentStatus.run(context);
             currentStatus.setApplicationStatus(context, CurrentStatus.applicationStatusPending);
         }

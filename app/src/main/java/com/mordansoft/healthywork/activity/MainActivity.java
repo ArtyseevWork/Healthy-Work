@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
     public void updateUi(){
 
          if (currentStatus.getApplicationStatus() == CurrentStatus.applicationStatusActive){ //application enable
-            exercise = Exercise.getExerciseById(this, currentStatus.getExerciseId());
+            exercise = Exercise.getExerciseById(this, currentStatus.getNextExerciseId());
             binding.tvMainNextAlertTimer.setText(currentStatus.getStringNextAlarmTime());
             binding.btnMainStart.setText(getText(R.string.activity_main_stop));
             binding.tvMainNextAlertTimer.setVisibility(View.VISIBLE);
