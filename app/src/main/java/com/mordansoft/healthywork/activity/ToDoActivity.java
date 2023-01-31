@@ -2,12 +2,10 @@ package com.mordansoft.healthywork.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
-
 import com.mordansoft.healthywork.databinding.ActivityToDoBinding;
 import com.mordansoft.healthywork.models.CurrentStatus;
 import com.mordansoft.healthywork.helpers.MordanSoftLogger;
@@ -61,7 +59,6 @@ public class ToDoActivity extends AppCompatActivity {
         todayStatistics.setCountOfExerciseDelta(this,+1);
         currentStatus.run(this);
         goBack();
-
     };
 
     View.OnClickListener btnNegativeListener = v -> {
@@ -72,11 +69,12 @@ public class ToDoActivity extends AppCompatActivity {
 
     View.OnClickListener btnExitListener = v -> {
         currentStatus.stop(this);
+
+        this.finish();
         Intent intent = new Intent(Intent.ACTION_MAIN);
         intent.addCategory(Intent.CATEGORY_HOME);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
-
     };
 
     private  final View.OnTouchListener handleTouch = new View.OnTouchListener() {

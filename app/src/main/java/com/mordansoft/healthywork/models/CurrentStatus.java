@@ -84,9 +84,6 @@ public class CurrentStatus {
         editor.apply();
     }
 
-
-
-
     public static CurrentStatus getCurrentStatusFromFile(Context context) {
         MordanSoftLogger.addLog("getCurrentStatusFromFile START");
         CurrentStatus currentStatus = getCleanStatus();
@@ -111,8 +108,8 @@ public class CurrentStatus {
 
             if (applicationStatus != applicationStatusDefault) {
                 if (nextAlarmTime == nextAlarmTimeDefault ||
-                        nextAlarmTime < currentTime ) { // something is wrong
-                    currentStatus.stop(context);
+                         currentTime - nextAlarmTime > 600*1000 ) { // alarm late
+                    currentStatus.run(context);
                 }
             }
         } catch (Exception e){
