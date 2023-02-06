@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.VibrationEffect;
 import android.os.Vibrator;
 
 import com.mordansoft.healthywork.helpers.MordanSoftLogger;
@@ -25,8 +26,17 @@ public class AlarmReceiver extends BroadcastReceiver {
             Notification notification = new Notification(context);
             notification.createNotification();
 
-            Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
-            vibrator.vibrate(1000);
+            final Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+            int vibrateLong = 1000;
+
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                final VibrationEffect vibrationEffect;
+                vibrationEffect = VibrationEffect.createOneShot(vibrateLong,
+                        VibrationEffect.DEFAULT_AMPLITUDE);
+                vibrator.vibrate(vibrationEffect);
+            } else {
+                vibrator.vibrate(vibrateLong);
+            }
 
             Uri alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
             Ringtone ringtone = RingtoneManager.getRingtone(context, alarmUri);

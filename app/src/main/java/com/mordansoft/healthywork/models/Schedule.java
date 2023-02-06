@@ -402,7 +402,7 @@ public class Schedule {
         }
 
         if (false) {//debug
-            inCalendar.setTimeInMillis(inCalendar.getTimeInMillis() + (60*1000));
+            inCalendar.setTimeInMillis(inCalendar.getTimeInMillis() + (30*1000));
             return inCalendar;
         }
 
@@ -410,11 +410,11 @@ public class Schedule {
         Schedule schedule = Schedule.getScheduleFromFile(context);
 
         int period = schedule.getPeriod();
-        int dayOfWeakIn = inCalendar.get(Calendar.DAY_OF_WEEK);
+        int dayOfWeekIn = inCalendar.get(Calendar.DAY_OF_WEEK);
 
         if (schedule.isScheduleEnable()){                                            //schedule turn on
             boolean[] workDays = schedule.getWorkDaysArray();
-            if (!workDays[dayOfWeakIn + 1]){                                         //today is not working day - processing next day
+            if (!workDays[dayOfWeekIn - 1]){                                         //today is not working day - processing next day
                 outCalendar.add(Calendar.DAY_OF_YEAR,1);
                 outCalendar = getNextAlarmTime(context, outCalendar);
             } else {                                                                 //today is working day
