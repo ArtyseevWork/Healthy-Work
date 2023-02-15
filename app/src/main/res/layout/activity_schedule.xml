@@ -24,6 +24,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/base_margin"
         android:contentDescription="@string/activity_exercise_back"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline_h1"
         app:layout_constraintEnd_toStartOf="@+id/guideline_v"
         app:layout_constraintStart_toStartOf="parent"
@@ -87,7 +89,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline_v"
-        app:layout_constraintTop_toTopOf="@+id/guideline_h1"
+        app:layout_constraintTop_toBottomOf="@+id/et_schedule_start_recess"
         app:showText="true" />
 
 
@@ -154,10 +156,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tv_schedule_available_title"
-        app:layout_constraintTop_toBottomOf="@+id/btn_schedule_minus_count" />
+        app:layout_constraintTop_toBottomOf="@+id/viewTop" />
 
     <TextView
         android:id="@+id/tv_schedule_days_of_week"

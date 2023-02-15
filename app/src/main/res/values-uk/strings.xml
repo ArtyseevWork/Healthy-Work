@@ -68,14 +68,14 @@
     <string name="activity_to_do_exercise_count">Деяка вправа</string>
     <string name="activity_to_do_save">Зберігти</string>
     <string name="activity_to_do_negative">Пропустити</string>
-    <string name="activity_to_do_exit">Ввімкнути прогрмму</string>
+    <string name="activity_to_do_exit">Ввімкнути прогрму</string>
     <string name="activity_to_do_already_done">Вже виконано:</string>
     <string name="notification_coming_soon">Вже йду</string>
     <string name="notification_skip_one">Пропустити</string>
     <string name="notification_save">Зберігти</string>
     <string name="notification_positive">Вже йду</string>
     <string name="notification_negative">Пропустити</string>
-    <string name="notification_exit">Вимкнути программу</string>
+    <string name="notification_exit">Вимкнути програму</string>
     <string name="notification_already_done">Вже виконано:</string>
     <string name="dialog_save_changes">Зберігти зміни перед виходом?</string>
     <string name="dialog_yes">Так</string>
