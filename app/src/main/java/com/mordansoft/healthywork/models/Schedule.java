@@ -450,7 +450,7 @@ public class Schedule {
                     outCalendar = getNextAlarmTime(context, outCalendar);
                 } else if (inCalendar.getTimeInMillis() > startWorkDayMillis  // in work day
                         && inCalendar.getTimeInMillis() < endWorkDayMillis - period) {
-                    if (schedule.isRecessEnable() &&            //in recess
+                    if (false && schedule.isRecessEnable() &&            //in recess
                             inCalendar.getTimeInMillis() > startRecessMillis - period //
                             && inCalendar.getTimeInMillis() < endRecessMillis - period) {
                         outCalendar = getNextAlarmTimeSimple(context, recessEndCalendar);
