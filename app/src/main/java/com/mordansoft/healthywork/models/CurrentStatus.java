@@ -131,7 +131,7 @@ public class CurrentStatus {
 
     public CurrentStatus run(Context context){
         MordanSoftLogger.addLog("CurrentStatus.run START");
-        this.nextExerciseId = changeExercise(context);
+        this.nextExerciseId = getNextExercise(context);
         this.setNextAlarmTime(context, Schedule.run(context).getTimeInMillis());
         this.setApplicationStatus(context, applicationStatusActive);
         MordanSoftLogger.addLog("CurrentStatus.run END");
@@ -148,9 +148,15 @@ public class CurrentStatus {
     }
 
     public int changeExercise(Context context){
-        int newExercise = Exercise.getRandomExercise(context).getId();
-        this.setNextExerciseId(context, newExercise);
-        return newExercise;
+        int newExerciseId = Exercise.getRandomExercise(context).getId();
+        this.setNextExerciseId(context, newExerciseId);
+        return newExerciseId;
+    }
+
+    public int getNextExercise(Context context){
+        int newExerciseId = Exercise.getNextExercise(context).getId();
+        this.setNextExerciseId(context, newExerciseId);
+        return newExerciseId;
     }
 
 }

@@ -11,6 +11,7 @@ import android.os.Vibrator;
 
 import com.mordansoft.healthywork.helpers.MordanSoftLogger;
 import com.mordansoft.healthywork.models.CurrentStatus;
+import com.mordansoft.healthywork.models.Exercise;
 import com.mordansoft.healthywork.models.Notification;
 
 public class AlarmReceiver extends BroadcastReceiver {
@@ -23,6 +24,8 @@ public class AlarmReceiver extends BroadcastReceiver {
         if (   currentStatus.getApplicationStatus() == CurrentStatus.applicationStatusActive
             || currentStatus.getApplicationStatus() == CurrentStatus.applicationStatusPending) {
             currentStatus.setCurrentExerciseId(context, currentStatus.getNextExerciseId());
+            Exercise exercise = Exercise.getExerciseById(context, currentStatus.getNextExerciseId()); //update timestamp
+            exercise.saveExercise(context);                                                           //update timestamp
             Notification notification = new Notification(context);
             notification.createNotification();
 

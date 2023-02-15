@@ -57,6 +57,7 @@ public class ToDoActivity extends AppCompatActivity {
 
     View.OnClickListener btnPositiveListener = v -> {
         todayStatistics.setCountOfExerciseDelta(this,+1);
+        exercise.saveExercise(this);
         currentStatus.run(this);
         goBack();
     };

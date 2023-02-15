@@ -9,8 +9,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     // Context context;
-    public static final String dbName = "db_health_work";
-    public static final int ver = 1;
+    private static final String dbName = "db_health_work";
+    private static final int ver = 2;
 
     public DatabaseHelper(Context context) {
         super(context, dbName, null, ver);
@@ -40,7 +40,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 createAllTables(db);
                 //insertTestData(db);
             } catch (Exception e) {
-                MordanSoftLogger.addLog("updateMyDatabase deleteAllTables or createAllTables(db) error", 'e');
+                MordanSoftLogger.addLog("updateMyDatabase error", 'e');
+            }
+        } else   if (oldVer == 1) { // first run on this devise
+            try {
+                db.execSQL("alter table EXERCISE add column timestamp NUMERIC DEFAULT 0");
+            } catch (Exception e) {
+                MordanSoftLogger.addLog("updateMyDatabase to ver2 error", 'e');
             }
         }
         MordanSoftLogger.addLog("updateMyDatabase END");
@@ -63,25 +69,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + "description TEXT,"
                 + "unit TEXT,"
                 + "count REAL,"
-                + "enable integer);");
+                + "enable integer,"
+                + "timestamp NUMERIC);");
     }
 
-    public static void insertTestData(SQLiteDatabase db) {
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("name","Sit-ups");
-        contentValues.put("description","test Sit-ups Description");
-        contentValues.put("unit","times");
-        contentValues.put("count",10);
-        contentValues.put("enable ",1);
-        db.insert("EXERCISE",null,contentValues);
-        contentValues.clear();
-        contentValues.put("name","Push ups");
-        contentValues.put("description","test push ups Description");
-        contentValues.put("unit","times");
-        contentValues.put("count",5);
-        contentValues.put("enable",1);
-        db.insert("EXERCISE",null,contentValues);
-    }
 
     public static SQLiteDatabase getDatabase(Context context){
 

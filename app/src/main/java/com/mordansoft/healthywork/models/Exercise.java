@@ -17,6 +17,7 @@ public class Exercise {
     private String unit;
     private int count;
     private boolean enable;
+    private long timestamp;
 
     public Exercise(int id, String name, String description, String unit, int count, boolean enable) {
         this.id = id;
@@ -81,6 +82,7 @@ public class Exercise {
         contentValues.put("unit", this.unit);
         contentValues.put("count", this.count);
         contentValues.put("enable", this.enable);
+        contentValues.put("timestamp", System.currentTimeMillis());
         if (id == 0 ){
             id = db.insert("EXERCISE",null, contentValues);
         } else {
@@ -101,6 +103,7 @@ public class Exercise {
         contentValues.put("unit", exercise.unit);
         contentValues.put("count", exercise.count);
         contentValues.put("enable", exercise.enable);
+        contentValues.put("timestamp", System.currentTimeMillis());
         if (id == 0 ){
             id = db.insert("EXERCISE",null, contentValues);
         } else {
@@ -131,7 +134,7 @@ public class Exercise {
                             "unit",
                             "count",
                             "enable"},
-                    filterQuery, null,null,null,null);
+                    filterQuery, null,null,null,"timestamp");
             while (cursor.moveToNext()){
                 Exercise exercise = new Exercise(
                         cursor.getInt(0),
@@ -204,6 +207,17 @@ public class Exercise {
         int num = (int) (Math.random() * size);
         MordanSoftLogger.addLog("getRandomExercise  =  " + num );
         return exercises.get(num);
+    }
+
+    public static Exercise getNextExercise(Context context){
+        ArrayList<Exercise> exercises = Exercise.getExercisesByQuery(context, "enable = 1 ");
+        if (exercises.size()  > 0) {
+            MordanSoftLogger.addLog("getNextExercise  =  " + exercises.get(0).getId());
+            return exercises.get(0);
+        } else {
+            MordanSoftLogger.addLog("getNextExercise  =  NULL");
+            return getNewExercise(context);
+        }
     }
 
     public static void insertConstantsData(Context context) {
