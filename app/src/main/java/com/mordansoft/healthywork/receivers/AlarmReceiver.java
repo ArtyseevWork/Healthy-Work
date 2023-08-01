@@ -9,47 +9,51 @@ import android.net.Uri;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 
+import com.mordansoft.healthywork.data.repository.AppStatusRepositoryImpl;
+import com.mordansoft.healthywork.data.repository.ExerciseRepositoryImpl;
+import com.mordansoft.healthywork.data.repository.ScheduleRepositoryImpl;
+import com.mordansoft.healthywork.data.repository.StatisticRepositoryImpl;
+import com.mordansoft.healthywork.data.storage.AppStatusStorageImpShPr;
+import com.mordansoft.healthywork.data.storage.ExerciseStorageImplSqlite;
+import com.mordansoft.healthywork.data.storage.ScheduleStorageImplShPr;
+import com.mordansoft.healthywork.data.storage.StatisticStorageImplShPr;
+import com.mordansoft.healthywork.domain.usecase.status.RestartUc;
 import com.mordansoft.healthywork.helpers.MordanSoftLogger;
-import com.mordansoft.healthywork.models.CurrentStatus;
-import com.mordansoft.healthywork.models.Exercise;
-import com.mordansoft.healthywork.models.Notification;
+import com.mordansoft.healthywork.worker.AlarmCreatorImpl;
+import com.mordansoft.healthywork.worker.NotificationCreatorImpl;
 
 public class AlarmReceiver extends BroadcastReceiver {
-    CurrentStatus currentStatus;
+    RestartUc restartUc;
 
     @Override
     public void onReceive(Context context, Intent intent) {
+
         MordanSoftLogger.addLog("AlarmReceiver START");
-        currentStatus = CurrentStatus.getCurrentStatusFromFile(context);
-        if (   currentStatus.getApplicationStatus() == CurrentStatus.applicationStatusActive
-            || currentStatus.getApplicationStatus() == CurrentStatus.applicationStatusPending) {
-            currentStatus.setCurrentExerciseId(context, currentStatus.getNextExerciseId());
-            Exercise exercise = Exercise.getExerciseById(context, currentStatus.getNextExerciseId()); //update timestamp
-            exercise.saveExercise(context);                                                           //update timestamp
-            Notification notification = new Notification(context);
-            notification.createNotification();
+        restartUc = new RestartUc(new AppStatusRepositoryImpl(new AppStatusStorageImpShPr(context)),
+                              new StatisticRepositoryImpl(new StatisticStorageImplShPr(context)) ,
+                              new ExerciseRepositoryImpl(new ExerciseStorageImplSqlite(context)),
+                              new ScheduleRepositoryImpl(new ScheduleStorageImplShPr(context)),
+                              new AlarmCreatorImpl(context),
+                              new NotificationCreatorImpl(context));
+         if (restartUc.isEnable()) {
+             restartUc.execute();
+             //светомузыка
+             final Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+             int vibrateLong = 1500;
 
-            final Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
-            int vibrateLong = 1000;
+             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                 final VibrationEffect vibrationEffect;
+                 vibrationEffect = VibrationEffect.createOneShot(vibrateLong,
+                         VibrationEffect.DEFAULT_AMPLITUDE);
+                 vibrator.vibrate(vibrationEffect);
+             } else {
+                 vibrator.vibrate(vibrateLong);
+             }
 
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                final VibrationEffect vibrationEffect;
-                vibrationEffect = VibrationEffect.createOneShot(vibrateLong,
-                        VibrationEffect.DEFAULT_AMPLITUDE);
-                vibrator.vibrate(vibrationEffect);
-            } else {
-                vibrator.vibrate(vibrateLong);
-            }
-
-            Uri alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-            Ringtone ringtone = RingtoneManager.getRingtone(context, alarmUri);
-            ringtone.play();
-
-            currentStatus.setCurrentExerciseId(context, currentStatus.getNextExerciseId());
-            currentStatus.run(context);
-            currentStatus.setApplicationStatus(context, CurrentStatus.applicationStatusPending);
-        }
-
+             Uri alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+             Ringtone ringtone = RingtoneManager.getRingtone(context, alarmUri);
+             ringtone.play();
+         }
         MordanSoftLogger.addLog("AlarmReceiver END");
     }
 }

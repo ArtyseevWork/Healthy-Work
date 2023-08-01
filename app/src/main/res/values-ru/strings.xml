@@ -135,5 +135,8 @@
     <string name="activity_main_change_exercise">Изменить упражнение</string>
     <string name="activity_main_next_exercise">Упражнение:</string>
     <string name="notification_content_text_start">"Пора выполнять: "</string>
+    <string name="demo_data_exercise_name_default">Новое упражнение</string>
+    <string name="demo_data_exercise_count_default">10</string>
+    <string name="demo_data_exercise_descrixzption_default">Ваше описание</string>
     <!--end demo data   -->
 </resources>

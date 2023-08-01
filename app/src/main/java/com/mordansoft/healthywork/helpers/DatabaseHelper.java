@@ -1,10 +1,11 @@
 package com.mordansoft.healthywork.helpers;
 
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import com.mordansoft.healthywork.data.MordanSoftLogger;
 
 
 public class DatabaseHelper extends SQLiteOpenHelper {
@@ -33,23 +34,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     private void updateMyDatabase(SQLiteDatabase db, int oldVer){
-        MordanSoftLogger.addLog("updateMyDatabase START oldVer = " + oldVer);
+        com.mordansoft.healthywork.data.MordanSoftLogger.addLog("updateMyDatabase START oldVer = " + oldVer);
         if (oldVer < 1) { // first run on this devise
             try {
                 deleteAllTables(db);
                 createAllTables(db);
                 //insertTestData(db);
             } catch (Exception e) {
-                MordanSoftLogger.addLog("updateMyDatabase error", 'e');
+                com.mordansoft.healthywork.data.MordanSoftLogger.addLog("updateMyDatabase error", 'e');
             }
         } else   if (oldVer == 1) { // first run on this devise
             try {
                 db.execSQL("alter table EXERCISE add column timestamp NUMERIC DEFAULT 0");
             } catch (Exception e) {
-                MordanSoftLogger.addLog("updateMyDatabase to ver2 error", 'e');
+                com.mordansoft.healthywork.data.MordanSoftLogger.addLog("updateMyDatabase to ver2 error", 'e');
             }
         }
-        MordanSoftLogger.addLog("updateMyDatabase END");
+        com.mordansoft.healthywork.data.MordanSoftLogger.addLog("updateMyDatabase END");
     }
 
     public static void deleteAllTables(SQLiteDatabase db){

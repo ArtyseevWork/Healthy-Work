@@ -125,6 +125,11 @@
     <!--end dialog   -->
 
     <!--start demo data  -->
+    <string name="demo_data_exercise_name_default">New Exercise</string>
+    <string name="demo_data_exercise_descrixzption_default">"Your description"</string>
+    <string name="demo_data_exercise_count_default">10</string>
+
+
     <string name="demo_data_unit_times">@string/activity_exercise_unit_times</string>
     <string name="demo_data_unit_seconds">@string/activity_exercise_unit_seconds</string>
     <string name="demo_data_exercise_name_1">Push-Ups</string>

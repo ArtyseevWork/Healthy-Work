@@ -137,5 +137,8 @@
     <string name="activity_main_change_exercise">Змінити вправу</string>
     <string name="activity_main_next_exercise">Вправа:</string>
     <string name="notification_content_text_start">"Час виконувати: "</string>
+    <string name="demo_data_exercise_name_default">Нова вправа</string>
+    <string name="demo_data_exercise_count_default">10</string>
+    <string name="demo_data_exercise_descrixzption_default">Ваш опис</string>
     <!--end demo data   -->
 </resources>

@@ -16,7 +16,7 @@
         android:theme="@style/Theme.HealthyWork"
         tools:targetApi="31">
         <activity
-            android:name=".activity.ToDoActivity"
+            android:name=".presentation.ui.todo.ToDoActivity"
             android:exported="false"
             android:screenOrientation="portrait">
             <meta-data
@@ -24,7 +24,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".activity.ScheduleActivity"
+            android:name=".presentation.ui.schedule.ScheduleActivity"
             android:exported="false"
             android:screenOrientation="portrait">
             <meta-data
@@ -32,7 +32,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".activity.PreferencesActivity"
+            android:name=".presentation.ui.PreferencesActivity"
             android:exported="false"
             android:screenOrientation="portrait">
             <meta-data
@@ -40,7 +40,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".activity.ExercisesMenuActivity"
+            android:name=".presentation.ui.exercises.ExercisesActivity"
             android:exported="false"
             android:screenOrientation="portrait">
             <meta-data
@@ -48,7 +48,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".activity.ExerciseActivity"
+            android:name=".presentation.ui.exercise.ExerciseActivity"
             android:exported="false"
             android:screenOrientation="portrait">
             <meta-data
@@ -56,7 +56,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".presentation.ui.main.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
